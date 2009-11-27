@@ -57,10 +57,10 @@ from ogr import wkbGeometryCollection
 
 
 
-file = 'BCN200/Soriatt01_4326.dgn';
+file = 'BCN200/Soriatt06_4326.dgn';
 driver = ogr.GetDriverByName('DGN');
 
-outputFile = 'Soriatt01.osm'
+outputFile = 'Soriatt06.osm'
 
 # 0 means read-only
 dataSource = driver.Open(file,0); 
@@ -323,7 +323,8 @@ print "Joining segments"
 # OK, all features should be parsed in the arrays by now
 # Let's start to do some topological magic
 
-# We'll iterate through all the nodes, and fetch all segments referencing that node. If a pair of segments share the same references (i.e. they are part of the same line or area), they will be joined as one and de-referenced from that node. Joining segments mean than the concept of segment changes at this point, becoming linestrings or ways.
+# We'll iterate through all the lines and areas, then iterate through all the nodes contained there
+# We'll then fetch all segments referencing that node. If a pair of segments share the same references (i.e. they are part of the same line or area), they will be joined as one and de-referenced from that node. Joining segments mean than the concept of segment changes at this point, becoming linestrings or ways.
 # There are some edge cases in which the algorithm may not prove optimal: if a line (or area ring) crosses itself, then the node will have more than two segments referenced to the line (or area), and does NOT check for the optimal one. As a result, lines that cross themselves may be (incorrectly) split into two and merged via a relation. In other words, the order of the points in a line (or ring) may not be kept if the line crosses itself.
 # The algorithm will not check if the node has been de-referenced: instead, it will check for the first and last node of the segments involved - if the segments have already been joined, the check will fail.
 
@@ -332,7 +333,13 @@ print "Joining segments"
 #print nodeRefs.iteritems()
 #print dir(nodeRefs)
 
-for (nodeID, segments) in nodeRefs.items():
+
+def simplifyNode(nodeID):
+	global nodeRefs, segmentNodes, segmentRefs, showProgress, lineSegments, areaRings, segmentJoinCount
+	#for (nodeID, segments) in nodeRefs.items():
+	segments = nodeRefs[nodeID]
+	
+	segmentsJoined = 0
 	#print
 	#print "Node ID: " + str(nodeID)
 	#print "Node references to: " + str(segments)
@@ -348,7 +355,7 @@ for (nodeID, segments) in nodeRefs.items():
 						#print "Segment " + str(segmentID1) + ": " + str(segmentNodes[segmentID1])
 						#print "Segment " + str(segmentID2) + ": " + str(segmentNodes[segmentID2])
 						
-						if showProgress: sys.stdout.write('=')
+						#if showProgress: sys.stdout.write('=')
 						segmentNodes[segmentID1].extend( segmentNodes[segmentID2][1:] )	# Voila! Joined!
 						for nodeShifted in segmentNodes[segmentID2][1:]:	# Replace node references
 							#print "deleting reference from node " + str(nodeShifted) + " to segment " + str(segmentID2) + "; updating to " + str(segmentID1)
@@ -372,9 +379,39 @@ for (nodeID, segments) in nodeRefs.items():
 						
 						del segmentNodes[segmentID2]
 						segmentJoinCount = segmentJoinCount +1
+						segmentsJoined = segmentsJoined + 1
 				except:
 					pass	# This is due to the node no longer referencing to a segment because we just de-referenced it in a previous pass of the loop; this will be quite common
 	
+	# FIXME: if segmentsJoined > 1, this should mark the node for further testing - It's very likely to be a self-intersection.
+	
+	if showProgress: sys.stdout.write(str(segmentsJoined))
+	
+print
+print "Simplifying line segments"
+for line in lineSegments.values():
+	#print line
+	for segmentID in line:	# No need to check the last segment, it could not be simplyfied
+		#print segmentID
+		#print segmentNodes[segmentID]
+		for node in segmentNodes[segmentID]:
+			simplifyNode(node)
+			#simplifyNode(segmentNodes[segmentID][0])	# last node in segment	
+
+print
+print "Simplifying area segments"
+for area in areaRings.values():
+	for ring in area:
+		for segmentID in ring:
+			for nodeID in segmentNodes[segmentID]:
+				simplifyNode(node)	# last node in segment	
+
+
+# That *should* do it... but a second pass through all the nodes will really fix things up. I wonder why some nodes are left out of the previous pass
+print
+print "Simplifying remaining nodes"
+for node in nodeRefs.keys():
+	simplifyNode(node)
 
 
 print
