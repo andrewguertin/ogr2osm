@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 """ ogr2osm alpha
@@ -30,7 +30,7 @@
  there is no projection information in the source data, this will assume EPSG:4326 (WGS84
  latitude-longitude).
  
- python ogr2osm.py [filename] [options]
+ python ogr2osm.py [options] [filename]
 	
  Options:	
    -e, --epsg=...       EPSG code, forcing the source data projection
@@ -38,7 +38,8 @@
    -v, --verbose        Shows some seemingly random characters dancing in the screen 
 	                    for every feature that's being worked on.
    -h, --help           Show this message
-   
+   -t, --debug-tags     Outputs the tags for every feature parsed
+	
  (-e and -p are mutually exclusive. If both are specified, only the last one will be
  taken into account)
 
@@ -102,10 +103,11 @@ detectProjection = True
 useEPSG = False
 useProj4 = False
 showProgress = False
+debugTags = False
 
 # Fetch command line parameters: file and source projection
 try:
-	(opts, args) = getopt.getopt(sys.argv[1:], "e:p:hv", ["epsg","proj4","help","verbose"])
+	(opts, args) = getopt.getopt(sys.argv[1:], "e:p:hvt", ["epsg","proj4","help","verbose","debug-tags"])
 except getopt.GetoptError:
 	print __doc__
 	sys.exit(2)
@@ -129,9 +131,12 @@ for opt, arg in opts:
 		useProj4 = False
 	elif opt in ("-v", "--verbose"):
 		showProgress=True
+	elif opt in ("-t", "--debug-tags"):
+		debugTags=True
+	else:
+		print "Unknown option " + opt
 
-
-#file = 'BCN200/Soriatt01_4326.dgn';
+print (opts,args)
 file = args[0]
 fileExtension = file.split('.')[-1]
 
@@ -154,12 +159,12 @@ else:
 
 
 # Strip directories from output file name
-slashPosition = file.find('/')
+slashPosition = file.rfind('/')
 if slashPosition != -1:
-	print slashPosition
+	#print slashPosition
 	outputFile = file[slashPosition+1:]
-	print outputFile
-	print len(fileExtension)
+	#print outputFile
+	#print len(fileExtension)
 else:
 	outputFile = file
 	
@@ -180,10 +185,15 @@ print "Preparing to convert file " + file + " (extension is " + fileExtension + 
 if detectProjection:
 	print "Will try to detect projection from source metadata, or fall back to EPSG:4326"
 elif useEPSG:
-	print "Will assume that source data is in EPSG:" + sourceEPSG
+	print "Will assume that source data is in EPSG:" + str(sourceEPSG)
 elif useProj4:
 	print "Will assume that source data has the Proj.4 string: " + sourceProj4
 
+if showProgress:
+	print "Verbose mode is on. Get ready to see lots of dots."
+
+if debugTags:
+	print "Tag debugging is on. Get ready to see lots of stuff."
 
 
 # Some variables to hold stuff...
@@ -327,6 +337,11 @@ for i in range(dataSource.GetLayerCount()):
 	spatialRef = None
 	if detectProjection:
 		spatialRef = layer.GetSpatialRef()
+		if spatialRef != None:
+			print "Detected projection metadata:"
+			print spatialRef
+		else:
+			print "No projection metadata, falling back to EPSG:4326"
 	elif useEPSG:
 		spatialRef = osr.SpatialReference()
 		spatialRef.ImportFromEPSG(sourceEPSG)
@@ -375,12 +390,12 @@ for i in range(dataSource.GetLayerCount()):
 		# TODO: Now it should be a good time to apply attributes->tags conversion rules!!
 		
 		tags = fields
-		
+		if debugTags:
+			print
+			print tags
 		
 		# Do the reprojection (or pass if no reprojection is neccesary, see the lambda function definition)
 		reproject(geometry)
-		
-		
 		
 		# Now we got the fields for this feature. Now, let's convert the geometry.
 		# Points will get converted into nodes.
@@ -408,9 +423,10 @@ for i in range(dataSource.GetLayerCount()):
 				subGeometries.append(geometry.GetGeometryRef(k))
 				
 		elif geometryType == wkbPoint25D or geometryType == wkbLineString25D or geometryType == wkbPolygon25D:
+			if showProgress: sys.stdout.write('z')
 			subGeometries = [geometry]
 		elif geometryType == wkbMultiPoint25D or geometryType == wkbMultiLineString25D or geometryType == wkbMultiPolygon25D or geometryType == wkbGeometryCollection25D:
-			if showProgress: sys.stdout.write('M')
+			if showProgress: sys.stdout.write('Mz')
 			for k in range(geometry.GetGeometryCount()):
 				subGeometries.append(geometry.GetGeometryRef(k))
 				
@@ -547,8 +563,8 @@ for line in lineSegments.values():
 	for segmentID in line:	# No need to check the last segment, it could not be simplyfied
 		#print segmentID
 		#print segmentNodes[segmentID]
-		for node in segmentNodes[segmentID]:
-			simplifyNode(node)
+		for nodeID in segmentNodes[segmentID]:
+			simplifyNode(nodeID)
 			#simplifyNode(segmentNodes[segmentID][0])	# last node in segment	
 
 print
@@ -557,7 +573,7 @@ for area in areaRings.values():
 	for ring in area:
 		for segmentID in ring:
 			for nodeID in segmentNodes[segmentID]:
-				simplifyNode(node)	# last node in segment	
+				simplifyNode(nodeID)	# last node in segment	
 
 
 # That *should* do it... but a second pass through all the nodes will really fix things up. I wonder why some nodes are left out of the previous pass
@@ -661,10 +677,10 @@ print "Generated lines. On to areas."
 for (areaID, areaRing) in areaRings.items():
 	#sys.stdout.write(str(len(areaRings)))
 	
-	if len(areaRings) == 1 and len(areaRings.values()[0][0]) == 1: # The area will be a simple way
+	if len(areaRing) == 1 and len(areaRing[0]) == 1: # The area will be a simple way
 		w.start('way', id=str(areaID), action='modify', visible='true')
 		
-		for nodeID in segmentNodes[ areaRings.values()[0][0][0] ]:  # Geez. [0][0][0]
+		for nodeID in segmentNodes[ areaRing[0][0] ]:
 			w.element('nd',ref=str(nodeID))
 		
 		for (tagKey,tagValue) in areaTags[areaID].items():
@@ -675,6 +691,7 @@ for (areaID, areaRing) in areaRings.items():
 		if showProgress: sys.stdout.write('0 ')
 	else:
 		segmentsUsed = 0
+		segmentsUsedInRing = 0
 		#print "FIXME"
 		
 		for ring in areaRing:
@@ -694,7 +711,10 @@ for (areaID, areaRing) in areaRings.items():
 			for segmentID in ring:
 				w.element('member', type='way', ref=str(segmentID), role=role)
 				segmentsUsed = segmentsUsed + 1
+				segmentsUsedInRing = segmentsUsedInRing + 1
 			role = 'inner'
+			#if showProgress: sys.stdout.write(str(segmentsUsedInRing)+'r')
+			segmentsUsedInRing = 0
 	
 		for (tagKey,tagValue) in areaTags[areaID].items():
 			if tagValue:
