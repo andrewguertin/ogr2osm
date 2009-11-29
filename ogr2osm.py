@@ -38,7 +38,10 @@
    -v, --verbose        Shows some seemingly random characters dancing in the screen 
 	                    for every feature that's being worked on.
    -h, --help           Show this message
-   -t, --debug-tags     Outputs the tags for every feature parsed
+   -d, --debug-tags     Outputs the tags for every feature parsed
+	-a, --attribute-stats Outputs a summary of the different tags / attributes encountered
+	-t, --translation    Select the attribute-tags translation method. 
+	                    See the translations/ diredtory for valid values.
 	
  (-e and -p are mutually exclusive. If both are specified, only the last one will be
  taken into account)
@@ -61,6 +64,7 @@
 
 
 import sys
+import os
 import getopt
 from SimpleXMLWriter import XMLWriter
 
@@ -97,17 +101,19 @@ from ogr import wkbGeometryCollection25D
 
 
 # Default options
-sourceEPSG = 4326
-sourceProj4 = None
+sourceEPSG       = 4326
+sourceProj4      = None
 detectProjection = True
-useEPSG = False
-useProj4 = False
-showProgress = False
-debugTags = False
+useEPSG          = False
+useProj4         = False
+showProgress     = False
+debugTags        = False
+attributeStats   = False
+translationMethod = None
 
 # Fetch command line parameters: file and source projection
 try:
-	(opts, args) = getopt.getopt(sys.argv[1:], "e:p:hvt", ["epsg","proj4","help","verbose","debug-tags"])
+	(opts, args) = getopt.getopt(sys.argv[1:], "e:p:hvdt:a", ["epsg","proj4","help","verbose","debug-tags","attribute-stats","translation"])
 except getopt.GetoptError:
 	print __doc__
 	sys.exit(2)
@@ -131,8 +137,13 @@ for opt, arg in opts:
 		useProj4 = False
 	elif opt in ("-v", "--verbose"):
 		showProgress=True
-	elif opt in ("-t", "--debug-tags"):
+	elif opt in ("-d", "--debug-tags"):
 		debugTags=True
+	elif opt in ("-a", "--attribute-stats"):
+		attributeStats=True
+		attributeStatsTable = {}
+	elif opt in ("-t", "--translation"):
+		translationMethod = arg
 	else:
 		print "Unknown option " + opt
 
@@ -221,14 +232,29 @@ lineTags     = {}
 # lineSegments and lineTags work pretty much as areaRings and areaTags (only that lineSegments is a list, and areaRings is a list of lists)
 
 
+# Stuff needed for locating translation methods
+if translationMethod:
+	try:
+		sys.path.append(os.getcwd() + "/translations")
+		module = __import__(translationMethod)
+		translateAttributes = module.translateAttributes
+		translateAttributes([])
+	except:
+		print "Could not load translation method " + translationMethod + ". Check the translations/ directory for valid values."
+		sys.exit(-1)
+	print "Successfully loaded " + translationMethod + " translation method."
+else:
+	# If no function has been defined, perform no translation: just copy everything.
+	translateAttributes = lambda(attrs): attrs
+	
+
+
 elementIdCounter = -1
 nodeCount = 0
 segmentCount = 0
 lineCount = 0
 areaCount = 0
 segmentJoinCount = 0
-
-#showProgress = True
 
 
 print
@@ -369,6 +395,8 @@ for i in range(dataSource.GetLayerCount()):
 	for j in range(fieldCount):
 		#print featureDefinition.GetFieldDefn(j).GetNameRef()
 		fieldNames.append (featureDefinition.GetFieldDefn(j).GetNameRef())
+		if attributeStats:
+			attributeStatsTable.update({featureDefinition.GetFieldDefn(j).GetNameRef():{} })
 	
 	print
 	print fieldNames
@@ -385,11 +413,16 @@ for i in range(dataSource.GetLayerCount()):
 		for k in range(fieldCount-1):
 			#fields[ fieldNames[k] ] = feature.GetRawFieldRef(k)
 			fields[ fieldNames[k] ] = feature.GetFieldAsString(k)
+			if attributeStats:
+				try:
+					attributeStatsTable[ fieldNames[k] ][ feature.GetFieldAsString(k) ] = attributeStatsTable[ fieldNames[k] ][ feature.GetFieldAsString(k) ] + 1
+				except:
+					attributeStatsTable[ fieldNames[k] ].update({ feature.GetFieldAsString(k) : 1})
+
 		
-		#print fields
-		# TODO: Now it should be a good time to apply attributes->tags conversion rules!!
+		# Translate attributes into tags, as defined per the selected translation method
+		tags = translateAttributes(fields)
 		
-		tags = fields
 		if debugTags:
 			print
 			print tags
@@ -405,13 +438,7 @@ for i in range(dataSource.GetLayerCount()):
 		
 		# We'll split a geometry into subGeometries or "elementary" geometries: points, linestrings, and polygons. This will take care of OGRMultiLineStrings, OGRGeometryCollections and the like
 		
-		#try:
 		geometryType = geometry.GetGeometryType()
-		#except:
-			#print geometry
-			#print type(geometry)
-			#print dir(geometry)
-			#print geometry.GetGeometryType()
 		
 		subGeometries = []
 		
@@ -498,9 +525,6 @@ print "Joining segments"
 # The algorithm will not check if the node has been de-referenced: instead, it will check for the first and last node of the segments involved - if the segments have already been joined, the check will fail.
 
 
-#print nodeRefs
-#print nodeRefs.iteritems()
-#print dir(nodeRefs)
 
 
 def simplifyNode(nodeID):
@@ -721,6 +745,15 @@ for (areaID, areaRing) in areaRings.items():
 				w.element("tag", k=tagKey, v=tagValue)
 		w.end('relation')
 		if showProgress: sys.stdout.write(str(segmentsUsed) + " ")
+
+
+
+
+if attributeStats:
+	print
+	for (attribute, stats) in attributeStatsTable.items():
+		print "All values for attribute " + attribute + ":"
+		print stats
 
 
 print
