@@ -39,8 +39,8 @@
 	                    for every feature that's being worked on.
    -h, --help           Show this message
    -d, --debug-tags     Outputs the tags for every feature parsed
-	-a, --attribute-stats Outputs a summary of the different tags / attributes encountered
-	-t, --translation    Select the attribute-tags translation method. 
+   -a, --attribute-stats Outputs a summary of the different tags / attributes encountered
+   -t, --translation    Select the attribute-tags translation method. 
 	                    See the translations/ diredtory for valid values.
 	
  (-e and -p are mutually exclusive. If both are specified, only the last one will be
@@ -165,6 +165,10 @@ elif fileExtension == 'csv':
 	driver = ogr.GetDriverByName('CSV');
 elif fileExtension == 'sqlite':
 	driver = ogr.GetDriverByName('SQLite');
+elif fileExtension == 'kml':
+	driver = ogr.GetDriverByName('KML');
+#elif fileExtension == 'kmz':
+	#driver = ogr.GetDriverByName('KML');
 else:
 	print "Error: extension " + fileExtension + " is invalid or not implemented yet."
 
