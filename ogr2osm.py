@@ -269,7 +269,7 @@ print "Parsing features"
 
 def addNode(x,y,tags = {}):
 	"Given x,y, returns the ID of an existing node there, or creates it and returns the new ID. Node will be updated with the optional tags."
-	global elementIdCounter, nodeCount, nodeCoords, nodeIDsByXT, nodeTags, nodeCoords
+	global elementIdCounter, nodeCount, nodeCoords, nodeIDsByXY, nodeTags, nodeCoords
 	
 	if (x,y) in nodeIDsByXY:
 		# Node already exists, merge tags
