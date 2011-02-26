@@ -42,6 +42,7 @@
    -a, --attribute-stats Outputs a summary of the different tags / attributes encountered
    -t, --translation=... Select the attribute-tags translation method. 
 	                    See the translations/ diredtory for valid values.
+   -o, --output=...     Set destination .osm file name and location.
 	
  (-e and -p are mutually exclusive. If both are specified, only the last one will be
  taken into account)
@@ -110,10 +111,11 @@ showProgress     = False
 debugTags        = False
 attributeStats   = False
 translationMethod = None
+output           = None
 
 # Fetch command line parameters: file and source projection
 try:
-	(opts, args) = getopt.getopt(sys.argv[1:], "e:p:hvdat:", ["epsg=","proj4=","help","verbose","debug-tags","attribute-stats","translation="])
+	(opts, args) = getopt.getopt(sys.argv[1:], "e:p:hvdat:o:", ["epsg=","proj4=","help","verbose","debug-tags","attribute-stats","translation=","output="])
 except getopt.GetoptError:
 	print __doc__
 	sys.exit(2)
@@ -144,6 +146,8 @@ for opt, arg in opts:
 		attributeStatsTable = {}
 	elif opt in ("-t", "--translation"):
 		translationMethod = arg
+	elif opt in ("-o", "--output"):
+		output = arg
 	else:
 		print "Unknown option " + opt
 
@@ -174,18 +178,20 @@ elif fileExtension == 'kml':
 else:
 	print "Error: extension " + fileExtension + " is invalid or not implemented yet."
 
-
-# Strip directories from output file name
-slashPosition = file.rfind('/')
-if slashPosition != -1:
-	#print slashPosition
-	outputFile = file[slashPosition+1:]
-	#print outputFile
-	#print len(fileExtension)
-else:
-	outputFile = file
+if output is None:
+	# Strip directories from output file name
+	slashPosition = file.rfind('/')
+	if slashPosition != -1:
+		#print slashPosition
+		outputFile = file[slashPosition+1:]
+		#print outputFile
+		#print len(fileExtension)
+	else:
+		outputFile = file
 	
-outputFile = outputFile[: -len(fileExtension) ] + 'osm'
+	outputFile = outputFile[: -len(fileExtension) ] + 'osm'
+else:
+	outputFile = output
 
 
 # 0 means read-only
