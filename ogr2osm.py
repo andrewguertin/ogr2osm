@@ -34,13 +34,13 @@
 	
  Options:	
    -e, --epsg=...       EPSG code, forcing the source data projection
-	-p, --proj4=...      PROJ4 string, forcing the source data projection
+   -p, --proj4=...      PROJ4 string, forcing the source data projection
    -v, --verbose        Shows some seemingly random characters dancing in the screen 
 	                    for every feature that's being worked on.
    -h, --help           Show this message
    -d, --debug-tags     Outputs the tags for every feature parsed
    -a, --attribute-stats Outputs a summary of the different tags / attributes encountered
-   -t, --translation    Select the attribute-tags translation method. 
+   -t, --translation=... Select the attribute-tags translation method. 
 	                    See the translations/ diredtory for valid values.
 	
  (-e and -p are mutually exclusive. If both are specified, only the last one will be
@@ -113,7 +113,7 @@ translationMethod = None
 
 # Fetch command line parameters: file and source projection
 try:
-	(opts, args) = getopt.getopt(sys.argv[1:], "e:p:hvdt:a", ["epsg","proj4","help","verbose","debug-tags","attribute-stats","translation"])
+	(opts, args) = getopt.getopt(sys.argv[1:], "e:p:hvdat:", ["epsg=","proj4=","help","verbose","debug-tags","attribute-stats","translation="])
 except getopt.GetoptError:
 	print __doc__
 	sys.exit(2)
@@ -149,12 +149,14 @@ for opt, arg in opts:
 
 print (opts,args)
 file = args[0]
-fileExtension = file.split('.')[-1]
+fileExtension = file.split('.')[-1].lower()
 
 
 # FIXME: really complete this table
 if fileExtension == 'shp':
 	driver = ogr.GetDriverByName('ESRI Shapefile');
+elif fileExtension == 'tab' or fileExtension == 'mid' or fileExtension == 'mif':
+	driver = ogr.GetDriverByName('MapInfo File');
 elif fileExtension == 'gpx':
 	driver = ogr.GetDriverByName('GPX');
 elif fileExtension == 'dgn':
@@ -411,6 +413,9 @@ for i in range(dataSource.GetLayerCount()):
 	for j in range(layer.GetFeatureCount()):
 		feature = layer.GetNextFeature()
 		geometry = feature.GetGeometryRef()
+		
+		if geometry == None:
+			continue
 		
 		fields = {}
 		
