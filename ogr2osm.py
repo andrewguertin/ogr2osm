@@ -31,21 +31,6 @@
  source data. If there is no projection information in the source data, this
  will assume EPSG:4326 (WGS84 latitude-longitude).
 
- python ogr2osm.py [options] [filename]
-
- Options:
-   -e, --epsg=...        EPSG code, forcing the source data projection
-   -p, --proj4=...       PROJ4 string, forcing the source data projection
-   -v, --verbose         Shows some seemingly random characters dancing in the
-                             screen for every feature that's being worked on.
-   -h, --help            Show this message
-   -d, --debug-tags      Outputs the tags for every feature parsed
-   -a, --attribute-stats Outputs a summary of the different tags / attributes
-                             encountered
-   -t, --translation=... Select the attribute-tags translation method.
-                             See the translations/ diredtory for valid values.
-   -o, --output=...      Set destination .osm file name and location.
-
  (-e and -p are mutually exclusive. If both are specified, only the last one
   will be taken into account)
 
@@ -68,8 +53,8 @@
 
 import sys
 import os
-import getopt
-from SimpleXMLWriter import XMLWriter
+from optparse import OptionParser
+
 
 try:
     from osgeo import ogr
@@ -101,133 +86,92 @@ from ogr import wkbMultiLineString25D
 from ogr import wkbMultiPolygon25D
 from ogr import wkbGeometryCollection25D
 
+from SimpleXMLWriter import XMLWriter
 
-# Default options
-sourceEPSG = 4326
-sourceProj4 = None
-detectProjection = True
-useEPSG = False
-useProj4 = False
-showProgress = False
-debugTags = False
-attributeStats = False
-translationMethod = None
-output = None
+# Setup program usage
+usage = "usage: %prog SRCFILE"
+parser = OptionParser(usage=usage)
+parser.add_option("-t", "--translation", dest="translationMethod",
+                  metavar="TRANSLATION",
+                  help="Select the attribute-tags translation method. See " +
+                  "the translations/ directory for valid values.")
+parser.add_option("-o", "--output", dest="outputFile", metavar="OUTPUT",
+                  help="Set destination .osm file name and location.")
+parser.add_option("-e", "--epsg", dest="sourceEPSG", metavar="EPSG_CODE",
+                  help="EPSG code of source file. Do not include the " +
+                       "'EPSG:' prefix. If specified, overrides projection " +
+                       "from source metadata if it exists.")
+parser.add_option("-p", "--proj4", dest="sourcePROJ4", metavar="PROJ4_STRING",
+                  help="PROJ.4 string. If specified, overrides projection " +
+                       "from source metadata if it exists.")
+parser.add_option("-v", "--verbose", dest="verbose", action="store_true")
+parser.add_option("-d", "--debug-tags", dest="debugTags", action="store_true",
+                  help="Output the tags for every feature parsed.")
+parser.add_option("-a", "--atribute-stats", dest="attributeStats",
+                  action="store_true", help="Outputs a summary of the " +
+                  "different tags / attributes encountered.")
+parser.add_option("-f", "--force", dest="forceOverwrite", action="store_true",
+                  help="Force overwrite of output file.")
 
-# Fetch command line parameters: file and source projection
+parser.set_defaults(sourceEPSG=None, sourcePROJ4=None, verbose=False,
+                    debugTags=False, attributeStats=False,
+                    translationMethod=None, outputFile=None,
+                    forceOverwrite=False)
+
+# Parse and process arguments
+(options, args) = parser.parse_args()
+
 try:
-    (opts, args) = getopt.getopt(
-                       sys.argv[1:],
-                       "e:p:hvdat:o:",
-                       ["epsg=", "proj4=", "help", "verbose", "debug-tags",
-                        "attribute-stats", "translation=", "output="])
+    if options.sourceEPSG:
+        options.sourceEPSG = int(options.sourceEPSG)
+except:
+    parser.error("EPSG code must be numeric (e.g. '4326', not 'epsg:4326')")
 
-except getopt.GetoptError:
-    print __doc__
-    sys.exit(2)
-for opt, arg in opts:
-    if opt in ("-h", "--help"):
-        print __doc__
-        sys.exit()
-    elif opt in ("-p", "--proj4"):
-        sourceProj4 = arg
-        useProj4 = True
-        useEPSG = False
-        detectProjection = False
-    elif opt in ("-e", "--epsg"):
-        try:
-            sourceEPSG = int(arg)
-        except:
-            print "Error: EPSG code must be numeric (e.g. '4326' instead of " \
-                      "epsg:4326')"
-            sys.exit(1)
-        detectProjection = False
-        useEPSG = True
-        useProj4 = False
-    elif opt in ("-v", "--verbose"):
-        showProgress = True
-    elif opt in ("-d", "--debug-tags"):
-        debugTags = True
-    elif opt in ("-a", "--attribute-stats"):
-        attributeStats = True
-        attributeStatsTable = {}
-    elif opt in ("-t", "--translation"):
-        translationMethod = arg
-    elif opt in ("-o", "--output"):
-        output = arg
-    else:
-        print "Unknown option " + opt
-
-print (opts, args)
-file = args[0]
-fileExtension = file.split('.')[-1].lower()
+if len(args) < 1:
+    parser.print_help()
+    print "error: you must specify a source filename"
+    sys.exit(1)
+elif len(args) > 1:
+    parser.error("you have specified too many arguments, " +
+                 "only supply the source filename")
 
 
-# FIXME: really complete this table
-if fileExtension == 'shp':
-    driver = ogr.GetDriverByName('ESRI Shapefile')
-elif (fileExtension == 'tab' or
-      fileExtension == 'mid' or
-      fileExtension == 'mif'):
-    driver = ogr.GetDriverByName('MapInfo File')
-elif fileExtension == 'gpx':
-    driver = ogr.GetDriverByName('GPX')
-elif fileExtension == 'dgn':
-    driver = ogr.GetDriverByName('DGN')
-elif fileExtension == 'gml':
-    driver = ogr.GetDriverByName('GML')
-elif fileExtension == 'csv':
-    driver = ogr.GetDriverByName('CSV')
-elif fileExtension == 'sqlite':
-    driver = ogr.GetDriverByName('SQLite')
-elif fileExtension == 'kml':
-    driver = ogr.GetDriverByName('KML')
-#elif fileExtension == 'kmz':
-    #driver = ogr.GetDriverByName('KML');
-else:
-    print ("Error: extension " + fileExtension +
-           " is invalid or not implemented yet.")
+sourceFile = os.path.realpath(args[0])
+if not os.path.isfile(sourceFile):
+    parser.error("the file '%s' does not exist" % (sourceFile))
 
-if output is None:
-    # Strip directories from output file name
-    slashPosition = file.rfind('/')
-    if slashPosition != -1:
-        #print slashPosition
-        outputFile = file[slashPosition + 1:]
-        #print outputFile
-        #print len(fileExtension)
-    else:
-        outputFile = file
+# if no output file given, use the basename of the source but with .osm
+if options.outputFile is None:
+    (base, ext) = os.path.splitext(os.path.basename(sourceFile))
+    options.outputFile = os.path.join(os.getcwd(), base + ".osm")
+options.outputFile = os.path.realpath(options.outputFile)
 
-    outputFile = outputFile[:-len(fileExtension)] + 'osm'
-else:
-    outputFile = output
+if not options.forceOverwrite and os.path.exists(options.outputFile):
+    parser.error("Error: output file '%s' already exists" % (options.outputFile))
 
-
-# 0 means read-only
-dataSource = driver.Open(file, 0)
-
+dataSource = ogr.Open(sourceFile, 0)  # 0 means read-only
 if dataSource is None:
-    print 'Could not open ' + file
+    print ('ogr2osm.py: error: OGR failed to open ' + sourceFile +
+           ', format may be unsuported')
     sys.exit(1)
 
 
 print
-print ("Preparing to convert file " + file +
-       " (extension is " + fileExtension + ") into " + outputFile)
+print ("Preparing to convert file " + sourceFile + " into " + options.outputFile)
 
-if detectProjection:
+if not options.sourcePROJ4 and not options.sourceEPSG:
     print ("Will try to detect projection from source metadata, " +
            "or fall back to EPSG:4326")
-elif useEPSG:
-    print "Will assume that source data is in EPSG:" + str(sourceEPSG)
-elif useProj4:
-    print "Will assume that source data has the Proj.4 string: " + sourceProj4
+elif options.sourcePROJ4:
+    print "Will use the PROJ.4 string: " + options.sourcePROJ4
+elif options.sourceEPSG:
+    print "Will use EPSG:" + str(options.sourceEPSG)
 
+showProgress = options.verbose
 if showProgress:
     print "Verbose mode is on. Get ready to see lots of dots."
 
-if debugTags:
+if options.debugTags:
     print "Tag debugging is on. Get ready to see lots of stuff."
 
 
@@ -266,17 +210,22 @@ lineTags = {}
 
 
 # Stuff needed for locating translation methods
-if translationMethod:
+if options.translationMethod:
+    # first check translations in the subdir translations of cwd
+    sys.path.append(os.path.join(os.getcwd(), "translations"))
+    # then check subdir of script dir
+    sys.path.append(os.path.join(os.path.abspath(__file__), "translations"))
+    # the cwd will also be checked
     try:
-        sys.path.append(os.getcwd() + "/translations")
-        module = __import__(translationMethod)
+        module = __import__(options.translationMethod)
         translateAttributes = module.translateAttributes
         translateAttributes([])
     except:
-        print ("Could not load translation method " + translationMethod +
+        print ("Could not load translation method '" + options.translationMethod +
                ". Check the translations/ directory for valid values.")
         sys.exit(-1)
-    print "Successfully loaded " + translationMethod + " translation method."
+    print ("Successfully loaded " + options.translationMethod +
+           " translation method.")
 else:
     # If no function has been defined, perform no translation:
     #   just copy everything.
@@ -396,24 +345,25 @@ def lineStringToSegments(geometry, references):
 
 # Let's dive into the OGR data source and fetch the features
 
+attributeStatsTable = {}
 for i in range(dataSource.GetLayerCount()):
     layer = dataSource.GetLayer(i)
     layer.ResetReading()
 
     spatialRef = None
-    if detectProjection:
+    if options.sourcePROJ4:
+        spatialRef = osr.SpatialReference()
+        spatialRef.ImportFromProj4(options.sourcePROJ4)
+    elif options.sourceEPSG:
+        spatialRef = osr.SpatialReference()
+        spatialRef.ImportFromEPSG(options.sourceEPSG)
+    else:
         spatialRef = layer.GetSpatialRef()
         if spatialRef != None:
             print "Detected projection metadata:"
             print spatialRef
         else:
             print "No projection metadata, falling back to EPSG:4326"
-    elif useEPSG:
-        spatialRef = osr.SpatialReference()
-        spatialRef.ImportFromEPSG(sourceEPSG)
-    elif useProj4:
-        spatialRef = osr.SpatialReference()
-        spatialRef.ImportFromProj4(sourceProj4)
 
     if spatialRef == None:
         # No source proj specified yet? Then default to do no reprojection.
@@ -436,7 +386,7 @@ for i in range(dataSource.GetLayerCount()):
     for j in range(fieldCount):
         #print featureDefinition.GetFieldDefn(j).GetNameRef()
         fieldNames.append(featureDefinition.GetFieldDefn(j).GetNameRef())
-        if attributeStats:
+        if options.attributeStats:
             attributeStatsTable.update({
                 featureDefinition.GetFieldDefn(j).GetNameRef(): {}})
 
@@ -458,7 +408,7 @@ for i in range(dataSource.GetLayerCount()):
         for k in range(fieldCount - 1):
             #fields[ fieldNames[k] ] = feature.GetRawFieldRef(k)
             fields[fieldNames[k]] = feature.GetFieldAsString(k)
-            if attributeStats:
+            if options.attributeStats:
                 try:
                     attributeStatsTable[fieldNames[k]][feature.GetFieldAsString(k)] = \
                         attributeStatsTable[fieldNaddmes[k]][feature.GetFieldAsString(k)] + 1
@@ -470,7 +420,7 @@ for i in range(dataSource.GetLayerCount()):
         # translation method
         tags = translateAttributes(fields)
 
-        if debugTags:
+        if options.debugTags:
             print
             print tags
 
@@ -724,7 +674,7 @@ print "Generating OSM XML..."
 print "Generating nodes."
 
 #w = XMLWriter(sys.stdout)
-w = XMLWriter(open(outputFile, 'w'))
+w = XMLWriter(open(options.outputFile, 'w'))
 
 w.start("osm", version='0.6', generator='ogr2osm')
 
@@ -849,7 +799,7 @@ for (areaID, areaRing) in areaRings.items():
         if showProgress:
             sys.stdout.write(str(segmentsUsed) + " ")
 
-if attributeStats:
+if options.attributeStats:
     print
     for (attribute, stats) in attributeStatsTable.items():
         print "All values for attribute " + attribute + ":"
