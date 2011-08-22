@@ -147,7 +147,7 @@ if options.outputFile is None:
 options.outputFile = os.path.realpath(options.outputFile)
 
 if not options.forceOverwrite and os.path.exists(options.outputFile):
-    parser.error("Error: output file '%s' already exists" % (options.outputFile))
+    parser.error("ERROR: output file '%s' exists" % (options.outputFile))
 
 dataSource = ogr.Open(sourceFile, 0)  # 0 means read-only
 if dataSource is None:
@@ -157,7 +157,8 @@ if dataSource is None:
 
 
 print
-print ("Preparing to convert file " + sourceFile + " into " + options.outputFile)
+print ("Preparing to convert file '%s' to '%s'."
+       % (sourceFile, options.outputFile))
 
 if not options.sourcePROJ4 and not options.sourceEPSG:
     print ("Will try to detect projection from source metadata, " +
@@ -211,26 +212,39 @@ lineTags = {}
 
 # Stuff needed for locating translation methods
 if options.translationMethod:
-    # first check translations in the subdir translations of cwd
-    sys.path.append(os.path.join(os.getcwd(), "translations"))
-    # then check subdir of script dir
-    sys.path.append(os.path.join(os.path.abspath(__file__), "translations"))
-    # the cwd will also be checked
+    # add dirs to path if necessary
+    (root, ext) = os.path.splitext(options.translationMethod)
+    if os.path.exists(options.translationMethod) and ext == '.py':
+        # user supplied translation file directly
+        sys.path.insert(0, os.path.dirname(root))
+    else:
+        # first check translations in the subdir translations of cwd
+        sys.path.insert(0, os.path.join(os.getcwd(), "translations"))
+        # then check subdir of script dir
+        sys.path.insert(1, os.path.join(os.path.abspath(__file__),
+                                        "translations"))
+        # (the cwd will also be checked implicityly)
+
+    # strip .py if present, as import wants just the module name
+    if ext == '.py':
+        options.translationMethod = os.path.basename(root)
+
     try:
         module = __import__(options.translationMethod)
         translateAttributes = module.translateAttributes
         translateAttributes([])
     except:
-        print ("Could not load translation method '" + options.translationMethod +
-               ". Check the translations/ directory for valid values.")
+        print ("ERROR: Could not load translation method '%s'. Translation "
+               "script must be in your current directory, or in the "
+               "translations/ subdirectory of your current or ogr2osm.py "
+               "directory.") % (options.translationMethod)
         sys.exit(-1)
-    print ("Successfully loaded " + options.translationMethod +
-           " translation method.")
+    print ("Successfully loaded '%s' translation method ('%s')."
+           % (options.translationMethod, os.path.realpath(module.__file__)))
 else:
     # If no function has been defined, perform no translation:
     #   just copy everything.
     translateAttributes = lambda(attrs): attrs
-
 
 elementIdCounter = -1
 nodeCount = 0
@@ -405,7 +419,7 @@ for i in range(dataSource.GetLayerCount()):
 
         fields = {}
 
-        for k in range(fieldCount - 1):
+        for k in range(fieldCount):
             #fields[ fieldNames[k] ] = feature.GetRawFieldRef(k)
             fields[fieldNames[k]] = feature.GetFieldAsString(k)
             if options.attributeStats:
@@ -418,7 +432,13 @@ for i in range(dataSource.GetLayerCount()):
 
         # Translate attributes into tags, as defined per the selected
         # translation method
-        tags = translateAttributes(fields)
+        try:
+            tags = translateAttributes(fields)
+        except KeyError, err:
+            print ("ERROR: Trying to access non-existent attribute key %s "
+                   "in translation method."
+                  % (err))
+            sys.exit(-1)
 
         if options.debugTags:
             print
