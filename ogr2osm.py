@@ -344,204 +344,207 @@ def lineStringToSegments(geometry, references):
 
 
 # Let's dive into the OGR data source and fetch the features
+def fetchFeatures():
+    global areaCount
+    attributeStatsTable = {}
+    for i in range(dataSource.GetLayerCount()):
+        layer = dataSource.GetLayer(i)
+        layer.ResetReading()
 
-attributeStatsTable = {}
-for i in range(dataSource.GetLayerCount()):
-    layer = dataSource.GetLayer(i)
-    layer.ResetReading()
-
-    spatialRef = None
-    if options.sourcePROJ4:
-        spatialRef = osr.SpatialReference()
-        spatialRef.ImportFromProj4(options.sourcePROJ4)
-    elif options.sourceEPSG:
-        spatialRef = osr.SpatialReference()
-        spatialRef.ImportFromEPSG(options.sourceEPSG)
-    else:
-        spatialRef = layer.GetSpatialRef()
-        if spatialRef != None:
-            print "Detected projection metadata:"
-            print spatialRef
+        spatialRef = None
+        if options.sourcePROJ4:
+            spatialRef = osr.SpatialReference()
+            spatialRef.ImportFromProj4(options.sourcePROJ4)
+        elif options.sourceEPSG:
+            spatialRef = osr.SpatialReference()
+            spatialRef.ImportFromEPSG(options.sourceEPSG)
         else:
-            print "No projection metadata, falling back to EPSG:4326"
+            spatialRef = layer.GetSpatialRef()
+            if spatialRef != None:
+                print "Detected projection metadata:"
+                print spatialRef
+            else:
+                print "No projection metadata, falling back to EPSG:4326"
 
-    if spatialRef == None:
-        # No source proj specified yet? Then default to do no reprojection.
-        # Some python magic: skip reprojection altogether by using a dummy
-        # lamdba funcion. Otherwise, the lambda will be a call to the OGR
-        # reprojection stuff.
-        reproject = lambda(geometry): None
-    else:
-        destSpatialRef = osr.SpatialReference()
-        # Destionation projection will *always* be EPSG:4326, WGS84 lat-lon
-        destSpatialRef.ImportFromEPSG(4326)
-        coordTrans = osr.CoordinateTransformation(spatialRef, destSpatialRef)
-        reproject = lambda(geometry): geometry.Transform(coordTrans)
+        if spatialRef == None:
+            # No source proj specified yet? Then default to do no reprojection.
+            # Some python magic: skip reprojection altogether by using a dummy
+            # lamdba funcion. Otherwise, the lambda will be a call to the OGR
+            # reprojection stuff.
+            reproject = lambda(geometry): None
+        else:
+            destSpatialRef = osr.SpatialReference()
+            # Destionation projection will *always* be EPSG:4326, WGS84 lat-lon
+            destSpatialRef.ImportFromEPSG(4326)
+            coordTrans = osr.CoordinateTransformation(spatialRef, destSpatialRef)
+            reproject = lambda(geometry): geometry.Transform(coordTrans)
 
-    featureDefinition = layer.GetLayerDefn()
+        featureDefinition = layer.GetLayerDefn()
 
-    fieldNames = []
-    fieldCount = featureDefinition.GetFieldCount()
+        fieldNames = []
+        fieldCount = featureDefinition.GetFieldCount()
 
-    for j in range(fieldCount):
-        #print featureDefinition.GetFieldDefn(j).GetNameRef()
-        fieldNames.append(featureDefinition.GetFieldDefn(j).GetNameRef())
-        if options.attributeStats:
-            attributeStatsTable.update({
-                featureDefinition.GetFieldDefn(j).GetNameRef(): {}})
-
-    print
-    print fieldNames
-    print "Got layer field definitions"
-
-    #print "Feature definition: " + str(featureDefinition);
-
-    for j in range(layer.GetFeatureCount()):
-        feature = layer.GetNextFeature()
-        geometry = feature.GetGeometryRef()
-
-        if geometry == None:
-            continue
-
-        fields = {}
-
-        for k in range(fieldCount):
-            #fields[ fieldNames[k] ] = feature.GetRawFieldRef(k)
-            fields[fieldNames[k]] = feature.GetFieldAsString(k)
+        for j in range(fieldCount):
+            #print featureDefinition.GetFieldDefn(j).GetNameRef()
+            fieldNames.append(featureDefinition.GetFieldDefn(j).GetNameRef())
             if options.attributeStats:
-                try:
-                    attributeStatsTable[fieldNames[k]][feature.GetFieldAsString(k)] = \
-                        attributeStatsTable[fieldNaddmes[k]][feature.GetFieldAsString(k)] + 1
-                except:
-                    attributeStatsTable[fieldNames[k]].update(
-                        {feature.GetFieldAsString(k): 1})
-	
-	#print fields["Layer"]
-	if 'BLDG' not in fields["Layer"]:
-		continue
-	if 'PEAK' in fields["Layer"]:
-		continue
-	if 'DETL' in fields["Layer"]:
-		continue
-	if 'VA-BLDG-MAJR' not in fields["Layer"]:
-		continue
+                attributeStatsTable.update({
+                    featureDefinition.GetFieldDefn(j).GetNameRef(): {}})
 
-        # Translate attributes into tags, as defined per the selected
-        # translation method
-        try:
-            tags = translateAttributes(fields)
-        except KeyError, err:
-            print ("ERROR: Trying to access non-existent attribute key %s "
-                   "in translation method."
-                  % (err))
-            sys.exit(-1)
+        print
+        print fieldNames
+        print "Got layer field definitions"
 
-        if options.debugTags:
-            print
-            print tags
+        #print "Feature definition: " + str(featureDefinition);
 
-        # Do the reprojection (or pass if no reprojection is neccesary,
-        # see the lambda function definition)
-        reproject(geometry)
+        for j in range(layer.GetFeatureCount()):
+            feature = layer.GetNextFeature()
+            geometry = feature.GetGeometryRef()
 
-        # Now we got the fields for this feature.
-        # Now, let's convert the geometry.
-        # Points will get converted into nodes.
-        # LineStrings will get converted into a set of ways, each having
-        #   only two nodes.
-        # Polygons will be converted into relations.
+            if geometry == None:
+                continue
 
-        # Later, we'll fix the topology and simplify the ways. If a
-        # relation can be simplified into a way (i.e. only has one member),
-        # it will be. Adjacent segments will be merged if they share tags
-        # and direction.
+            fields = {}
 
-        # We'll split a geometry into subGeometries or "elementary"
-        # geometries: points, linestrings, and polygons. This will take
-        # care of OGRMultiLineStrings, OGRGeometryCollections and the like.
+            for k in range(fieldCount):
+                #fields[ fieldNames[k] ] = feature.GetRawFieldRef(k)
+                fields[fieldNames[k]] = feature.GetFieldAsString(k)
+                if options.attributeStats:
+                    try:
+                        attributeStatsTable[fieldNames[k]][feature.GetFieldAsString(k)] = \
+                            attributeStatsTable[fieldNaddmes[k]][feature.GetFieldAsString(k)] + 1
+                    except:
+                        attributeStatsTable[fieldNames[k]].update(
+                            {feature.GetFieldAsString(k): 1})
+            
+            #print fields["Layer"]
+            if 'BLDG' not in fields["Layer"]:
+                    continue
+            if 'PEAK' in fields["Layer"]:
+                    continue
+            if 'DETL' in fields["Layer"]:
+                    continue
+            if 'VA-BLDG-MAJR' not in fields["Layer"]:
+                    continue
 
-        geometryType = geometry.GetGeometryType()
+            # Translate attributes into tags, as defined per the selected
+            # translation method
+            try:
+                tags = translateAttributes(fields)
+            except KeyError, err:
+                print ("ERROR: Trying to access non-existent attribute key %s "
+                       "in translation method."
+                      % (err))
+                sys.exit(-1)
 
-        subGeometries = []
+            if options.debugTags:
+                print
+                print tags
 
-        if (geometryType == wkbPoint or
-            geometryType == wkbLineString or
-            geometryType == wkbPolygon):
-            subGeometries = [geometry]
-        elif (geometryType == wkbMultiPoint or
-             geometryType == wkbMultiLineString or
-             geometryType == wkbMultiPolygon or
-             geometryType == wkbGeometryCollection):
-            if showProgress:
-                sys.stdout.write('M')
-            for k in range(geometry.GetGeometryCount()):
-                subGeometries.append(geometry.GetGeometryRef(k))
+            # Do the reprojection (or pass if no reprojection is neccesary,
+            # see the lambda function definition)
+            reproject(geometry)
 
-        elif (geometryType == wkbPoint25D or
-              geometryType == wkbLineString25D or
-              geometryType == wkbPolygon25D):
-            if showProgress:
-                sys.stdout.write('z')
-            subGeometries = [geometry]
-        elif (geometryType == wkbMultiPoint25D or
-              geometryType == wkbMultiLineString25D or
-              geometryType == wkbMultiPolygon25D or
-              geometryType == wkbGeometryCollection25D):
-            if showProgress:
-                sys.stdout.write('Mz')
-            for k in range(geometry.GetGeometryCount()):
-                subGeometries.append(geometry.GetGeometryRef(k))
+            # Now we got the fields for this feature.
+            # Now, let's convert the geometry.
+            # Points will get converted into nodes.
+            # LineStrings will get converted into a set of ways, each having
+            #   only two nodes.
+            # Polygons will be converted into relations.
 
-        elif geometryType == wkbUnknown:
-            print "Geometry type is wkbUnknown, feature will be ignored\n"
-        elif geometryType == wkbNone:
-            print "Geometry type is wkbNone, feature will be ignored\n"
-        else:
-            print ("Unknown or unimplemented geometry type :" +
-                   str(geometryType) + ", feature will be ignored\n")
+            # Later, we'll fix the topology and simplify the ways. If a
+            # relation can be simplified into a way (i.e. only has one member),
+            # it will be. Adjacent segments will be merged if they share tags
+            # and direction.
 
-        for geometry in subGeometries:
-            if geometry.GetDimension() == 0:
-                # 0-D = point
+            # We'll split a geometry into subGeometries or "elementary"
+            # geometries: points, linestrings, and polygons. This will take
+            # care of OGRMultiLineStrings, OGRGeometryCollections and the like.
+
+            geometryType = geometry.GetGeometryType()
+
+            subGeometries = []
+
+            if (geometryType == wkbPoint or
+                geometryType == wkbLineString or
+                geometryType == wkbPolygon):
+                subGeometries = [geometry]
+            elif (geometryType == wkbMultiPoint or
+                 geometryType == wkbMultiLineString or
+                 geometryType == wkbMultiPolygon or
+                 geometryType == wkbGeometryCollection):
                 if showProgress:
-                    sys.stdout.write(',')
-                x = geometry.GetX()
-                y = geometry.GetY()
+                    sys.stdout.write('M')
+                for k in range(geometry.GetGeometryCount()):
+                    subGeometries.append(geometry.GetGeometryRef(k))
 
-                nodeID = addNode(x, y, tags)
-                # TODO: tags
-
-            elif geometry.GetDimension() == 1:
-                # 1-D = linestring
+            elif (geometryType == wkbPoint25D or
+                  geometryType == wkbLineString25D or
+                  geometryType == wkbPolygon25D):
                 if showProgress:
-                    sys.stdout.write('|')
-
-                lineID = getNewID()
-                lineSegments[lineID] = lineStringToSegments(geometry, lineID)
-                lineTags[lineID] = tags
-                lineCount = lineCount + 1
-
-            elif geometry.GetDimension() == 2:
-                # FIXME
-                # 2-D = area
-
+                    sys.stdout.write('z')
+                subGeometries = [geometry]
+            elif (geometryType == wkbMultiPoint25D or
+                  geometryType == wkbMultiLineString25D or
+                  geometryType == wkbMultiPolygon25D or
+                  geometryType == wkbGeometryCollection25D):
                 if showProgress:
-                    sys.stdout.write('O')
-                areaID = getNewID()
-                rings = []
+                    sys.stdout.write('Mz')
+                for k in range(geometry.GetGeometryCount()):
+                    subGeometries.append(geometry.GetGeometryRef(k))
 
-                for k in range(0, geometry.GetGeometryCount()):
+            elif geometryType == wkbUnknown:
+                print "Geometry type is wkbUnknown, feature will be ignored\n"
+            elif geometryType == wkbNone:
+                print "Geometry type is wkbNone, feature will be ignored\n"
+            else:
+                print ("Unknown or unimplemented geometry type :" +
+                       str(geometryType) + ", feature will be ignored\n")
+
+            for geometry in subGeometries:
+                if geometry.GetDimension() == 0:
+                    # 0-D = point
                     if showProgress:
-                        sys.stdout.write('r')
-                    rings.append(lineStringToSegments(
-                      geometry.GetGeometryRef(k), areaID))
+                        sys.stdout.write(',')
+                    x = geometry.GetX()
+                    y = geometry.GetY()
 
-                areaRings[areaID] = rings
-                areaTags[areaID] = tags
-                areaCount = areaCount + 1
-                # TODO: tags
-                # The ring 0 will be the outer hull, any other rings will be
-                # inner hulls.
+                    nodeID = addNode(x, y, tags)
+                    # TODO: tags
+
+                elif geometry.GetDimension() == 1:
+                    # 1-D = linestring
+                    if showProgress:
+                        sys.stdout.write('|')
+
+                    lineID = getNewID()
+                    lineSegments[lineID] = lineStringToSegments(geometry, lineID)
+                    lineTags[lineID] = tags
+                    lineCount = lineCount + 1
+
+                elif geometry.GetDimension() == 2:
+                    # FIXME
+                    # 2-D = area
+
+                    if showProgress:
+                        sys.stdout.write('O')
+                    areaID = getNewID()
+                    rings = []
+
+                    for k in range(0, geometry.GetGeometryCount()):
+                        if showProgress:
+                            sys.stdout.write('r')
+                        rings.append(lineStringToSegments(
+                          geometry.GetGeometryRef(k), areaID))
+
+                    areaRings[areaID] = rings
+                    areaTags[areaID] = tags
+                    areaCount = areaCount + 1
+                    # TODO: tags
+                    # The ring 0 will be the outer hull, any other rings will be
+                    # inner hulls.
+
+fetchFeatures()
 
 print
 print "Nodes: " + str(nodeCount)
