@@ -429,6 +429,16 @@ for i in range(dataSource.GetLayerCount()):
                 except:
                     attributeStatsTable[fieldNames[k]].update(
                         {feature.GetFieldAsString(k): 1})
+	
+	#print fields["Layer"]
+	if 'BLDG' not in fields["Layer"]:
+		continue
+	if 'PEAK' in fields["Layer"]:
+		continue
+	if 'DETL' in fields["Layer"]:
+		continue
+	if 'VA-BLDG-MAJR' not in fields["Layer"]:
+		continue
 
         # Translate attributes into tags, as defined per the selected
         # translation method
@@ -612,6 +622,8 @@ def simplifyNode(nodeID):
                             del nodeRefs[nodeShifted][segmentID2]
                             nodeRefs[nodeShifted].update({segmentID1: True})
 
+                        del nodeRefs[segmentNodes[segmentID2[0]]][segmentID2]
+
                         # TODO: Check for potential clashes between the
                         # references? As in "way X has these segments in the
                         # wrong direction". The trivial case for this looks
@@ -647,33 +659,33 @@ def simplifyNode(nodeID):
     if showProgress:
         sys.stdout.write(str(segmentsJoined))
 
-print
-print "Simplifying line segments"
-for line in lineSegments.values():
+#print
+#print "Simplifying line segments"
+#for line in lineSegments.values():
     #print line
     # No need to check the last segment, it could not be simplyfied
-    for segmentID in line:
+#    for segmentID in line:
         #print segmentID
         #print segmentNodes[segmentID]
-        for nodeID in segmentNodes[segmentID]:
-            simplifyNode(nodeID)
+#        for nodeID in segmentNodes[segmentID]:
+#            simplifyNode(nodeID)
             #simplifyNode(segmentNodes[segmentID][0])   # last node in segment
 
-print
-print "Simplifying area segments"
-for area in areaRings.values():
-    for ring in area:
-        for segmentID in ring:
-            for nodeID in segmentNodes[segmentID]:
-                simplifyNode(nodeID)  # last node in segment
+#print
+#print "Simplifying area segments"
+#for area in areaRings.values():
+#    for ring in area:
+#        for segmentID in ring:
+#            for nodeID in segmentNodes[segmentID]:
+#                simplifyNode(nodeID)  # last node in segment
 
 
 # That *should* do it... but a second pass through all the nodes will really
 # fix things up. I wonder why some nodes are left out of the previous pass
 print
 print "Simplifying remaining nodes"
-for node in nodeRefs.keys():
-    simplifyNode(node)
+#for node in nodeRefs.keys():
+#    simplifyNode(node)
 
 
 print
