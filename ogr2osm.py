@@ -242,13 +242,17 @@ else:
     #   just copy everything.
     translateAttributes = lambda(attrs): attrs
 
-elementIdCounter = -1
 nodeCount = 0
 segmentCount = 0
 lineCount = 0
 areaCount = 0
 segmentJoinCount = 0
 
+elementIdCounter = 0
+def getNewID():
+    global elementIdCounter
+    elementIdCounter -= 1
+    return elementIdCounter
 
 print
 print "Parsing features"
@@ -261,12 +265,11 @@ def addNode(x, y, tags={}):
     Given x,y, returns the ID of an existing node there, or creates it
     and returns the new ID. Node will be updated with the optional tags.
     """
-    global elementIdCounter, nodeCount, nodeCoords
+    global nodeCount, nodeCoords
     global nodeTags, nodeCoords
 
     # Allocate a new node
-    nodeID = elementIdCounter
-    elementIdCounter = elementIdCounter - 1
+    nodeID = getNewID()
 
     nodeTags[nodeID] = tags
     nodeCoords[nodeID] = (x, y)
@@ -281,7 +284,7 @@ def lineStringToSegments(geometry, references):
     segments. Needs a line or area ID for updating the segment
     references. Returns a list of segment IDs.
     """
-    global elementIdCounter, segmentCount, segmentNodes, segmentTags
+    global segmentCount, segmentNodes, segmentTags
     global showProgress, nodeRefs, segmentRefs, segmentIDByNodes
 
     result = []
@@ -310,9 +313,8 @@ def lineStringToSegments(geometry, references):
         else:
             if showProgress:
                 sys.stdout.write('.')
-            segmentID = elementIdCounter
+            segmentID = getNewID()
 
-            elementIdCounter = elementIdCounter - 1
             segmentCount = segmentCount + 1
             segmentNodes[segmentID] = [lastNodeID, newNodeID]
             segmentIDByNodes[(lastNodeID, newNodeID)] = segmentID
@@ -514,8 +516,7 @@ for i in range(dataSource.GetLayerCount()):
                 if showProgress:
                     sys.stdout.write('|')
 
-                lineID = elementIdCounter
-                elementIdCounter = elementIdCounter - 1
+                lineID = getNewID()
                 lineSegments[lineID] = lineStringToSegments(geometry, lineID)
                 lineTags[lineID] = tags
                 lineCount = lineCount + 1
@@ -526,8 +527,7 @@ for i in range(dataSource.GetLayerCount()):
 
                 if showProgress:
                     sys.stdout.write('O')
-                areaID = elementIdCounter
-                elementIdCounter = elementIdCounter - 1
+                areaID = getNewID()
                 rings = []
 
                 for k in range(0, geometry.GetGeometryCount()):
