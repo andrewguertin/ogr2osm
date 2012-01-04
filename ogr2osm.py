@@ -177,7 +177,6 @@ if options.debugTags:
 
 
 # Some variables to hold stuff...
-nodeIDsByXY = {}
 nodeTags = {}
 nodeCoords = {}
 nodeRefs = {}
@@ -189,11 +188,8 @@ areaTags = {}
 lineSegments = {}
 lineTags = {}
 
-# nodeIDsByXY holds a node ID, given a set of coordinates (useful for
-#   looking for duplicated nodes)
 # nodeTags holds the tag pairs given a node ID
-# nodeCoords holds the coordinates of a given node ID (redundant if
-#   nodeIDsByXY is properly iterated through)
+# nodeCoords holds the coordinates of a given node ID
 # nodeRefs holds up the IDs of any segment referencing (containing) a
 #   given node ID, as a dictionary
 # segmentNodes holds up the node IDs for a given segment ID
@@ -266,28 +262,16 @@ def addNode(x, y, tags={}):
     and returns the new ID. Node will be updated with the optional tags.
     """
     global elementIdCounter, nodeCount, nodeCoords
-    global nodeIDsByXY, nodeTags, nodeCoords
+    global nodeTags, nodeCoords
 
-    if (x, y) in nodeIDsByXY:
-        # Node already exists, merge tags
-        #print
-        #print "Warning, node already exists"
-        nodeID = nodeIDsByXY[(x, y)]
-        try:
-            nodeTags[nodeID].update(tags)
-        except:
-            nodeTags[nodeID] = tags
-        return nodeID
-    else:
-        # Allocate a new node
-        nodeID = elementIdCounter
-        elementIdCounter = elementIdCounter - 1
+    # Allocate a new node
+    nodeID = elementIdCounter
+    elementIdCounter = elementIdCounter - 1
 
-        nodeTags[nodeID] = tags
-        nodeIDsByXY[(x, y)] = nodeID
-        nodeCoords[nodeID] = (x, y)
-        nodeCount = nodeCount + 1
-        return nodeID
+    nodeTags[nodeID] = tags
+    nodeCoords[nodeID] = (x, y)
+    nodeCount = nodeCount + 1
+    return nodeID
 
 
 def lineStringToSegments(geometry, references):
