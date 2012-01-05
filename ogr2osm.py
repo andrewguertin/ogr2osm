@@ -214,8 +214,7 @@ if options.translationMethod:
         # first check translations in the subdir translations of cwd
         sys.path.insert(0, os.path.join(os.getcwd(), "translations"))
         # then check subdir of script dir
-        sys.path.insert(1, os.path.join(os.path.abspath(__file__),
-                                        "translations"))
+        sys.path.insert(1, os.path.join(os.path.abspath(__file__), "translations"))
         # (the cwd will also be checked implicityly)
 
     # strip .py if present, as import wants just the module name
@@ -347,6 +346,8 @@ def fetchFeatures():
         layer = dataSource.GetLayer(i)
         layer.ResetReading()
 
+        # Figure out coordinate stuff. The end result of this is the
+        # "reproject" variable.
         spatialRef = None
         if options.sourcePROJ4:
             spatialRef = osr.SpatialReference()
@@ -375,30 +376,29 @@ def fetchFeatures():
             coordTrans = osr.CoordinateTransformation(spatialRef, destSpatialRef)
             reproject = lambda(geometry): geometry.Transform(coordTrans)
 
-        featureDefinition = layer.GetLayerDefn()
 
+        # get fieldNames and fieldCount, which are per-layer
+        featureDefinition = layer.GetLayerDefn()
         fieldNames = []
         fieldCount = featureDefinition.GetFieldCount()
-
         for j in range(fieldCount):
-            #print featureDefinition.GetFieldDefn(j).GetNameRef()
             fieldNames.append(featureDefinition.GetFieldDefn(j).GetNameRef())
-
         print
         print fieldNames
         print "Got layer field definitions"
-
         #print "Feature definition: " + str(featureDefinition);
 
+        # Now the main part: loop through all the features, and add them to
+        # the global data structures
         for j in range(layer.GetFeatureCount()):
             feature = layer.GetNextFeature()
-            geometry = feature.GetGeometryRef()
 
+            geometry = feature.GetGeometryRef()
             if geometry == None:
                 continue
+            reproject(geometry)
 
             fields = {}
-
             for k in range(fieldCount):
                 #fields[ fieldNames[k] ] = feature.GetRawFieldRef(k)
                 fields[fieldNames[k]] = feature.GetFieldAsString(k)
@@ -426,10 +426,6 @@ def fetchFeatures():
             if options.debugTags:
                 print
                 print tags
-
-            # Do the reprojection (or pass if no reprojection is neccesary,
-            # see the lambda function definition)
-            reproject(geometry)
 
             # Now we got the fields for this feature.
             # Now, let's convert the geometry.
