@@ -107,14 +107,11 @@ parser.add_option("-p", "--proj4", dest="sourcePROJ4", metavar="PROJ4_STRING",
 parser.add_option("-v", "--verbose", dest="verbose", action="store_true")
 parser.add_option("-d", "--debug-tags", dest="debugTags", action="store_true",
                   help="Output the tags for every feature parsed.")
-parser.add_option("-a", "--atribute-stats", dest="attributeStats",
-                  action="store_true", help="Outputs a summary of the " +
-                  "different tags / attributes encountered.")
 parser.add_option("-f", "--force", dest="forceOverwrite", action="store_true",
                   help="Force overwrite of output file.")
 
 parser.set_defaults(sourceEPSG=None, sourcePROJ4=None, verbose=False,
-                    debugTags=False, attributeStats=False,
+                    debugTags=False,
                     translationMethod=None, outputFile=None,
                     forceOverwrite=False)
 
@@ -346,7 +343,6 @@ def lineStringToSegments(geometry, references):
 # Let's dive into the OGR data source and fetch the features
 def fetchFeatures():
     global areaCount
-    attributeStatsTable = {}
     for i in range(dataSource.GetLayerCount()):
         layer = dataSource.GetLayer(i)
         layer.ResetReading()
@@ -387,9 +383,6 @@ def fetchFeatures():
         for j in range(fieldCount):
             #print featureDefinition.GetFieldDefn(j).GetNameRef()
             fieldNames.append(featureDefinition.GetFieldDefn(j).GetNameRef())
-            if options.attributeStats:
-                attributeStatsTable.update({
-                    featureDefinition.GetFieldDefn(j).GetNameRef(): {}})
 
         print
         print fieldNames
@@ -409,13 +402,6 @@ def fetchFeatures():
             for k in range(fieldCount):
                 #fields[ fieldNames[k] ] = feature.GetRawFieldRef(k)
                 fields[fieldNames[k]] = feature.GetFieldAsString(k)
-                if options.attributeStats:
-                    try:
-                        attributeStatsTable[fieldNames[k]][feature.GetFieldAsString(k)] = \
-                            attributeStatsTable[fieldNaddmes[k]][feature.GetFieldAsString(k)] + 1
-                    except:
-                        attributeStatsTable[fieldNames[k]].update(
-                            {feature.GetFieldAsString(k): 1})
             
             #print fields["Layer"]
             if 'BLDG' not in fields["Layer"]:
@@ -817,12 +803,6 @@ for (areaID, areaRing) in areaRings.items():
         w.end('relation')
         if showProgress:
             sys.stdout.write(str(segmentsUsed) + " ")
-
-if options.attributeStats:
-    print
-    for (attribute, stats) in attributeStatsTable.items():
-        print "All values for attribute " + attribute + ":"
-        print stats
 
 print
 print "All done. Enjoy your data!"
