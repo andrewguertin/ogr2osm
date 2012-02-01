@@ -54,37 +54,10 @@
 import sys
 import os
 from optparse import OptionParser
+import logging as l
 
-
-try:
-    from osgeo import ogr
-except:
-    import ogr
-
-try:
-    from osgeo import osr
-except:
-    import osr
-
-# Some needed constants
-from ogr import wkbPoint
-from ogr import wkbLineString
-from ogr import wkbPolygon
-from ogr import wkbMultiPoint
-from ogr import wkbMultiLineString
-from ogr import wkbMultiPolygon
-from ogr import wkbGeometryCollection
-
-from ogr import wkbUnknown
-from ogr import wkbNone
-
-from ogr import wkbPoint25D
-from ogr import wkbLineString25D
-from ogr import wkbPolygon25D
-from ogr import wkbMultiPoint25D
-from ogr import wkbMultiLineString25D
-from ogr import wkbMultiPolygon25D
-from ogr import wkbGeometryCollection25D
+from osgeo import ogr
+from osgeo import osr
 
 from SimpleXMLWriter import XMLWriter
 
@@ -126,37 +99,26 @@ except:
 
 if len(args) < 1:
     parser.print_help()
-    print "error: you must specify a source filename"
-    sys.exit(1)
+    parser.error("you must specify a source filename")
 elif len(args) > 1:
     parser.error("you have specified too many arguments, " +
                  "only supply the source filename")
 
-
-sourceFile = os.path.realpath(args[0])
-if not os.path.isfile(sourceFile):
-    parser.error("the file '%s' does not exist" % (sourceFile))
-
+# Input and output file
 # if no output file given, use the basename of the source but with .osm
-if options.outputFile is None:
+sourceFile = os.path.realpath(args[0])
+if options.outputFile is not None:
+    options.outputFile = os.path.realpath(options.outputFile)
+else:
     (base, ext) = os.path.splitext(os.path.basename(sourceFile))
     options.outputFile = os.path.join(os.getcwd(), base + ".osm")
-options.outputFile = os.path.realpath(options.outputFile)
-
 if not options.forceOverwrite and os.path.exists(options.outputFile):
     parser.error("ERROR: output file '%s' exists" % (options.outputFile))
-
-dataSource = ogr.Open(sourceFile, 0)  # 0 means read-only
-if dataSource is None:
-    print ('ogr2osm.py: error: OGR failed to open ' + sourceFile +
-           ', format may be unsuported')
-    sys.exit(1)
-
-
 print
 print ("Preparing to convert file '%s' to '%s'."
        % (sourceFile, options.outputFile))
 
+# Projection
 if not options.sourcePROJ4 and not options.sourceEPSG:
     print ("Will try to detect projection from source metadata, " +
            "or fall back to EPSG:4326")
@@ -164,44 +126,6 @@ elif options.sourcePROJ4:
     print "Will use the PROJ.4 string: " + options.sourcePROJ4
 elif options.sourceEPSG:
     print "Will use EPSG:" + str(options.sourceEPSG)
-
-showProgress = options.verbose
-if showProgress:
-    print "Verbose mode is on. Get ready to see lots of dots."
-
-if options.debugTags:
-    print "Tag debugging is on. Get ready to see lots of stuff."
-
-
-# Some variables to hold stuff...
-nodeTags = {}
-nodeCoords = {}
-nodeRefs = {}
-segmentNodes = {}
-segmentIDByNodes = {}
-segmentRefs = {}
-areaRings = {}
-areaTags = {}
-lineSegments = {}
-lineTags = {}
-
-# nodeTags holds the tag pairs given a node ID
-# nodeCoords holds the coordinates of a given node ID
-# nodeRefs holds up the IDs of any segment referencing (containing) a
-#   given node ID, as a dictionary
-# segmentNodes holds up the node IDs for a given segment ID
-# segmentIDByNodes holds up segment IDs for a given pair of node IDs
-#   (useful for looking for duplicated segments)
-# segmentRefs holds up the IDs of any ways or areas referencing
-#   (containing) a given segment ID, as a dictionary with segment IDs as
-#   keys, and a boolean as value (the bool is a flag indicating whether
-#   the segment is an existing segment, but reversed - will probably
-#   screw things up with oneway=yes stuff)
-# areaRings holds up the rings, as a list of segments, for a given area ID
-# areaTags holds up the tags for a given area ID
-# lineSegments and lineTags work pretty much as areaRings and areaTags
-#   (only that lineSegments is a list, and areaRings is a list of lists)
-
 
 # Stuff needed for locating translation methods
 if options.translationMethod:
@@ -222,9 +146,7 @@ if options.translationMethod:
         options.translationMethod = os.path.basename(root)
 
     try:
-        module = __import__(options.translationMethod)
-        translateAttributes = module.translateAttributes
-        translateAttributes([])
+        translations = __import__(options.translationMethod)
     except:
         print ("ERROR: Could not load translation method '%s'. Translation "
                "script must be in your current directory, or in the "
@@ -232,575 +154,331 @@ if options.translationMethod:
                "directory.") % (options.translationMethod)
         sys.exit(-1)
     print ("Successfully loaded '%s' translation method ('%s')."
-           % (options.translationMethod, os.path.realpath(module.__file__)))
+           % (options.translationMethod, os.path.realpath(translations.__file__)))
 else:
-    # If no function has been defined, perform no translation:
-    #   just copy everything.
-    translateAttributes = lambda(attrs): attrs
+    import types
+    translations = types.ModuleType("translationmodule")
 
-nodeCount = 0
-segmentCount = 0
-lineCount = 0
-areaCount = 0
-segmentJoinCount = 0
+try:
+    translations.filterLayer(None)
+    print "Using supplied filterLayer"
+except:
+    print "Using default filterLayer"
+    translations.filterLayer = lambda layer: layer
 
+try:
+    translations.filterFeature(None, None, None)
+    print "Using supplied filterFeature"
+except:
+    print "Using default filterFeature"
+    translations.filterFeature = lambda feature, fieldNames, reproject: feature
+
+
+# Done options parsing, now to program code
+
+# Some global variables to hold stuff...
+geometries = []
+features = []
+
+# Helper function to get a new ID
 elementIdCounter = 0
 def getNewID():
     global elementIdCounter
     elementIdCounter -= 1
     return elementIdCounter
 
-print
-print "Parsing features"
+# Classes
+class Geometry(object):
+    id = 0
+    def __init__(self):
+        self.id = getNewID()
+        global geometries
+        geometries.append(self)
+    def replacejwithi(self, i, j):
+        pass
 
 
-# Some aux stuff for parsing the features into the data arrays
+class Point(Geometry):
+    def __init__(self, x, y):
+        Geometry.__init__(self)
+        self.x = x
+        self.y = y
+    def replacejwithi(self, i, j):
+        pass
 
-def addNode(x, y, tags={}):
-    """
-    Given x,y, returns the ID of an existing node there, or creates it
-    and returns the new ID. Node will be updated with the optional tags.
-    """
-    global nodeCount, nodeCoords
-    global nodeTags, nodeCoords
+class Way(Geometry):
+    def __init__(self):
+        Geometry.__init__(self)
+        self.points = []
+    def replacejwithi(self, i, j):
+        self.points = map(lambda x: i if x == j else x, self.points)
 
-    # Allocate a new node
-    nodeID = getNewID()
+class Relation(Geometry):
+    def __init__(self):
+        Geometry.__init__(self)
+        self.members = []
+    def replacejwithi(self, i, j):
+        self.members = map(lambda x: i if x == j else x, self.members)
 
-    nodeTags[nodeID] = tags
-    nodeCoords[nodeID] = (x, y)
-    nodeCount = nodeCount + 1
-    return nodeID
+class Feature(object):
+    geometry = None
+    tags = {}
+    def __init__(self):
+        global features
+        features.append(self)
+    def replacejwithi(self, i, j):
+        if self.geometry == j:
+            self.geometry = i
 
+def getFileData(filename):
+    if not os.path.isfile(filename):
+        parser.error("the file '%s' does not exist" % (filename))
+    dataSource = ogr.Open(filename, 0)  # 0 means read-only
+    if dataSource is None:
+        print ('ogr2osm.py: error: OGR failed to open ' + filename + ', format may be unsuported')
+        sys.exit(1)
+    return dataSource
 
-def lineStringToSegments(geometry, references):
-    """
-    Given a LineString geometry, will create the appropiate segments.
-    It will add the optional tags and will not check for duplicate
-    segments. Needs a line or area ID for updating the segment
-    references. Returns a list of segment IDs.
-    """
-    global segmentCount, segmentNodes, segmentTags
-    global showProgress, nodeRefs, segmentRefs, segmentIDByNodes
-
-    result = []
-
-    (lastx, lasty, z) = geometry.GetPoint(0)
-    lastNodeID = addNode(lastx, lasty)
-
-    for k in range(1, geometry.GetPointCount()):
-        (newx, newy, z) = geometry.GetPoint(k)
-        newNodeID = addNode(newx, newy)
-
-        if (lastNodeID, newNodeID) in segmentIDByNodes:
-            if showProgress:
-                sys.stdout.write(u"-")
-            segmentID = segmentIDByNodes[(lastNodeID, newNodeID)]
-            reversed = False
-            #print
-            #print "Duplicated segment"
-        elif (newNodeID, lastNodeID) in segmentIDByNodes:
-            if showProgress:
-                sys.stdout.write(u"_")
-            segmentID = segmentIDByNodes[(newNodeID, lastNodeID)]
-            reversed = True
-            #print
-            #print "Duplicated reverse segment"
-        else:
-            if showProgress:
-                sys.stdout.write('.')
-            segmentID = getNewID()
-
-            segmentCount = segmentCount + 1
-            segmentNodes[segmentID] = [lastNodeID, newNodeID]
-            segmentIDByNodes[(lastNodeID, newNodeID)] = segmentID
-            reversed = False
-
-            try:
-                nodeRefs[lastNodeID].update({segmentID: True})
-            except:
-                nodeRefs[lastNodeID] = {segmentID: True}
-            try:
-                nodeRefs[newNodeID].update({segmentID: True})
-            except:
-                nodeRefs[newNodeID] = {segmentID: True}
-
-        try:
-            segmentRefs[segmentID].update({references: reversed})
-        except:
-            segmentRefs[segmentID] = {references: reversed}
-
-        result.append(segmentID)
-
-        # FIXME
-        segmentRefs
-
-        lastNodeID = newNodeID
-    return result
-
-
-# Let's dive into the OGR data source and fetch the features
-def fetchFeatures():
-    global areaCount
+def parseData(dataSource):
+    global translations
     for i in range(dataSource.GetLayerCount()):
         layer = dataSource.GetLayer(i)
         layer.ResetReading()
-
-        # Figure out coordinate stuff. The end result of this is the
-        # "reproject" variable.
-        spatialRef = None
-        if options.sourcePROJ4:
-            spatialRef = osr.SpatialReference()
-            spatialRef.ImportFromProj4(options.sourcePROJ4)
-        elif options.sourceEPSG:
-            spatialRef = osr.SpatialReference()
-            spatialRef.ImportFromEPSG(options.sourceEPSG)
-        else:
-            spatialRef = layer.GetSpatialRef()
-            if spatialRef != None:
-                print "Detected projection metadata:"
-                print spatialRef
-            else:
-                print "No projection metadata, falling back to EPSG:4326"
-
-        if spatialRef == None:
-            # No source proj specified yet? Then default to do no reprojection.
-            # Some python magic: skip reprojection altogether by using a dummy
-            # lamdba funcion. Otherwise, the lambda will be a call to the OGR
-            # reprojection stuff.
-            reproject = lambda(geometry): None
-        else:
-            destSpatialRef = osr.SpatialReference()
-            # Destionation projection will *always* be EPSG:4326, WGS84 lat-lon
-            destSpatialRef.ImportFromEPSG(4326)
-            coordTrans = osr.CoordinateTransformation(spatialRef, destSpatialRef)
-            reproject = lambda(geometry): geometry.Transform(coordTrans)
-
-
-        # get fieldNames and fieldCount, which are per-layer
-        featureDefinition = layer.GetLayerDefn()
-        fieldNames = []
-        fieldCount = featureDefinition.GetFieldCount()
-        for j in range(fieldCount):
-            fieldNames.append(featureDefinition.GetFieldDefn(j).GetNameRef())
-        print
-        print fieldNames
-        print "Got layer field definitions"
-        #print "Feature definition: " + str(featureDefinition);
-
-        # Now the main part: loop through all the features, and add them to
-        # the global data structures
-        for j in range(layer.GetFeatureCount()):
-            feature = layer.GetNextFeature()
-
-            geometry = feature.GetGeometryRef()
-            if geometry == None:
-                continue
-            reproject(geometry)
-
-            fields = {}
-            for k in range(fieldCount):
-                #fields[ fieldNames[k] ] = feature.GetRawFieldRef(k)
-                fields[fieldNames[k]] = feature.GetFieldAsString(k)
-            
-            #print fields["Layer"]
-            if 'BLDG' not in fields["Layer"]:
-                    continue
-            if 'PEAK' in fields["Layer"]:
-                    continue
-            if 'DETL' in fields["Layer"]:
-                    continue
-            if 'VA-BLDG-MAJR' not in fields["Layer"]:
-                    continue
-
-            # Translate attributes into tags, as defined per the selected
-            # translation method
-            try:
-                tags = translateAttributes(fields)
-            except KeyError, err:
-                print ("ERROR: Trying to access non-existent attribute key %s "
-                       "in translation method."
-                      % (err))
-                sys.exit(-1)
-
-            if options.debugTags:
-                print
-                print tags
-
-            # Now we got the fields for this feature.
-            # Now, let's convert the geometry.
-            # Points will get converted into nodes.
-            # LineStrings will get converted into a set of ways, each having
-            #   only two nodes.
-            # Polygons will be converted into relations.
-
-            # Later, we'll fix the topology and simplify the ways. If a
-            # relation can be simplified into a way (i.e. only has one member),
-            # it will be. Adjacent segments will be merged if they share tags
-            # and direction.
-
-            # We'll split a geometry into subGeometries or "elementary"
-            # geometries: points, linestrings, and polygons. This will take
-            # care of OGRMultiLineStrings, OGRGeometryCollections and the like.
-
-            geometryType = geometry.GetGeometryType()
-
-            subGeometries = []
-
-            if (geometryType == wkbPoint or
-                geometryType == wkbLineString or
-                geometryType == wkbPolygon):
-                subGeometries = [geometry]
-            elif (geometryType == wkbMultiPoint or
-                 geometryType == wkbMultiLineString or
-                 geometryType == wkbMultiPolygon or
-                 geometryType == wkbGeometryCollection):
-                if showProgress:
-                    sys.stdout.write('M')
-                for k in range(geometry.GetGeometryCount()):
-                    subGeometries.append(geometry.GetGeometryRef(k))
-
-            elif (geometryType == wkbPoint25D or
-                  geometryType == wkbLineString25D or
-                  geometryType == wkbPolygon25D):
-                if showProgress:
-                    sys.stdout.write('z')
-                subGeometries = [geometry]
-            elif (geometryType == wkbMultiPoint25D or
-                  geometryType == wkbMultiLineString25D or
-                  geometryType == wkbMultiPolygon25D or
-                  geometryType == wkbGeometryCollection25D):
-                if showProgress:
-                    sys.stdout.write('Mz')
-                for k in range(geometry.GetGeometryCount()):
-                    subGeometries.append(geometry.GetGeometryRef(k))
-
-            elif geometryType == wkbUnknown:
-                print "Geometry type is wkbUnknown, feature will be ignored\n"
-            elif geometryType == wkbNone:
-                print "Geometry type is wkbNone, feature will be ignored\n"
-            else:
-                print ("Unknown or unimplemented geometry type :" +
-                       str(geometryType) + ", feature will be ignored\n")
-
-            for geometry in subGeometries:
-                if geometry.GetDimension() == 0:
-                    # 0-D = point
-                    if showProgress:
-                        sys.stdout.write(',')
-                    x = geometry.GetX()
-                    y = geometry.GetY()
-
-                    nodeID = addNode(x, y, tags)
-                    # TODO: tags
-
-                elif geometry.GetDimension() == 1:
-                    # 1-D = linestring
-                    if showProgress:
-                        sys.stdout.write('|')
-
-                    lineID = getNewID()
-                    lineSegments[lineID] = lineStringToSegments(geometry, lineID)
-                    lineTags[lineID] = tags
-                    lineCount = lineCount + 1
-
-                elif geometry.GetDimension() == 2:
-                    # FIXME
-                    # 2-D = area
-
-                    if showProgress:
-                        sys.stdout.write('O')
-                    areaID = getNewID()
-                    rings = []
-
-                    for k in range(0, geometry.GetGeometryCount()):
-                        if showProgress:
-                            sys.stdout.write('r')
-                        rings.append(lineStringToSegments(
-                          geometry.GetGeometryRef(k), areaID))
-
-                    areaRings[areaID] = rings
-                    areaTags[areaID] = tags
-                    areaCount = areaCount + 1
-                    # TODO: tags
-                    # The ring 0 will be the outer hull, any other rings will be
-                    # inner hulls.
-
-fetchFeatures()
-
-print
-print "Nodes: " + str(nodeCount)
-print "Way segments: " + str(segmentCount)
-print "Lines: " + str(lineCount)
-print "Areas: " + str(areaCount)
-
-print
-print "Joining segments"
-
-
-# OK, all features should be parsed in the arrays by now
-# Let's start to do some topological magic
-
-# We'll iterate through all the lines and areas, then iterate through
-# all the nodes contained there. We'll then fetch all segments
-# referencing that node. If a pair of segments share the same references
-# (i.e. they are part of the same line or area), they will be joined as
-# one and de-referenced from that node. Joining segments mean than the
-# concept of segment changes at this point, becoming linestrings or ways.
-# There are some edge cases in which the algorithm may not prove optimal:
-# if a line (or area ring) crosses itself, then the node will have more
-# than two segments referenced to the line (or area), and does NOT
-# check for the optimal one. As a result, lines that cross themselves
-# may be (incorrectly) split into two and merged via a relation. In
-# other words, the order of the points in a line (or ring) may not be
-# kept if the line crosses itself.
-# The algorithm will not check if the node has been de-referenced:
-# instead, it will check for the first and last node of the segments
-# involved - if the segments have already been joined, the check will fail.
-
-
-def simplifyNode(nodeID):
-    global nodeRefs, segmentNodes, segmentRefs, showProgress
-    global lineSegments, areaRings, segmentJoinCount
-    #for (nodeID, segments) in nodeRefs.items():
-    segments = nodeRefs[nodeID]
-
-    segmentsJoined = 0
-    #print
-    #print "Node ID: " + str(nodeID)
-    #print "Node references to: " + str(segments)
-
-    # We have to try all pairs of segments somehow
-    for segmentID1 in segments.copy():
-        # We'll be changing the references, so make sure we iterate through
-        # the original list
-        for segmentID2 in segments.copy():
-            if segmentID1 != segmentID2:
-                #print str(segmentID1) + " vs " + str(segmentID2)
-                try:
-                    if segmentNodes[segmentID1][-1] == segmentNodes[segmentID2][0] == nodeID and segmentRefs[segmentID1] == segmentRefs[segmentID2]:
-
-                        #print "Segment " + str(segmentID1) + ": " + str(segmentNodes[segmentID1])
-                        #print "Segment " + str(segmentID2) + ": " + str(segmentNodes[segmentID2])
-
-                        #if showProgress: sys.stdout.write('=')
-                        segmentNodes[segmentID1].extend(segmentNodes[segmentID2][1:])  # Voila! Joined!
-                        for nodeShifted in segmentNodes[segmentID2][1:]:
-                            # Replace node references
-                            #print "deleting reference from node " + str(nodeShifted) + " to segment " + str(segmentID2) + "; updating to " + str(segmentID1)
-                            del nodeRefs[nodeShifted][segmentID2]
-                            nodeRefs[nodeShifted].update({segmentID1: True})
-
-                        del nodeRefs[segmentNodes[segmentID2[0]]][segmentID2]
-
-                        # TODO: Check for potential clashes between the
-                        # references? As in "way X has these segments in the
-                        # wrong direction". The trivial case for this looks
-                        # like a topology error, anyway.
-                        # Anyway, delete all references to the second segment
-                        # - we're 100% sure that the line or area references
-                        # the first one 'cause we've checked before joining the
-                        # segments
-                        for segmentRef in segmentRefs[segmentID2]:
-                            try:
-                                lineSegments[segmentRef].remove(segmentID2)
-                            except:
-                                for ring in areaRings[segmentRef]:
-                                    try:
-                                        ring.remove(segmentID2)
-                                    except:
-                                        pass
-
-                        del segmentRefs[segmentID2]
-
-                        del segmentNodes[segmentID2]
-                        segmentJoinCount = segmentJoinCount + 1
-                        segmentsJoined = segmentsJoined + 1
-                except:
-                    # This is due to the node no longer referencing to a
-                    # segment because we just de-referenced it in a previous
-                    # pass of the loop; this will be quite common
-                    pass
-
-    # FIXME: if segmentsJoined > 1, this should mark the node for further
-    # testing - It's very likely to be a self-intersection.
-
-    if showProgress:
-        sys.stdout.write(str(segmentsJoined))
-
-#print
-#print "Simplifying line segments"
-#for line in lineSegments.values():
-    #print line
-    # No need to check the last segment, it could not be simplyfied
-#    for segmentID in line:
-        #print segmentID
-        #print segmentNodes[segmentID]
-#        for nodeID in segmentNodes[segmentID]:
-#            simplifyNode(nodeID)
-            #simplifyNode(segmentNodes[segmentID][0])   # last node in segment
-
-#print
-#print "Simplifying area segments"
-#for area in areaRings.values():
-#    for ring in area:
-#        for segmentID in ring:
-#            for nodeID in segmentNodes[segmentID]:
-#                simplifyNode(nodeID)  # last node in segment
-
-
-# That *should* do it... but a second pass through all the nodes will really
-# fix things up. I wonder why some nodes are left out of the previous pass
-print
-print "Simplifying remaining nodes"
-#for node in nodeRefs.keys():
-#    simplifyNode(node)
-
-
-print
-print "Nodes: " + str(nodeCount)
-print "Original way segments: " + str(segmentCount)
-print "Segment join operations: " + str(segmentJoinCount)
-print "Lines: " + str(lineCount)
-print "Areas: " + str(areaCount)
-
-#print nodeRefs
-#print segmentNodes
-#print lineSegments
-#print areaRings
-#print segmentRefs
-
-print
-print "Generating OSM XML..."
-print "Generating nodes."
-
-#w = XMLWriter(sys.stdout)
-w = XMLWriter(open(options.outputFile, 'w'))
-
-w.start("osm", version='0.6', generator='ogr2osm')
-
-# First, the nodes
-for (nodeID, (x, y)) in nodeCoords.items():
-    w.start("node", visible="true", id=str(nodeID), lat=str(y), lon=str(x))
-    for (tagKey, tagValue) in nodeTags[nodeID].items():
-        if tagValue:
-            w.element("tag", k=tagKey, v=tagValue)
-    w.end("node")
-    if showProgress:
-        sys.stdout.write('.')
-
-
-#print "Generated nodes. On to shared segments."
-
-# Now, the segments used by more than one line/area, as untagged ways
-
-
-#for (segmentID, segmentRef) in segmentRefs.items():
-    #if len(segmentRef) > 1:
-        #print "FIXME: output shared segment"
-        #outputtedSegments[segmentID] = True
-
-
-print
-print "Generated nodes. On to lines."
-
-# Next, the lines, either as ways or as relations
-
-outputtedSegments = {}
-
-for (lineID, lineSegment) in lineSegments.items():
-    if showProgress:
-        sys.stdout.write(str(len(lineSegment)) + " ")
-    if len(lineSegment) == 1:   # The line will be a simple way
-        w.start('way', id=str(lineID), action='modify', visible='true')
-
-        for nodeID in segmentNodes[lineSegment[0]]:
-            w.element('nd', ref=str(nodeID))
-
-        for (tagKey, tagValue) in lineTags[lineID].items():
-            if tagValue:
-                w.element("tag", k=tagKey, v=tagValue)
-
-        w.end('way')
-        pass
-    else:   # The line will be a relationship
-        #print
-        #print ("Line ID " + str(lineID) + " uses more than one segment: " +
-        #       str(lineSegment))
-        for segmentID in lineSegment:
-            if segmentID not in outputtedSegments:
-                w.start('way', id=str(segmentID), action='modify',
-                        visible='true')
-                for nodeID in segmentNodes[segmentID]:
-                    w.element('nd', ref=str(nodeID))
-                w.end('way')
-        w.start('relation', id=str(lineID), action='modify', visible='true')
-        for segmentID in lineSegment:
-            w.element('member', type='way', ref=str(segmentID), role='')
-        for (tagKey, tagValue) in lineTags[lineID].items():
-            if tagValue:
-                w.element("tag", k=tagKey, v=tagValue)
-        w.end('relation')
-
-print
-print "Generated lines. On to areas."
-
-# And last, the areas, either as ways or as relations
-
-#print areaRings
-
-for (areaID, areaRing) in areaRings.items():
-    #sys.stdout.write(str(len(areaRings)))
-
-    if len(areaRing) == 1 and len(areaRing[0]) == 1:
-    # The area will be a simple way
-        w.start('way', id=str(areaID), action='modify', visible='true')
-
-        for nodeID in segmentNodes[areaRing[0][0]]:
-            w.element('nd', ref=str(nodeID))
-
-        for (tagKey, tagValue) in areaTags[areaID].items():
-            if tagValue:
-                w.element("tag", k=tagKey, v=tagValue)
-
-        w.end('way')
-        if showProgress:
-            sys.stdout.write('0 ')
+        parseLayer(translations.filterLayer(layer))
+
+def getTransform(layer):
+    global options
+    # First check if the user supplied a projection, then check the layer,
+    # then fall back to a default
+    spatialRef = None
+    if options.sourcePROJ4:
+        spatialRef = osr.SpatialReference()
+        spatialRef.ImportFromProj4(options.sourcePROJ4)
+    elif options.sourceEPSG:
+        spatialRef = osr.SpatialReference()
+        spatialRef.ImportFromEPSG(options.sourceEPSG)
     else:
-        segmentsUsed = 0
-        segmentsUsedInRing = 0
-        #print "FIXME"
+        spatialRef = layer.GetSpatialRef()
+        if spatialRef != None:
+            print "Detected projection metadata:"
+            print spatialRef
+        else:
+            print "No projection metadata, falling back to EPSG:4326"
 
-        for ring in areaRing:
-            for segmentID in ring:
-                if segmentID not in outputtedSegments:
-                    w.start('way', id=str(segmentID), action='modify',
-                            visible='true')
-                    for nodeID in segmentNodes[segmentID]:
-                        w.element('nd', ref=str(nodeID))
-                    w.end('way')
+    if spatialRef == None:
+        # No source proj specified yet? Then default to do no reprojection.
+        # Some python magic: skip reprojection altogether by using a dummy
+        # lamdba funcion. Otherwise, the lambda will be a call to the OGR
+        # reprojection stuff.
+        reproject = lambda(geometry): None
+    else:
+        destSpatialRef = osr.SpatialReference()
+        # Destionation projection will *always* be EPSG:4326, WGS84 lat-lon
+        destSpatialRef.ImportFromEPSG(4326)
+        coordTrans = osr.CoordinateTransformation(spatialRef, destSpatialRef)
+        reproject = lambda(geometry): geometry.Transform(coordTrans)
 
-        w.start('relation', id=str(areaID), action='modify', visible='true')
-        w.element("tag", k='type', v='multipolygon')
+    return reproject
 
-        role = 'outer'
-        for ring in areaRing:
-            for segmentID in ring:
-                w.element('member', type='way', ref=str(segmentID), role=role)
-                segmentsUsed = segmentsUsed + 1
-                segmentsUsedInRing = segmentsUsedInRing + 1
-            role = 'inner'
-            #if showProgress: sys.stdout.write(str(segmentsUsedInRing)+'r')
-            segmentsUsedInRing = 0
+def getLayerFields(layer):
+    featureDefinition = layer.GetLayerDefn()
+    fieldNames = []
+    fieldCount = featureDefinition.GetFieldCount()
+    for j in range(fieldCount):
+        fieldNames.append(featureDefinition.GetFieldDefn(j).GetNameRef())
+    return fieldNames
 
-        for (tagKey, tagValue) in areaTags[areaID].items():
-            if tagValue:
-                w.element("tag", k=tagKey, v=tagValue)
-        w.end('relation')
-        if showProgress:
-            sys.stdout.write(str(segmentsUsed) + " ")
+def getFeatureTags(ogrfeature, fieldNames):
+    tags = {}
+    for i in range(len(fieldNames)):
+        tags[fieldNames[i]] = ogrfeature.GetFieldAsString(i)
+    return tags
 
-print
-print "All done. Enjoy your data!"
+def parseLayer(layer):
+    if layer is None:
+        return
+    fieldNames = getLayerFields(layer)
+    reproject = getTransform(layer)
+    
+    for j in range(layer.GetFeatureCount()):
+        ogrfeature = layer.GetNextFeature()
+        parseFeature(translations.filterFeature(ogrfeature, fieldNames, reproject), fieldNames, reproject)
 
-w.end("osm")
+def parseFeature(ogrfeature, fieldNames, reproject):
+    if ogrfeature is None:
+        return
+    ogrgeometry = ogrfeature.GetGeometryRef()
+
+    if ogrgeometry is None:
+        print "Bailed out early 1"
+        return
+    reproject(ogrgeometry)
+    geometry = parseGeometry(ogrgeometry)
+    if geometry is None:
+        print "Bailed out early 2"
+        return
+
+    feature = Feature()
+    feature.tags = getFeatureTags(ogrfeature, fieldNames)
+    feature.geometry = geometry
+    global features
+    features.append(feature)
+    
+
+def parseGeometry(ogrgeometry):
+    geometryType = ogrgeometry.GetGeometryType()
+
+    if (geometryType == ogr.wkbPoint or
+        geometryType == ogr.wkbPoint25D):
+        return parsePoint(ogrgeometry)
+    elif (geometryType == ogr.wkbLineString or
+          geometryType == ogr.wkbLinearRing or
+          geometryType == ogr.wkbLineString25D):
+#         geometryType == ogr.wkbLinearRing25D does not exist
+        return parseLineString(ogrgeometry)
+    elif (geometryType == ogr.wkbPolygon or
+          geometryType == ogr.wkbPolygon25D):
+        return parsePolygon(ogrgeometry)
+    elif (geometryType == ogr.wkbMultiPoint or
+          geometryType == ogr.wkbMultiLineString or
+          geometryType == ogr.wkbMultiPolygon or
+          geometryType == ogr.wkbGeometryCollection or
+          geometryType == ogr.wkbMultiPoint25D or
+          geometryType == ogr.wkbMultiLineString25D or
+          geometryType == ogr.wkbMultiPolygon25D or
+          geometryType == ogr.wkbGeometryCollection25D):
+        return parseCollection(ogrgeometry)
+    else:
+        print "unhandled geometry, type: " + str(geometryType)
+        return None
+
+def parsePoint(ogrgeometry):
+    x = ogrgeometry.GetX()
+    y = ogrgeometry.GetY()
+    geometry = Point(x, y)
+    return geometry
+
+def parseLineString(ogrgeometry):
+    geometry = Way()
+    # LineString.GetPoint() returns a tuple, so we can't call parsePoint on it
+    # and instead have to create the point ourself
+    for i in range(ogrgeometry.GetPointCount()):
+        (x, y, unused) = ogrgeometry.GetPoint(i)
+        mypoint = Point(x, y)
+        geometry.points.append(mypoint)
+    return geometry
+
+def parsePolygon(ogrgeometry):
+    # Special case polygons with only one ring. This does not (or at least
+    # should not) change behavior when simplify relations is turned on.
+    if ogrgeometry.GetGeometryCount() == 1:
+        return parseLineString(ogrgeometry.GetGeometryRef(0))
+    else:
+        geometry = Relation()
+        exterior = parseLineString(ogrgeometry.GetGeometryRef(0))
+        geometry.members.append((exterior, "outer"))
+        for i in range(1, ogrgeometry.GetGeometryCount()):
+            interior = parseLineString(ogrgeometry.GetGeometryRef(i))
+            geometry.members.append((interior, "inner"))
+        return geometry
+
+def parseCollection(ogrgeometry):
+    # OGR MultiPolygon maps easily to osm multipolygon, so special case it
+    # TODO: Does anything else need special casing?
+    geometryType = ogrgeometry.GetGeometryType()
+    if (geometryType == ogr.wkbMultiPolygon or
+        geometryType == ogr.wkbMultiPolygon25D):
+        geometry = Relation()
+        for polygon in ogrgeometry.GetGometryCount():
+            exterior = parseLineString(ogrgeometry.GetGeometryRef(polygon).GetGeometryRef(0))
+            geometry.members.append((exterior, "outer"))
+            for i in range(1, ogrgeometry.GetGeometryRef(polygon).GetGeometryCount()):
+                interior = parseLineString(ogrgeometry.GetGeometryRef(polygon).GetGeometryRef(i))
+                geometry.members.append((interior, "inner"))
+    else:
+        geometry = Relation()
+        for i in range(ogrgeometry.GetGeometryCount()):
+            member = parseGeometry(ogrgeometry.GetGeometryRef(i))
+            geometry.members.append((member, "member"))
+        return geometry
+
+def mergePoints():
+    global geometries, features
+    points = [geometry for geometry in geometries if type(geometry) == Point]
+    
+    # Set up a list of everything that uses each point, for easier (O(n))
+    # replacement of duplicates
+    pointusage = {}
+    for i in points:
+        pointusage[i] = []
+    for geometry in geometries:
+        if type(geometry) == Point:
+            pass
+        elif type(geometry) == Way:
+            for i in geometry.points:
+                pointusage[i].append(geometry)
+        elif type(geometry) == Relation:
+            for i in geometry.members:
+                if type(i) == Point:
+                    pointusage[i].append(geometry)
+    for feature in features:
+        if type(feature.geometry) == Point:
+            pointusage[feature.geometry].append(feature)
+    
+    pointcoords = {}
+    for i in points:
+        try:
+            pointcoords[(i.x, i.y)].append(i)
+        except KeyError:
+            pointcoords[(i.x, i.y)] = [i]
+    for (location, pointsatloc) in pointcoords.items():
+        if len(pointsatloc) > 1:
+            for point in pointsatloc:
+                if pointsatloc.index(point) is not 0:
+                    for ref in pointusage[point]:
+                        ref.replacejwithi(pointsatloc[0], point)
+        
+def output():
+    # First, set up a few data structures for optimization purposes
+    global geometries, features
+    nodes = [geometry for geometry in geometries if type(geometry) == Point]
+    ways = [geometry for geometry in geometries if type(geometry) == Way]
+    relations = [geometry for geometry in geometries if type(geometry) == Relation]
+    featuresmap = {feature.geometry : feature for feature in features}
+
+    w = XMLWriter(open(options.outputFile, 'w'))
+    w.start("osm", version='0.6', generator='uvmogr2osm')
+
+    for node in nodes:
+        w.start("node", visible="true", id=str(node.id), lat=str(node.y), lon=str(node.x))
+        if node in featuresmap:
+            for (key, value) in featuresmap[node].tags.items():
+                w.element("tag", k=key, v=value)
+        w.end("node")
+
+    for way in ways:
+        w.start("way", visible="true", id=str(way.id))
+        for node in way.points:
+            w.element("nd", ref=str(node.id))
+        if way in featuresmap:
+            for (key, value) in featuresmap[way].tags.items():
+                w.element("tag", k=key, v=value)
+        w.end("way")
+
+    for relation in relations:
+        w.start("relation", visible="true", id=str(relation.id))
+        for (member, role) in relation.members:
+            w.element("member", type="way", ref=str(member.id), role=role)
+        if relation in featuresmap:
+            for (key, value) in featuresmap[relation].tags.items():
+                w.element("tag", k=key, v=value)
+        w.end("relation")
+
+    w.end("osm")
+
+
+# Main flow
+data = getFileData(sourceFile)
+parseData(data)
+mergePoints()
+output()
