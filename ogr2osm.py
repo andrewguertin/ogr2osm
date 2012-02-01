@@ -55,6 +55,7 @@ import sys
 import os
 from optparse import OptionParser
 import logging as l
+l.basicConfig(level=l.INFO, format="%(message)s")
 
 from osgeo import ogr
 from osgeo import osr
@@ -114,18 +115,15 @@ else:
     options.outputFile = os.path.join(os.getcwd(), base + ".osm")
 if not options.forceOverwrite and os.path.exists(options.outputFile):
     parser.error("ERROR: output file '%s' exists" % (options.outputFile))
-print
-print ("Preparing to convert file '%s' to '%s'."
-       % (sourceFile, options.outputFile))
+l.info("Preparing to convert file '%s' to '%s'." % (sourceFile, options.outputFile))
 
 # Projection
 if not options.sourcePROJ4 and not options.sourceEPSG:
-    print ("Will try to detect projection from source metadata, " +
-           "or fall back to EPSG:4326")
+    l.info("Will try to detect projection from source metadata, or fall back to EPSG:4326")
 elif options.sourcePROJ4:
-    print "Will use the PROJ.4 string: " + options.sourcePROJ4
+    l.info("Will use the PROJ.4 string: " + options.sourcePROJ4)
 elif options.sourceEPSG:
-    print "Will use EPSG:" + str(options.sourceEPSG)
+    l.info("Will use EPSG:" + str(options.sourceEPSG))
 
 # Stuff needed for locating translation methods
 if options.translationMethod:
@@ -148,29 +146,29 @@ if options.translationMethod:
     try:
         translations = __import__(options.translationMethod)
     except:
-        print ("ERROR: Could not load translation method '%s'. Translation "
+        parser.error("Could not load translation method '%s'. Translation "
                "script must be in your current directory, or in the "
                "translations/ subdirectory of your current or ogr2osm.py "
                "directory.") % (options.translationMethod)
-        sys.exit(-1)
-    print ("Successfully loaded '%s' translation method ('%s')."
+    l.info("Successfully loaded '%s' translation method ('%s')."
            % (options.translationMethod, os.path.realpath(translations.__file__)))
 else:
     import types
     translations = types.ModuleType("translationmodule")
+    l.info("Using default translations")
 
 try:
     translations.filterLayer(None)
-    print "Using supplied filterLayer"
+    l.debug("Using supplied filterLayer")
 except:
-    print "Using default filterLayer"
+    l.debug("Using default filterLayer")
     translations.filterLayer = lambda layer: layer
 
 try:
     translations.filterFeature(None, None, None)
-    print "Using supplied filterFeature"
+    l.debug("Using supplied filterFeature")
 except:
-    print "Using default filterFeature"
+    l.debug("Using default filterFeature")
     translations.filterFeature = lambda feature, fieldNames, reproject: feature
 
 
@@ -235,7 +233,7 @@ def getFileData(filename):
         parser.error("the file '%s' does not exist" % (filename))
     dataSource = ogr.Open(filename, 0)  # 0 means read-only
     if dataSource is None:
-        print ('ogr2osm.py: error: OGR failed to open ' + filename + ', format may be unsuported')
+        l.error('OGR failed to open ' + filename + ', format may be unsuported')
         sys.exit(1)
     return dataSource
 
@@ -260,10 +258,9 @@ def getTransform(layer):
     else:
         spatialRef = layer.GetSpatialRef()
         if spatialRef != None:
-            print "Detected projection metadata:"
-            print spatialRef
+            l.info("Detected projection metadata:\n" + str(spatialRef))
         else:
-            print "No projection metadata, falling back to EPSG:4326"
+            l.info("No projection metadata, falling back to EPSG:4326")
 
     if spatialRef == None:
         # No source proj specified yet? Then default to do no reprojection.
@@ -307,15 +304,13 @@ def parseLayer(layer):
 def parseFeature(ogrfeature, fieldNames, reproject):
     if ogrfeature is None:
         return
-    ogrgeometry = ogrfeature.GetGeometryRef()
 
+    ogrgeometry = ogrfeature.GetGeometryRef()
     if ogrgeometry is None:
-        print "Bailed out early 1"
         return
     reproject(ogrgeometry)
     geometry = parseGeometry(ogrgeometry)
     if geometry is None:
-        print "Bailed out early 2"
         return
 
     feature = Feature()
@@ -349,7 +344,7 @@ def parseGeometry(ogrgeometry):
           geometryType == ogr.wkbGeometryCollection25D):
         return parseCollection(ogrgeometry)
     else:
-        print "unhandled geometry, type: " + str(geometryType)
+        l.debug("unhandled geometry, type: " + str(geometryType))
         return None
 
 def parsePoint(ogrgeometry):
