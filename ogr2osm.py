@@ -159,18 +159,38 @@ else:
 
 try:
     translations.filterLayer(None)
-    l.debug("Using supplied filterLayer")
+    l.debug("Using user filterLayer")
 except:
     l.debug("Using default filterLayer")
     translations.filterLayer = lambda layer: layer
 
 try:
     translations.filterFeature(None, None, None)
-    l.debug("Using supplied filterFeature")
+    l.debug("Using user filterFeature")
 except:
     l.debug("Using default filterFeature")
     translations.filterFeature = lambda feature, fieldNames, reproject: feature
 
+try:
+    translations.filterTags(None)
+    l.debug("Using user filterTags")
+except:
+    l.debug("Using default filterTags")
+    translations.filterTags = lambda tags: tags
+
+try:
+    translations.filterFeaturePost(None, None, None)
+    l.debug("Using user filterFeaturePost")
+except:
+    l.debug("Using default filterFeaturePost")
+    translations.filterFeaturePost = lambda feature, fieldNames, reproject: feature
+
+try:
+    translations.preOutputTransform(None, None, None)
+    l.debug("Using user preOutputTransform")
+except:
+    l.debug("Using default preOutputTransform")
+    translations.preOutputTransform = lambda feature, fieldNames, reproject: feature
 
 # Done options parsing, now to program code
 
@@ -289,7 +309,7 @@ def getFeatureTags(ogrfeature, fieldNames):
     tags = {}
     for i in range(len(fieldNames)):
         tags[fieldNames[i]] = ogrfeature.GetFieldAsString(i)
-    return tags
+    return translations.filterTags(tags)
 
 def parseLayer(layer):
     if layer is None:
@@ -316,8 +336,8 @@ def parseFeature(ogrfeature, fieldNames, reproject):
     feature = Feature()
     feature.tags = getFeatureTags(ogrfeature, fieldNames)
     feature.geometry = geometry
-    global features
-    features.append(feature)
+
+    translations.filterFeaturePost(feature, ogrfeature, ogrgeometry)
     
 
 def parseGeometry(ogrgeometry):
@@ -403,6 +423,8 @@ def mergePoints():
     
     # Set up a list of everything that uses each point, for easier (O(n))
     # replacement of duplicates
+    # TODO: Move this in to the geometry classes themselves, and keep track of
+    # it throughout all changes instead of doing all the work here
     pointusage = {}
     for i in points:
         pointusage[i] = []
@@ -420,18 +442,22 @@ def mergePoints():
         if type(feature.geometry) == Point:
             pointusage[feature.geometry].append(feature)
     
+    # Make list of Points at each location
     pointcoords = {}
     for i in points:
         try:
             pointcoords[(i.x, i.y)].append(i)
         except KeyError:
             pointcoords[(i.x, i.y)] = [i]
+
+    # Use list to get rid of extras
     for (location, pointsatloc) in pointcoords.items():
         if len(pointsatloc) > 1:
             for point in pointsatloc:
                 if pointsatloc.index(point) is not 0:
                     for ref in pointusage[point]:
                         ref.replacejwithi(pointsatloc[0], point)
+                    geometries.remove(point)
         
 def output():
     # First, set up a few data structures for optimization purposes
@@ -476,4 +502,5 @@ def output():
 data = getFileData(sourceFile)
 parseData(data)
 mergePoints()
+translations.preOutputTransform(geometries, features)
 output()
