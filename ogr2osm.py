@@ -55,7 +55,7 @@ import sys
 import os
 from optparse import OptionParser
 import logging as l
-l.basicConfig(level=l.INFO, format="%(message)s")
+l.basicConfig(level=l.DEBUG, format="%(message)s")
 
 from osgeo import ogr
 from osgeo import osr
