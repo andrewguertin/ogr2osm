@@ -1,6 +1,7 @@
 from osgeo import ogr
 import re
 import urllib
+import json
 
 uvmfeatures = []
 
@@ -42,6 +43,8 @@ def filterTags(tags):
         
 
 def preOutputTransform(geometries, features):
+    if geometries is None and features is None:
+        return
     global uvmfeatures
     buildingcodes = [(feature, ogrfeature, ogrgeometry) for (feature, ogrfeature, ogrgeometry) in uvmfeatures if ogrfeature.GetFieldAsString("Layer") == "VA-UVM-BLDG-CODE"]
     buildings = [x for x in uvmfeatures if x not in buildingcodes]
@@ -69,3 +72,24 @@ def preOutputTransform(geometries, features):
         print "Removing a text node: " + feature.tags["Text"]
         features.remove(feature)
         geometries.remove(feature.geometry)
+
+    uvmjson(geometries, features)
+
+def uvmjson(geometries, features):
+    print "IN UVMJSON"
+    buildings = [building for building in features if "uvm:buildingid" in building.tags]
+    outbuildings = []
+    for building in buildings:
+        outbuilding = {}
+        outbuilding["id"] = building.tags["uvm:buildingid"]
+        outbuilding["geometry"] = []
+        if str(type(building.geometry)) != "<class '__main__.Way'>":
+            print "WARNING: building not way, being ignored!"
+            print str(type(building.geometry))
+        else:
+            for point in building.geometry.points:
+                outbuilding["geometry"].append({"x": point.x, "y": point.y})
+        outbuildings.append(outbuilding)
+    f = open('/tmp/uvmbuildings.json', 'w')
+    f.write(json.dumps(outbuildings, indent=4))
+    f.close()

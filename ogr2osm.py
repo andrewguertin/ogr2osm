@@ -186,11 +186,11 @@ except:
     translations.filterFeaturePost = lambda feature, fieldNames, reproject: feature
 
 try:
-    translations.preOutputTransform(None, None, None)
+    translations.preOutputTransform(None, None)
     l.debug("Using user preOutputTransform")
 except:
     l.debug("Using default preOutputTransform")
-    translations.preOutputTransform = lambda feature, fieldNames, reproject: feature
+    translations.preOutputTransform = lambda geometries, features: None
 
 # Done options parsing, now to program code
 
