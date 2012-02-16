@@ -3,51 +3,43 @@
 
 """ ogr2osm beta
 
- (c) Iván Sánchez Ortega, 2009
- <ivan@sanchezortega.es>
+This program takes any vector data understadable by OGR and outputs an OSM file
+with that data.
+
+By default tags will be naively copied from the input data. Hooks are provided
+so that, with a little python programming, you can translate the tags however
+you like. More hooks are provided so you can filter or even modify the features
+themselves.
+
+To use the hooks, create a file in the translations/ directory called myfile.py
+and run ogr2osm.py -t myfile. This file should define a function with the name
+of each hook you want to use. For an example, see the uvmtrans.py file.
+
+The program will use projection metadata from the source, if it has any. If
+there is no projection information, or if you want to override it, you can use
+-e or -p to specify an EPSG code or Proj.4 string, respectively. If there is no
+projection metadata and you do not specify one, EPSG:4326 will be used (WGS84
+latitude-longitude)
+
+For additional usage information, run ogr2osm.py --help
 
 
- This piece of crap^H^H^H^Hsoftware is supposed to take just about any vector
- file as an input thanks to the magic of the OGR libraries, and then output a
- pretty OSM XML file with that data.
 
- The cool part is that it will detect way segments shared between several ways,
- so it will build relations outof thin air. This simplifies the structure of
- boundaries, for example.
+Copyright (c) 2012 The University of Vermont
+<andrew.guertin@uvm.edu
+Released under the MIT license: http://opensource.org/licenses/mit-license.php
 
- It is also able to translate attributes to tags, though there is only one such
- translation scheme by now. In order to translate your own datasets, you should
- have some basic understanding of python programming. See the files in the
- translation/ directory.
+Based very heavily on code released under the following terms:
 
- An outstanding issue is that elevation in 2.5D features (that can be generated
- by reprojecting) is ignored completely.
-
- Usage: specify a filename to be converted (its extension will be changed to
- .osm), and the the projection the source data is in. You can specify the
- source projection by using either an EPSG code or a Proj.4 string.
-
- If the projection is not specified, ogr2osm will try to fetch it from the
- source data. If there is no projection information in the source data, this
- will assume EPSG:4326 (WGS84 latitude-longitude).
-
- (-e and -p are mutually exclusive. If both are specified, only the last one
-  will be taken into account)
-
- For example, if the shapefile foobar.shp has projection EPSG:23030, do:
-
- python ogr2osm.py foobar.shp -e 23030
-
- This will do an in-the-fly reprojection from EPSG:23030 to EPSG:4326, and
- write a file called "foobar.osm"
-
-
+(c) Iván Sánchez Ortega, 2009
+<ivan@sanchezortega.es>
 ###############################################################################
 #  "THE BEER-WARE LICENSE":                                                   #
 #  <ivan@sanchezortega.es> wrote this file. As long as you retain this notice #
 #  you can do whatever you want with this stuff. If we meet some day, and you #
 #  think this stuff is worth it, you can buy me a beer in return.             #
 ###############################################################################
+
 """
 
 
