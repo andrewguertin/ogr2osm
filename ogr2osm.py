@@ -396,7 +396,7 @@ def parseCollection(ogrgeometry):
     if (geometryType == ogr.wkbMultiPolygon or
         geometryType == ogr.wkbMultiPolygon25D):
         geometry = Relation()
-        for polygon in ogrgeometry.GetGometryCount():
+        for polygon in ogrgeometry.GetGeometryCount():
             exterior = parseLineString(ogrgeometry.GetGeometryRef(polygon).GetGeometryRef(0))
             geometry.members.append((exterior, "outer"))
             for i in range(1, ogrgeometry.GetGeometryRef(polygon).GetGeometryCount()):
