@@ -250,6 +250,7 @@ def getFileData(filename):
     return dataSource
 
 def parseData(dataSource):
+    l.debug("Parsing data")
     global translations
     for i in range(dataSource.GetLayerCount()):
         layer = dataSource.GetLayer(i)
@@ -356,7 +357,7 @@ def parseGeometry(ogrgeometry):
           geometryType == ogr.wkbGeometryCollection25D):
         return parseCollection(ogrgeometry)
     else:
-        l.debug("unhandled geometry, type: " + str(geometryType))
+        l.warning("unhandled geometry, type: " + str(geometryType))
         return None
 
 def parsePoint(ogrgeometry):
@@ -416,6 +417,7 @@ def parseCollection(ogrgeometry):
         return geometry
 
 def mergePoints():
+    l.debug("Merging points")
     global geometries, features
     points = [geometry for geometry in geometries if type(geometry) == Point]
     
@@ -458,6 +460,7 @@ def mergePoints():
                     geometries.remove(point)
         
 def output():
+    l.debug("Outputting XML")
     # First, set up a few data structures for optimization purposes
     global geometries, features
     nodes = [geometry for geometry in geometries if type(geometry) == Point]
