@@ -71,7 +71,10 @@ def preOutputTransform(geometries, features):
     for feature in [f for f in features if f.tags["Layer"] == "VA-UVM-BLDG-CODE"]:
         print "Removing a text node: " + feature.tags["Text"]
         features.remove(feature)
-        geometries.remove(feature.geometry)
+	try:
+	        geometries.remove(feature.geometry)
+	except:
+		print "Failed -- two features with same geometry??"
 
     uvmjson(geometries, features)
 
