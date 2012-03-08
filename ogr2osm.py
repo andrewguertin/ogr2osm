@@ -378,11 +378,17 @@ def parseLineString(ogrgeometry):
 def parsePolygon(ogrgeometry):
     # Special case polygons with only one ring. This does not (or at least
     # should not) change behavior when simplify relations is turned on.
-    if ogrgeometry.GetGeometryCount() == 1:
+    if ogrgeometry.GetGeometryCount() == 0:
+        l.warning("Polygon with no rings?")
+    elif ogrgeometry.GetGeometryCount() == 1:
         return parseLineString(ogrgeometry.GetGeometryRef(0))
     else:
         geometry = Relation()
-        exterior = parseLineString(ogrgeometry.GetGeometryRef(0))
+        try:
+            exterior = parseLineString(ogrgeometry.GetGeometryRef(0))
+        except:
+            l.warning("Polygon with no exterior ring?")
+            return None
         geometry.members.append((exterior, "outer"))
         for i in range(1, ogrgeometry.GetGeometryCount()):
             interior = parseLineString(ogrgeometry.GetGeometryRef(i))
