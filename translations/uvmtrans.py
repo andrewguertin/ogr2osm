@@ -7,7 +7,7 @@ uvmfeatures = []
 
 def filterLayer(layer):
     if layer is None:
-    	return None
+        return None
     print layer.GetName()
     return layer
 
@@ -15,13 +15,13 @@ def filterFeature(ogrfeature, fieldNames, reproject):
     if ogrfeature is None:
         return
     layer = ogrfeature.GetFieldAsString("Layer")
-    if (layer != "VA-BLDG-MAJR" and
-        layer != "VA-BLDG-MINR" and
-        layer != "VA-BLDG-OTHR" and
-       	layer != "VA-UVM-BLDG-CODE"):
-        return
-    else:
+    if (layer == "VA-BLDG-UVM" or
+        layer == "VA-BLDG-NON UVM"):
         return ogrfeature
+    elif (layer == "VA-BLDG-ATTRIBUTES" and len(ogrfeature.GetFieldAsString("Text")) == 4):
+        return ogrfeature
+    else:
+        return
 
 def filterFeaturePost(feature, ogrfeature, ogrgeometry):
     if feature is None and ogrfeature is None and ogrgeometry is None:
@@ -46,7 +46,7 @@ def preOutputTransform(geometries, features):
     if geometries is None and features is None:
         return
     global uvmfeatures
-    buildingcodes = [(feature, ogrfeature, ogrgeometry) for (feature, ogrfeature, ogrgeometry) in uvmfeatures if ogrfeature.GetFieldAsString("Layer") == "VA-UVM-BLDG-CODE"]
+    buildingcodes = [(feature, ogrfeature, ogrgeometry) for (feature, ogrfeature, ogrgeometry) in uvmfeatures if ogrfeature.GetFieldAsString("Layer") == "VA-BLDG-ATTRIBUTES"]
     buildings = [x for x in uvmfeatures if x not in buildingcodes]
     # Match each code to the closest building, setting the building's feature's
     # name
@@ -68,13 +68,13 @@ def preOutputTransform(geometries, features):
         page.close
         bldgf.tags["name"] = name
 
-    for feature in [f for f in features if f.tags["Layer"] == "VA-UVM-BLDG-CODE"]:
+    for feature in [f for f in features if f.tags["Layer"] == "VA-BLDG-ATTRIBUTES"]:
         print "Removing a text node: " + feature.tags["Text"]
         features.remove(feature)
-	try:
-	        geometries.remove(feature.geometry)
-	except:
-		print "Failed -- two features with same geometry??"
+        try:
+            geometries.remove(feature.geometry)
+        except:
+            print "Failed -- two features with same geometry??"
 
     uvmjson(geometries, features)
 
