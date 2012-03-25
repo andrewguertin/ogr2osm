@@ -322,44 +322,50 @@ def parseFeature(ogrfeature, fieldNames, reproject):
     if ogrgeometry is None:
         return
     reproject(ogrgeometry)
-    geometry = parseGeometry(ogrgeometry)
-    if geometry is None:
-        return
+    geometries = parseGeometry([ogrgeometry])
+    
+    for geometry in geometries:
+        if geometry is None:
+            return
 
-    feature = Feature()
-    feature.tags = getFeatureTags(ogrfeature, fieldNames)
-    feature.geometry = geometry
+        feature = Feature()
+        feature.tags = getFeatureTags(ogrfeature, fieldNames)
+        feature.geometry = geometry
 
-    translations.filterFeaturePost(feature, ogrfeature, ogrgeometry)
+        translations.filterFeaturePost(feature, ogrfeature, ogrgeometry)
     
 
-def parseGeometry(ogrgeometry):
-    geometryType = ogrgeometry.GetGeometryType()
+def parseGeometry(ogrgeometries):
+    returngeometries = []
+    for ogrgeometry in ogrgeometries:
+        geometryType = ogrgeometry.GetGeometryType()
 
-    if (geometryType == ogr.wkbPoint or
-        geometryType == ogr.wkbPoint25D):
-        return parsePoint(ogrgeometry)
-    elif (geometryType == ogr.wkbLineString or
-          geometryType == ogr.wkbLinearRing or
-          geometryType == ogr.wkbLineString25D):
-#         geometryType == ogr.wkbLinearRing25D does not exist
-        return parseLineString(ogrgeometry)
-    elif (geometryType == ogr.wkbPolygon or
-          geometryType == ogr.wkbPolygon25D):
-        return parsePolygon(ogrgeometry)
-    elif (geometryType == ogr.wkbMultiPoint or
-          geometryType == ogr.wkbMultiLineString or
-          geometryType == ogr.wkbMultiPolygon or
-          geometryType == ogr.wkbGeometryCollection or
-          geometryType == ogr.wkbMultiPoint25D or
-          geometryType == ogr.wkbMultiLineString25D or
-          geometryType == ogr.wkbMultiPolygon25D or
-          geometryType == ogr.wkbGeometryCollection25D):
-        return parseCollection(ogrgeometry)
-    else:
-        l.warning("unhandled geometry, type: " + str(geometryType))
-        return None
-
+        if (geometryType == ogr.wkbPoint or
+            geometryType == ogr.wkbPoint25D):
+            returngeometries.append(parsePoint(ogrgeometry))
+        elif (geometryType == ogr.wkbLineString or
+              geometryType == ogr.wkbLinearRing or
+              geometryType == ogr.wkbLineString25D):
+#             geometryType == ogr.wkbLinearRing25D does not exist
+            returngeometries.append(parseLineString(ogrgeometry))
+        elif (geometryType == ogr.wkbPolygon or
+              geometryType == ogr.wkbPolygon25D):
+            returngeometries.append(parsePolygon(ogrgeometry))
+        elif (geometryType == ogr.wkbMultiPoint or
+              geometryType == ogr.wkbMultiLineString or
+              geometryType == ogr.wkbMultiPolygon or
+              geometryType == ogr.wkbGeometryCollection or
+              geometryType == ogr.wkbMultiPoint25D or
+              geometryType == ogr.wkbMultiLineString25D or
+              geometryType == ogr.wkbMultiPolygon25D or
+              geometryType == ogr.wkbGeometryCollection25D):
+            returngeometries.extend(parseCollection(ogrgeometry))
+        else:
+            l.warning("unhandled geometry, type: " + str(geometryType))
+            returngeometries.append(None)
+            
+    return returngeometries
+            
 def parsePoint(ogrgeometry):
     x = ogrgeometry.GetX()
     y = ogrgeometry.GetY()
@@ -409,12 +415,19 @@ def parseCollection(ogrgeometry):
             for i in range(1, ogrgeometry.GetGeometryRef(polygon).GetGeometryCount()):
                 interior = parseLineString(ogrgeometry.GetGeometryRef(polygon).GetGeometryRef(i))
                 geometry.members.append((interior, "inner"))
+        return [geometry]
+    elif (geometryType == ogr.wkbMultiLineString or
+          geometryType == ogr.wkbMultiLineString25D):
+        geometries = []
+        for linestring in range(ogrgeometry.GetGeometryCount()):
+            geometries.append(parseLineString(ogrgeometry.GetGeometryRef(linestring)))
+        return geometries
     else:
         geometry = Relation()
         for i in range(ogrgeometry.GetGeometryCount()):
             member = parseGeometry(ogrgeometry.GetGeometryRef(i))
             geometry.members.append((member, "member"))
-        return geometry
+        return [geometry]
 
 def mergePoints():
     l.debug("Merging points")
