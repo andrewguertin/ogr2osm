@@ -1,6 +1,9 @@
 '''
 A translation function for Township of Langley Roads_shp.shp roads data. 
 
+The shapefiles are availble under the PDDL as "Roads" from the Township of Langley 
+at http://www.tol.ca/ServicesContact/OpenData/OpenDataCatalogue.aspx
+
 The following fields are dropped from the source shapefile:
 
 Field           Definition                  Reason
@@ -33,13 +36,16 @@ Internal mappings:
 OWNER=Provincial    <==> ROADTYPE=Highway Ramp|Ministry of Transportation
 OWNER=Regional       ==> ROADTYPE=Major Road Network
 
-Source value                            OSM value                   Shortcomings
+OSM Mappings
+Source value                            OSM value                           Shortcomings
 ROADTYPE=Arterial                       highway=secondary           
 ROADTYPE=Collector                      highway=tertiary            
-ROADTYPE=Local                          highway=residential         May need to be changed to highway=unclassified for some roads
-ROADTYPE=Lane                           highway=service             Source data does not indicate if service=alley
-ROADTYPE=Ministry of Transportation     highway=primary|motorway    Huristics used to differentiate between highways. Double-check these
-
+ROADTYPE=Local                          highway=residential                 May need to be changed to highway=unclassified for some roads
+ROADTYPE=Lane                           highway=service                     Source data does not indicate if service=alley
+ROADTYPE=Gravel                         highway=residential surface=gravel
+ROADTYPE=Ministry of Transportation     highway=primary|motorway            Huristics used to differentiate between highways. Double-check these
+ROADTYPE=Major Road Network             highway=secondary                   Does not identify Highway 1A as primary
+ROADTYPE=Highway Ramp                   highway=motorway_link
 '''
 
 def translateName(rawname):
@@ -82,14 +88,16 @@ def filterTags(attrs):
     
     if 'ROADNAME' in attrs:
         translated = translateName(attrs['ROADNAME'].title())
-        if translated != '(Lane)':
+        if translated != '(Lane)' and translated != '(Ramp)':
             tags['name'] = translated
         
     if 'STREETID' in attrs:
         tags['tol:streetid'] = attrs['STREETID'].strip()
         
     if 'ROADTYPE' in attrs:
-        if attrs['ROADTYPE'].strip() == 'Arterial':
+        if attrs['ROADTYPE'].strip() == 'Major Road Network':
+            tags['highway'] = 'secondary'
+        elif attrs['ROADTYPE'].strip() == 'Arterial':
             tags['highway'] = 'secondary'
         elif attrs['ROADTYPE'].strip() == 'Collector':
             tags['highway'] = 'tertiary'
@@ -97,16 +105,20 @@ def filterTags(attrs):
             tags['highway'] = 'residential'
         elif attrs['ROADTYPE'].strip() == 'Lane':
             tags['highway'] = 'service'
+        elif attrs['ROADTYPE'].strip() == 'Gravel':
+            tags['highway'] = 'residential'
+            tags['surface'] = 'gravel'
         elif attrs['ROADTYPE'].strip() == 'Ministry of Transportation':
-            if tags['name'] == '#1 Highway':
+            if translated and (translated == '#1 Highway' or translated == 'Golden Ears Bridge'):
                 tags['highway'] = 'motorway'
             else:
                 tags['highway'] = 'primary'
-                
+        elif attrs['ROADTYPE'].strip() == 'Highway Ramp':
+            tags['highway'] = 'motorway_link'
         else:
             tags['highway'] = 'road'
             tags['tol:roadtype'] = attrs['ROADTYPE'].strip()
-        
+            
         tags['source'] = 'Township of Langley GIS Data'
 
     return tags
