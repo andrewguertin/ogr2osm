@@ -483,31 +483,41 @@ def output():
 
     w = XMLWriter(open(options.outputFile, 'w'))
     w.start("osm", version='0.6', generator='uvmogr2osm')
-
+    w.data("\n")
     for node in nodes:
         w.start("node", visible="true", id=str(node.id), lat=str(node.y), lon=str(node.x))
         if node in featuresmap:
             for (key, value) in featuresmap[node].tags.items():
                 w.element("tag", k=key, v=value)
+                w.data("\n")
         w.end("node")
+        w.data("\n")
 
     for way in ways:
         w.start("way", visible="true", id=str(way.id))
+        w.data("\n")
         for node in way.points:
             w.element("nd", ref=str(node.id))
+            w.data("\n")
         if way in featuresmap:
             for (key, value) in featuresmap[way].tags.items():
                 w.element("tag", k=key, v=value)
+                w.data("\n")
         w.end("way")
+        w.data("\n")
 
     for relation in relations:
         w.start("relation", visible="true", id=str(relation.id))
+        w.data("\n")
         for (member, role) in relation.members:
             w.element("member", type="way", ref=str(member.id), role=role)
+            w.data("\n")
         if relation in featuresmap:
             for (key, value) in featuresmap[relation].tags.items():
                 w.element("tag", k=key, v=value)
+                w.data("\n")
         w.end("relation")
+        w.data("\n")
 
     w.end("osm")
 
