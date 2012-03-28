@@ -19,6 +19,9 @@ def filterFeature(ogrfeature, fieldNames, reproject):
         layer == "VA-BLDG-NON UVM"):
         return ogrfeature
     elif (layer == "VA-BLDG-ATTRIBUTES" and len(ogrfeature.GetFieldAsString("Text")) == 4):
+        # Ignore CFC Soccer Stands - has no building outline
+        if ogrfeature.GetFieldAsString("Text") == "0979":
+            return
         return ogrfeature
     else:
         return
