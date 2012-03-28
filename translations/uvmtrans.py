@@ -71,13 +71,27 @@ def preOutputTransform(geometries, features):
         page.close
         bldgf.tags["name"] = name
 
+    # Remove the building code nodes
     for feature in [f for f in features if f.tags["Layer"] == "VA-BLDG-ATTRIBUTES"]:
         print "Removing a text node: " + feature.tags["Text"]
         features.remove(feature)
+        feature.geometry.removeparent(feature)
+    
+    # Remove buildings that were not given a buildingid
+    for feature in [f for f in features if "uvm:buildingid" not in f.tags]:
+        features.remove(feature)
         try:
             geometries.remove(feature.geometry)
+            try:
+                for point in set(feature.geometry.points):
+                    try:
+                        point.removeparent(feature.geometry)
+                    except:
+                        print "What went wrong here???"
+            except:
+                print "Failed -- geometry.points does not exist -- not a way"
         except:
-            print "Failed -- two features with same geometry??"
+            print "Failed -- two building features with same geometry??"
 
     uvmjson(geometries, features)
 
