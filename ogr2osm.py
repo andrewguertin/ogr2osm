@@ -202,11 +202,18 @@ class Geometry(object):
     id = 0
     def __init__(self):
         self.id = getNewID()
+        self.parents = set()
         global geometries
         geometries.append(self)
     def replacejwithi(self, i, j):
         pass
-
+    def addparent(self, parent):
+        self.parents.add(parent)
+    def removeparent(self, parent, shoulddestroy=True):
+        self.parents.discard(parent)
+        if shoulddestroy and len(self.parents) == 0:
+            global geometries
+            geometries.remove(self)
 
 class Point(Geometry):
     def __init__(self, x, y):
@@ -222,6 +229,8 @@ class Way(Geometry):
         self.points = []
     def replacejwithi(self, i, j):
         self.points = map(lambda x: i if x == j else x, self.points)
+        j.removeparent(self)
+        i.addparent(self)
 
 class Relation(Geometry):
     def __init__(self):
@@ -229,6 +238,8 @@ class Relation(Geometry):
         self.members = []
     def replacejwithi(self, i, j):
         self.members = map(lambda x: i if x == j else x, self.members)
+        j.removeparent(self)
+        i.addparent(self)
 
 class Feature(object):
     geometry = None
@@ -239,6 +250,8 @@ class Feature(object):
     def replacejwithi(self, i, j):
         if self.geometry == j:
             self.geometry = i
+        j.removeparent(self)
+        i.addparent(self)
 
 def getFileData(filename):
     if not os.path.isfile(filename):
@@ -331,7 +344,8 @@ def parseFeature(ogrfeature, fieldNames, reproject):
         feature = Feature()
         feature.tags = getFeatureTags(ogrfeature, fieldNames)
         feature.geometry = geometry
-
+        geometry.addparent(feature)
+        
         translations.filterFeaturePost(feature, ogrfeature, ogrgeometry)
     
 
@@ -380,6 +394,7 @@ def parseLineString(ogrgeometry):
         (x, y, unused) = ogrgeometry.GetPoint(i)
         mypoint = Point(x, y)
         geometry.points.append(mypoint)
+        mypoint.addparent(geometry)
     return geometry
 
 def parsePolygon(ogrgeometry):
@@ -393,12 +408,14 @@ def parsePolygon(ogrgeometry):
         geometry = Relation()
         try:
             exterior = parseLineString(ogrgeometry.GetGeometryRef(0))
+            exterior.addparent(geometry)
         except:
             l.warning("Polygon with no exterior ring?")
             return None
         geometry.members.append((exterior, "outer"))
         for i in range(1, ogrgeometry.GetGeometryCount()):
             interior = parseLineString(ogrgeometry.GetGeometryRef(i))
+            interior.addparent(geometry)
             geometry.members.append((interior, "inner"))
         return geometry
 
@@ -411,9 +428,11 @@ def parseCollection(ogrgeometry):
         geometry = Relation()
         for polygon in range(ogrgeometry.GetGeometryCount()):
             exterior = parseLineString(ogrgeometry.GetGeometryRef(polygon).GetGeometryRef(0))
+            exterior.addparent(geometry)
             geometry.members.append((exterior, "outer"))
             for i in range(1, ogrgeometry.GetGeometryRef(polygon).GetGeometryCount()):
                 interior = parseLineString(ogrgeometry.GetGeometryRef(polygon).GetGeometryRef(i))
+                interior.addparent(geometry)
                 geometry.members.append((interior, "inner"))
         return [geometry]
     elif (geometryType == ogr.wkbMultiLineString or
@@ -426,36 +445,17 @@ def parseCollection(ogrgeometry):
         geometry = Relation()
         for i in range(ogrgeometry.GetGeometryCount()):
             member = parseGeometry(ogrgeometry.GetGeometryRef(i))
+            member.addparent(geometry)
             geometry.members.append((member, "member"))
         return [geometry]
 
 def mergePoints():
     l.debug("Merging points")
-    global geometries, features
+    global geometries
     points = [geometry for geometry in geometries if type(geometry) == Point]
     
-    # Set up a list of everything that uses each point, for easier (O(n))
-    # replacement of duplicates
-    # TODO: Move this in to the geometry classes themselves, and keep track of
-    # it throughout all changes instead of doing all the work here
-    pointusage = {}
-    for i in points:
-        pointusage[i] = []
-    for geometry in geometries:
-        if type(geometry) == Point:
-            pass
-        elif type(geometry) == Way:
-            for i in geometry.points:
-                pointusage[i].append(geometry)
-        elif type(geometry) == Relation:
-            for i in geometry.members:
-                if type(i) == Point:
-                    pointusage[i].append(geometry)
-    for feature in features:
-        if type(feature.geometry) == Point:
-            pointusage[feature.geometry].append(feature)
-    
     # Make list of Points at each location
+    l.debug("Making list")
     pointcoords = {}
     for i in points:
         try:
@@ -464,13 +464,12 @@ def mergePoints():
             pointcoords[(i.x, i.y)] = [i]
 
     # Use list to get rid of extras
+    l.debug("Checking list")
     for (location, pointsatloc) in pointcoords.items():
         if len(pointsatloc) > 1:
-            for point in pointsatloc:
-                if pointsatloc.index(point) is not 0:
-                    for ref in pointusage[point]:
-                        ref.replacejwithi(pointsatloc[0], point)
-                    geometries.remove(point)
+            for point in pointsatloc[1:]:
+                for parent in set(point.parents):
+                    parent.replacejwithi(pointsatloc[0], point)
         
 def output():
     l.debug("Outputting XML")
