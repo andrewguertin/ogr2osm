@@ -77,11 +77,13 @@ parser.add_option("-d", "--debug-tags", dest="debugTags", action="store_true",
                   help="Output the tags for every feature parsed.")
 parser.add_option("-f", "--force", dest="forceOverwrite", action="store_true",
                   help="Force overwrite of output file.")
+parser.add_option("--no-upload-false", dest="noUploadFalse", action="store_true",
+                    help="Omit upload=false from the completed file to surpress JOSM warnings when uploading.")
 
 parser.set_defaults(sourceEPSG=None, sourcePROJ4=None, verbose=False,
                     debugTags=False,
                     translationMethod=None, outputFile=None,
-                    forceOverwrite=False)
+                    forceOverwrite=False, noUploadFalse=False)
 
 # Parse and process arguments
 (options, args) = parser.parse_args()
@@ -483,7 +485,11 @@ def output():
     featuresmap = {feature.geometry : feature for feature in features}
 
     w = XMLWriter(open(options.outputFile, 'w'))
-    w.start("osm", version='0.6', generator='uvmogr2osm')
+    if options.noUploadFalse:
+        w.start("osm", version='0.6', generator='uvmogr2osm')
+    else:
+        w.start("osm", version='0.6', generator='uvmogr2osm', upload='false')
+        
     w.data("\n")
     for node in nodes:
         w.start("node", visible="true", id=str(node.id), lat=str(node.y), lon=str(node.x))
