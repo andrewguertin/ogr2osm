@@ -49,6 +49,8 @@ from optparse import OptionParser
 import logging as l
 l.basicConfig(level=l.DEBUG, format="%(message)s")
 
+from xml.sax.saxutils import escape
+
 from osgeo import ogr
 from osgeo import osr
 
@@ -487,7 +489,7 @@ def output():
         w.start("node", visible="true", id=str(node.id), lat=str(node.y), lon=str(node.x))
         if node in featuresmap:
             for (key, value) in featuresmap[node].tags.items():
-                w.element("tag", k=key, v=value)
+                w.element("tag", k=escape(key), v=escape(value))
                 w.data("\n")
         w.end("node")
         w.data("\n")
@@ -500,7 +502,7 @@ def output():
             w.data("\n")
         if way in featuresmap:
             for (key, value) in featuresmap[way].tags.items():
-                w.element("tag", k=key, v=value)
+                w.element("tag", k=escape(key), v=escape(value))
                 w.data("\n")
         w.end("way")
         w.data("\n")
@@ -509,11 +511,11 @@ def output():
         w.start("relation", visible="true", id=str(relation.id))
         w.data("\n")
         for (member, role) in relation.members:
-            w.element("member", type="way", ref=str(member.id), role=role)
+            w.element("member", type="way", ref=str(member.id), role=escape(role))
             w.data("\n")
         if relation in featuresmap:
             for (key, value) in featuresmap[relation].tags.items():
-                w.element("tag", k=key, v=value)
+                w.element("tag", k=escape(key), v=escape(value))
                 w.data("\n")
         w.end("relation")
         w.data("\n")
