@@ -258,7 +258,7 @@ class Feature(object):
         i.addparent(self)
 
 def getFileData(filename):
-    if not os.path.isfile(filename):
+    if not os.path.exists(filename):
         parser.error("the file '%s' does not exist" % (filename))
     dataSource = ogr.Open(filename, 0)  # 0 means read-only
     if dataSource is None:
