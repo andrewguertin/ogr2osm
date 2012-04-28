@@ -462,9 +462,9 @@ def mergePoints():
     l.debug("Making list")
     pointcoords = {}
     for i in points:
-        try:
+        if (i.x, i.y) in pointcoords:
             pointcoords[(i.x, i.y)].append(i)
-        except KeyError:
+        else:
             pointcoords[(i.x, i.y)] = [i]
 
     # Use list to get rid of extras
