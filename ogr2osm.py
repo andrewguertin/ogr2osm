@@ -232,7 +232,7 @@ class Way(Geometry):
         Geometry.__init__(self)
         self.points = []
     def replacejwithi(self, i, j):
-        self.points = map(lambda x: i if x == j else x, self.points)
+        self.points = [i if x == j else x for x in self.points]
         j.removeparent(self)
         i.addparent(self)
 
@@ -241,7 +241,7 @@ class Relation(Geometry):
         Geometry.__init__(self)
         self.members = []
     def replacejwithi(self, i, j):
-        self.members = map(lambda x: i if x == j else x, self.members)
+        self.members = [i if x == j else x for x in self.members]
         j.removeparent(self)
         i.addparent(self)
 
@@ -462,9 +462,9 @@ def mergePoints():
     l.debug("Making list")
     pointcoords = {}
     for i in points:
-        try:
+        if (i.x, i.y) in pointcoords:
             pointcoords[(i.x, i.y)].append(i)
-        except KeyError:
+        else:
             pointcoords[(i.x, i.y)] = [i]
 
     # Use list to get rid of extras
