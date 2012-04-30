@@ -51,24 +51,24 @@ converted to an OSM tag.
 Usage
 -----
 
-Usage: ogr2osm.py SRCFILE
+	Usage: ogr2osm.py SRCFILE
 
-Options:
-  -h, --help            show this help message and exit
-  -t TRANSLATION, --translation=TRANSLATION
-                        Select the attribute-tags translation method. See the
-                        translations/ directory for valid values.
-  -o OUTPUT, --output=OUTPUT
-                        Set destination .osm file name and location.
-  -e EPSG_CODE, --epsg=EPSG_CODE
-                        EPSG code of source file. Do not include the 'EPSG:'
-                        prefix. If specified, overrides projection from source
-                        metadata if it exists.
-  -p PROJ4_STRING, --proj4=PROJ4_STRING
-                        PROJ.4 string. If specified, overrides projection from
-                        source metadata if it exists.
-  -v, --verbose
-  -d, --debug-tags      Output the tags for every feature parsed.
-  -f, --force           Force overwrite of output file.
-  --no-upload-false     Omit upload=false from the completed file to surpress
-                        JOSM warnings when uploading.
+	Options:
+	  -h, --help            show this help message and exit
+	  -t TRANSLATION, --translation=TRANSLATION
+							Select the attribute-tags translation method. See the
+							translations/ directory for valid values.
+	  -o OUTPUT, --output=OUTPUT
+							Set destination .osm file name and location.
+	  -e EPSG_CODE, --epsg=EPSG_CODE
+							EPSG code of source file. Do not include the 'EPSG:'
+							prefix. If specified, overrides projection from source
+							metadata if it exists.
+	  -p PROJ4_STRING, --proj4=PROJ4_STRING
+							PROJ.4 string. If specified, overrides projection from
+							source metadata if it exists.
+	  -v, --verbose
+	  -d, --debug-tags      Output the tags for every feature parsed.
+	  -f, --force           Force overwrite of output file.
+	  --no-upload-false     Omit upload=false from the completed file to surpress
+							JOSM warnings when uploading.
