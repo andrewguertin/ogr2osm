@@ -390,13 +390,19 @@ def parsePoint(ogrgeometry):
     geometry = Point(x, y)
     return geometry
 
+linestring_points = {}
 def parseLineString(ogrgeometry):
     geometry = Way()
     # LineString.GetPoint() returns a tuple, so we can't call parsePoint on it
     # and instead have to create the point ourself
+    global linestring_points
     for i in range(ogrgeometry.GetPointCount()):
         (x, y, unused) = ogrgeometry.GetPoint(i)
-        mypoint = Point(x, y)
+        if (x,y) in linestring_points:
+            mypoint = linestring_points[(x,y)]
+        else:
+            mypoint = Point(x, y)
+            linestring_points[(x,y)] = mypoint
         geometry.points.append(mypoint)
         mypoint.addparent(geometry)
     return geometry
