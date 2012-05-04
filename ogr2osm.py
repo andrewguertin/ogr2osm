@@ -534,6 +534,8 @@ def output():
         for (member, role) in relation.members:
             w.element("member", type="way", ref=str(member.id), role=escape(role))
             w.data("\n")
+        w.element("tag", k='type', v='multipolygon')
+        w.data("\n")
         if relation in featuresmap:
             for (key, value) in featuresmap[relation].tags.items():
                 w.element("tag", k=escape(key), v=escape(value))
