@@ -77,6 +77,10 @@ parser.add_option("-d", "--debug-tags", dest="debugTags", action="store_true",
                   help="Output the tags for every feature parsed.")
 parser.add_option("-f", "--force", dest="forceOverwrite", action="store_true",
                   help="Force overwrite of output file.")
+                  
+parser.add_option("--no-memory-copy", dest="noMemoryCopy", action="store_true",
+                    help="Do not make an in-memory working copy")
+                    
 parser.add_option("--no-upload-false", dest="noUploadFalse", action="store_true",
                     help="Omit upload=false from the completed file to surpress JOSM warnings when uploading.")
 
@@ -260,11 +264,16 @@ class Feature(object):
 def getFileData(filename):
     if not os.path.exists(filename):
         parser.error("the file '%s' does not exist" % (filename))
-    dataSource = ogr.Open(filename, 0)  # 0 means read-only
-    if dataSource is None:
+        
+    fileDataSource = ogr.Open(filename, 0)  # 0 means read-only
+    if fileDataSource is None:
         l.error('OGR failed to open ' + filename + ', format may be unsuported')
         sys.exit(1)
-    return dataSource
+    if options.noMemoryCopy:
+        return fileDataSource
+    else:
+        memoryDataSource = ogr.GetDriverByName('Memory').CopyDataSource(fileDataSource,'memoryCopy')
+        return memoryDataSource
 
 def parseData(dataSource):
     l.debug("Parsing data")
