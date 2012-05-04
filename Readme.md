@@ -70,5 +70,6 @@ Usage
 	  -v, --verbose
 	  -d, --debug-tags      Output the tags for every feature parsed.
 	  -f, --force           Force overwrite of output file.
+	  --no-memory-copy      Do not make an in-memory working copy
 	  --no-upload-false     Omit upload=false from the completed file to surpress
 							JOSM warnings when uploading.
