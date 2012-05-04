@@ -14,12 +14,10 @@ the software you need.
 
 
 
-To install ogr2osm and download the default translations the following commands 
+To install ogr2osm and download the default translations the following command 
 can be used:
 
-	git clone git://github.com/pnorman/ogr2osm.git
-	cd ogr2osm
-	git submodule update --init
+	git clone --recursive git://github.com/pnorman/ogr2osm.git
 	
 To update
 
