@@ -77,6 +77,9 @@ parser.add_option("-d", "--debug-tags", dest="debugTags", action="store_true",
                   help="Output the tags for every feature parsed.")
 parser.add_option("-f", "--force", dest="forceOverwrite", action="store_true",
                   help="Force overwrite of output file.")
+
+parser.add_option("--significant-digits",  dest="significantDigits", type=int,
+                  help="Number of decimal places for coordinates", default=9)
                   
 parser.add_option("--no-memory-copy", dest="noMemoryCopy", action="store_true",
                     help="Do not make an in-memory working copy")
@@ -394,8 +397,8 @@ def parseGeometry(ogrgeometries):
     return returngeometries
             
 def parsePoint(ogrgeometry):
-    x = ogrgeometry.GetX()
-    y = ogrgeometry.GetY()
+    x = int(round(ogrgeometry.GetX() * 10**options.significantDigits))
+    y = int(round(ogrgeometry.GetY() * 10**options.significantDigits))
     geometry = Point(x, y)
     return geometry
 
@@ -407,6 +410,7 @@ def parseLineString(ogrgeometry):
     global linestring_points
     for i in range(ogrgeometry.GetPointCount()):
         (x, y, unused) = ogrgeometry.GetPoint(i)
+        (x, y) = (int(round(x*10**options.significantDigits)), int(round(y*10**options.significantDigits)))
         if (x,y) in linestring_points:
             mypoint = linestring_points[(x,y)]
         else:
@@ -507,7 +511,7 @@ def output():
         
     w.data("\n")
     for node in nodes:
-        w.start("node", visible="true", id=str(node.id), lat=str(node.y), lon=str(node.x))
+        w.start("node", visible="true", id=str(node.id), lat=str(node.y*10**-options.significantDigits), lon=str(node.x*10**-options.significantDigits))
         if node in featuresmap:
             for (key, value) in featuresmap[node].tags.items():
                 w.element("tag", k=escape(key), v=escape(value))
