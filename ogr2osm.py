@@ -81,6 +81,9 @@ parser.add_option("-f", "--force", dest="forceOverwrite", action="store_true",
 parser.add_option("--significant-digits",  dest="significantDigits", type=int,
                   help="Number of decimal places for coordinates", default=9)
                   
+parser.add_option("--rounding-digits",  dest="roundingDigits", type=int,
+                  help="Number of decimal places for rounding", default=7)
+
 parser.add_option("--no-memory-copy", dest="noMemoryCopy", action="store_true",
                     help="Do not make an in-memory working copy")
                     
@@ -410,12 +413,13 @@ def parseLineString(ogrgeometry):
     global linestring_points
     for i in range(ogrgeometry.GetPointCount()):
         (x, y, unused) = ogrgeometry.GetPoint(i)
+        (rx, ry) = (int(round(x*10**options.roundingDigits)), int(round(y*10**options.roundingDigits)))
         (x, y) = (int(round(x*10**options.significantDigits)), int(round(y*10**options.significantDigits)))
-        if (x,y) in linestring_points:
-            mypoint = linestring_points[(x,y)]
+        if (rx,ry) in linestring_points:
+            mypoint = linestring_points[(rx,ry)]
         else:
             mypoint = Point(x, y)
-            linestring_points[(x,y)] = mypoint
+            linestring_points[(rx,ry)] = mypoint
         geometry.points.append(mypoint)
         mypoint.addparent(geometry)
     return geometry
@@ -481,10 +485,12 @@ def mergePoints():
     l.debug("Making list")
     pointcoords = {}
     for i in points:
-        if (i.x, i.y) in pointcoords:
-            pointcoords[(i.x, i.y)].append(i)
+        rx = int(round(i.x * 10**(options.significantDigits-options.roundingDigits)))
+        ry = int(round(i.y * 10**(options.significantDigits-options.roundingDigits)))
+        if (rx, ry) in pointcoords:
+            pointcoords[(rx, ry)].append(i)
         else:
-            pointcoords[(i.x, i.y)] = [i]
+            pointcoords[(rx, ry)] = [i]
 
     # Use list to get rid of extras
     l.debug("Checking list")
