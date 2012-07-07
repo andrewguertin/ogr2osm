@@ -9,7 +9,7 @@ Installation
 
 ogr2osm requires gdal with python bindings. Depending on the file formats 
 you want to read you may have to compile it yourself but there should be no 
-issues with shapefiles. On Ubuntu you can run `sudo apt-get python-gdal` to get
+issues with shapefiles. On Ubuntu you can run `sudo apt-get install -y python-gdal` to get
 the software you need.
 
 
