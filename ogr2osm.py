@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-""" ogr2osm beta
+''' ogr2osm beta
 
 This program takes any vector data understadable by OGR and outputs an OSM file
 with that data.
@@ -24,9 +24,12 @@ latitude-longitude)
 For additional usage information, run ogr2osm.py --help
 
 
+Copyright (c) 2012 Paul Norman
+<penorman@mac.com>
+Released under the MIT license: http://opensource.org/licenses/mit-license.php
 
 Copyright (c) 2012 The University of Vermont
-<andrew.guertin@uvm.edu
+<andrew.guertin@uvm.edu>
 Released under the MIT license: http://opensource.org/licenses/mit-license.php
 
 Based very heavily on code released under the following terms:
@@ -40,7 +43,7 @@ Based very heavily on code released under the following terms:
 #  think this stuff is worth it, you can buy me a beer in return.             #
 ###############################################################################
 
-"""
+'''
 
 
 import sys
