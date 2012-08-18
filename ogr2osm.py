@@ -455,16 +455,19 @@ def parseCollection(ogrgeometry):
     geometryType = ogrgeometry.GetGeometryType()
     if (geometryType == ogr.wkbMultiPolygon or
         geometryType == ogr.wkbMultiPolygon25D):
-        geometry = Relation()
-        for polygon in range(ogrgeometry.GetGeometryCount()):
-            exterior = parseLineString(ogrgeometry.GetGeometryRef(polygon).GetGeometryRef(0))
-            exterior.addparent(geometry)
-            geometry.members.append((exterior, "outer"))
-            for i in range(1, ogrgeometry.GetGeometryRef(polygon).GetGeometryCount()):
-                interior = parseLineString(ogrgeometry.GetGeometryRef(polygon).GetGeometryRef(i))
-                interior.addparent(geometry)
-                geometry.members.append((interior, "inner"))
-        return [geometry]
+        if ogrgeometry.GetGeometryCount() > 1:
+            geometry = Relation()
+            for polygon in range(ogrgeometry.GetGeometryCount()):
+                exterior = parseLineString(ogrgeometry.GetGeometryRef(polygon).GetGeometryRef(0))
+                exterior.addparent(geometry)
+                geometry.members.append((exterior, "outer"))
+                for i in range(1, ogrgeometry.GetGeometryRef(polygon).GetGeometryCount()):
+                    interior = parseLineString(ogrgeometry.GetGeometryRef(polygon).GetGeometryRef(i))
+                    interior.addparent(geometry)
+                    geometry.members.append((interior, "inner"))
+            return [geometry]
+        else:
+           return [parsePolygon(ogrgeometry.GetGeometryRef(0))]
     elif (geometryType == ogr.wkbMultiLineString or
           geometryType == ogr.wkbMultiLineString25D):
         geometries = []
