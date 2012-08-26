@@ -515,7 +515,7 @@ def output():
     relations = [geometry for geometry in geometries if type(geometry) == Relation]
     featuresmap = {feature.geometry : feature for feature in features}
 
-    w = XMLWriter(open(options.outputFile, 'w'))
+    w = XMLWriter(open(options.outputFile, 'w'), 'utf-8')
     if options.noUploadFalse:
         w.start("osm", version='0.6', generator='uvmogr2osm')
     else:
