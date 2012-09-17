@@ -1,2 +1,6 @@
 *.pyc
 *.osm
+*.shp
+*.shx
+*.prj
+*.dbf
