@@ -68,6 +68,10 @@ Usage
 	  -v, --verbose
 	  -d, --debug-tags      Output the tags for every feature parsed.
 	  -f, --force           Force overwrite of output file.
+	  --significant-digits=SIGNIFICANTDIGITS
+							Number of decimal places for coordinates
+	  --rounding-digits=ROUNDINGDIGITS
+							Number of decimal places for rounding
 	  --no-memory-copy      Do not make an in-memory working copy
 	  --no-upload-false     Omit upload=false from the completed file to surpress
 							JOSM warnings when uploading.
