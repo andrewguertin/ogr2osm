@@ -57,7 +57,37 @@ from xml.sax.saxutils import escape
 from osgeo import ogr
 from osgeo import osr
 
-from SimpleXMLWriter import XMLWriter
+
+'''
+
+See http://lxml.de/tutorial.html for the source of the includes
+
+lxml should be the fastest method
+
+'''
+
+try:
+    from lxml import etree
+    print("running with lxml.etree")
+except ImportError:
+    try:
+        # Python 2.5
+        import xml.etree.ElementTree as etree
+        print("running with ElementTree on Python 2.5+")
+    except ImportError:
+        try:
+            # normal cElementTree install
+            import cElementTree as etree
+            print("running with cElementTree")
+        except ImportError:
+            try:
+                # normal ElementTree install
+                import elementtree.ElementTree as etree
+                print("running with ElementTree")
+            except ImportError:
+                print("Failed to import ElementTree from any known place")
+                raise
+
 
 # Setup program usage
 usage = "usage: %prog SRCFILE"
@@ -515,51 +545,47 @@ def output():
     relations = [geometry for geometry in geometries if type(geometry) == Relation]
     featuresmap = {feature.geometry : feature for feature in features}
 
-    w = XMLWriter(open(options.outputFile, 'w'), 'utf-8')
     if options.noUploadFalse:
-        w.start("osm", version='0.6', generator='uvmogr2osm')
+        output_root = etree.Element('osm',{'version':'0.6', 'generator':'uvmogr2osm'})
     else:
-        w.start("osm", version='0.6', generator='uvmogr2osm', upload='false')
-        
-    w.data("\n")
+        output_root = etree.Element('osm',{'version':'0.6', 'generator':'uvmogr2osm', 'upload':'false'})
+
     for node in nodes:
-        w.start("node", visible="true", id=str(node.id), lat=str(node.y*10**-options.significantDigits), lon=str(node.x*10**-options.significantDigits))
+        xmlobject = etree.Element('node', {'visible':'true', 'id':str(node.id), 'lat':str(node.y*10**-options.significantDigits), 'lon':str(node.x*10**-options.significantDigits)})
         if node in featuresmap:
             for (key, value) in featuresmap[node].tags.items():
-                w.element("tag", k=escape(key), v=escape(value))
-                w.data("\n")
-        w.end("node")
-        w.data("\n")
-
+                tag = etree.Element('tag', {'k':escape(key), 'v':escape(value)})
+                xmlobject.append(tag)
+        output_root.append(xmlobject)
+        
     for way in ways:
-        w.start("way", visible="true", id=str(way.id))
-        w.data("\n")
+        xmlobject = etree.Element('way', {'visible':'true', 'id':str(way.id)})
         for node in way.points:
-            w.element("nd", ref=str(node.id))
-            w.data("\n")
+            nd = etree.Element('nd',{'ref':str(node.id)})
+            xmlobject.append(nd)
         if way in featuresmap:
             for (key, value) in featuresmap[way].tags.items():
-                w.element("tag", k=escape(key), v=escape(value))
-                w.data("\n")
-        w.end("way")
-        w.data("\n")
+                tag = etree.Element('tag', {'k':escape(key), 'v':escape(value)})
+                xmlobject.append(tag)
+        output_root.append(xmlobject)
+    
+        for relation in relations:
+            xmlobject = etree.Element('relation', {'visible':'true', 'id':str(relation.id)})
+            for (member, role) in relation.members:
+                member = etree.Element('member', {'type':'way', 'ref':str(member.id), 'role':escape(role)})
+                xmlobject.append(member)
+            
+            tag = etree.Element('tag', {'k':'type', 'v':'multipolygon'})
+            xmlobject.append(tag)
+            if relation in featuresmap:
+                for (key, value) in featuresmap[relation].tags.items():
+                    tag = etree.Element('tag', {'k':escape(key), 'v':escape(value)})
+                    xmlobject.append(tag)
+            output_root.append(xmlobject)
 
-    for relation in relations:
-        w.start("relation", visible="true", id=str(relation.id))
-        w.data("\n")
-        for (member, role) in relation.members:
-            w.element("member", type="way", ref=str(member.id), role=escape(role))
-            w.data("\n")
-        w.element("tag", k='type', v='multipolygon')
-        w.data("\n")
-        if relation in featuresmap:
-            for (key, value) in featuresmap[relation].tags.items():
-                w.element("tag", k=escape(key), v=escape(value))
-                w.data("\n")
-        w.end("relation")
-        w.data("\n")
-
-    w.end("osm")
+    
+    output_tree = etree.ElementTree(output_root)
+    output_tree.write(options.outputFile, encoding='utf-8')
 
 
 # Main flow

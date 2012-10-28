@@ -5,6 +5,7 @@
 usage:
 
   $ ogr2osm -h
+  running with lxml.etree
   Usage: ogr2osm.py SRCFILE
   
   Options:
@@ -62,4 +63,5 @@ test1:
   Making list
   Checking list
   Outputting XML
-  $ xmllint test1.osm | diff -uNr - $TESTDIR/test1.xml
+  running with lxml.etree
+  $ xmllint --format test1.osm | diff -uNr - $TESTDIR/test1.xml
