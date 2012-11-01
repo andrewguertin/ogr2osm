@@ -52,8 +52,6 @@ from optparse import OptionParser
 import logging as l
 l.basicConfig(level=l.DEBUG, format="%(message)s")
 
-from xml.sax.saxutils import escape
-
 from osgeo import ogr
 from osgeo import osr
 
@@ -558,7 +556,7 @@ def output():
             xmlobject = etree.Element('node', {'visible':'true', 'id':str(node.id), 'lat':str(node.y*10**-options.significantDigits), 'lon':str(node.x*10**-options.significantDigits)})
             if node in featuresmap:
                 for (key, value) in featuresmap[node].tags.items():
-                    tag = etree.Element('tag', {'k':escape(key), 'v':escape(value)})
+                    tag = etree.Element('tag', {'k':key, 'v':value})
                     xmlobject.append(tag)
             f.write(etree.tostring(xmlobject))
             
@@ -569,21 +567,21 @@ def output():
                 xmlobject.append(nd)
             if way in featuresmap:
                 for (key, value) in featuresmap[way].tags.items():
-                    tag = etree.Element('tag', {'k':escape(key), 'v':escape(value)})
+                    tag = etree.Element('tag', {'k':key, 'v':value})
                     xmlobject.append(tag)
             f.write(etree.tostring(xmlobject))
         
             for relation in relations:
                 xmlobject = etree.Element('relation', {'visible':'true', 'id':str(relation.id)})
                 for (member, role) in relation.members:
-                    member = etree.Element('member', {'type':'way', 'ref':str(member.id), 'role':escape(role)})
+                    member = etree.Element('member', {'type':'way', 'ref':str(member.id), 'role':role})
                     xmlobject.append(member)
                 
                 tag = etree.Element('tag', {'k':'type', 'v':'multipolygon'})
                 xmlobject.append(tag)
                 if relation in featuresmap:
                     for (key, value) in featuresmap[relation].tags.items():
-                        tag = etree.Element('tag', {'k':escape(key), 'v':escape(value)})
+                        tag = etree.Element('tag', {'k':key, 'v':value})
                         xmlobject.append(tag)
                 f.write(etree.tostring(xmlobject))
 
