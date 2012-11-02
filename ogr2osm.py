@@ -125,6 +125,10 @@ parser.add_option("--no-upload-false", dest="noUploadFalse", action="store_true"
 parser.add_option("--positive-id", dest="positiveID", action="store_true",
                     help=optparse.SUPPRESS_HELP)
 
+# Add version attributes. Again, this can cause big problems so surpress the help
+parser.add_option("--add-version", dest="addVersion", action="store_true",
+                    help=optparse.SUPPRESS_HELP)
+
 parser.set_defaults(sourceEPSG=None, sourcePROJ4=None, verbose=False,
                     debugTags=False,
                     translationMethod=None, outputFile=None,
@@ -560,7 +564,10 @@ def output():
 
         
         for node in nodes:
-            xmlobject = etree.Element('node', {'visible':'true', 'id':str(node.id), 'lat':str(node.y*10**-options.significantDigits), 'lon':str(node.x*10**-options.significantDigits)})
+            if options.addVersion:
+                xmlobject = etree.Element('node', {'visible':'true', 'version':'1', 'id':str(node.id), 'lat':str(node.y*10**-options.significantDigits), 'lon':str(node.x*10**-options.significantDigits)})
+            else:
+                xmlobject = etree.Element('node', {'visible':'true', 'id':str(node.id), 'lat':str(node.y*10**-options.significantDigits), 'lon':str(node.x*10**-options.significantDigits)})
             if node in featuresmap:
                 for (key, value) in featuresmap[node].tags.items():
                     tag = etree.Element('tag', {'k':key, 'v':value})
@@ -568,7 +575,10 @@ def output():
             f.write(etree.tostring(xmlobject))
             
         for way in ways:
-            xmlobject = etree.Element('way', {'visible':'true', 'id':str(way.id)})
+            if options.addVersion:
+                xmlobject = etree.Element('way', {'visible':'true', 'version':'1', 'id':str(way.id)})
+            else:
+                xmlobject = etree.Element('way', {'visible':'true', 'id':str(way.id)})
             for node in way.points:
                 nd = etree.Element('nd',{'ref':str(node.id)})
                 xmlobject.append(nd)
@@ -579,7 +589,10 @@ def output():
             f.write(etree.tostring(xmlobject))
         
             for relation in relations:
-                xmlobject = etree.Element('relation', {'visible':'true', 'id':str(relation.id)})
+                if options.addVersion:
+                    xmlobject = etree.Element('relation', {'visible':'true', 'version':'1', 'id':str(relation.id)})
+                else:
+                    xmlobject = etree.Element('relation', {'visible':'true', 'id':str(relation.id)})
                 for (member, role) in relation.members:
                     member = etree.Element('member', {'type':'way', 'ref':str(member.id), 'role':role})
                     xmlobject.append(member)
