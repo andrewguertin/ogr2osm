@@ -48,7 +48,7 @@ Based very heavily on code released under the following terms:
 
 import sys
 import os
-from optparse import OptionParser
+import optparse
 import logging as l
 l.basicConfig(level=l.DEBUG, format="%(message)s")
 
@@ -66,30 +66,30 @@ lxml should be the fastest method
 
 try:
     from lxml import etree
-    print("running with lxml.etree")
+    l.debug("running with lxml.etree")
 except ImportError:
     try:
         # Python 2.5
         import xml.etree.ElementTree as etree
-        print("running with ElementTree on Python 2.5+")
+        l.debug("running with ElementTree on Python 2.5+")
     except ImportError:
         try:
             # normal cElementTree install
             import cElementTree as etree
-            print("running with cElementTree")
+            l.debug("running with cElementTree")
         except ImportError:
             try:
                 # normal ElementTree install
                 import elementtree.ElementTree as etree
-                print("running with ElementTree")
+                l.debug("running with ElementTree")
             except ImportError:
-                print("Failed to import ElementTree from any known place")
+                l.error("Failed to import ElementTree from any known place")
                 raise
 
 
 # Setup program usage
 usage = "usage: %prog SRCFILE"
-parser = OptionParser(usage=usage)
+parser = optparse.OptionParser(usage=usage)
 parser.add_option("-t", "--translation", dest="translationMethod",
                   metavar="TRANSLATION",
                   help="Select the attribute-tags translation method. See " +

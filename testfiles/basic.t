@@ -36,6 +36,7 @@ usage:
 test1:
   $ rm -f test1.osm
   $ ogr2osm $TESTDIR/shapefiles/test1.shp
+  running with lxml.etree
   Preparing to convert file .* (re)
   Will try to detect projection from source metadata, or fall back to EPSG:4326
   Using default translations
@@ -63,5 +64,4 @@ test1:
   Making list
   Checking list
   Outputting XML
-  running with lxml.etree
   $ xmllint --format test1.osm | diff -uNr - $TESTDIR/test1.xml
