@@ -588,22 +588,22 @@ def output():
                     xmlobject.append(tag)
             f.write(etree.tostring(xmlobject))
         
-            for relation in relations:
-                if options.addVersion:
-                    xmlobject = etree.Element('relation', {'visible':'true', 'version':'1', 'id':str(relation.id)})
-                else:
-                    xmlobject = etree.Element('relation', {'visible':'true', 'id':str(relation.id)})
-                for (member, role) in relation.members:
-                    member = etree.Element('member', {'type':'way', 'ref':str(member.id), 'role':role})
-                    xmlobject.append(member)
-                
-                tag = etree.Element('tag', {'k':'type', 'v':'multipolygon'})
-                xmlobject.append(tag)
-                if relation in featuresmap:
-                    for (key, value) in featuresmap[relation].tags.items():
-                        tag = etree.Element('tag', {'k':key, 'v':value})
-                        xmlobject.append(tag)
-                f.write(etree.tostring(xmlobject))
+        for relation in relations:
+            if options.addVersion:
+                xmlobject = etree.Element('relation', {'visible':'true', 'version':'1', 'id':str(relation.id)})
+            else:
+                xmlobject = etree.Element('relation', {'visible':'true', 'id':str(relation.id)})
+            for (member, role) in relation.members:
+                member = etree.Element('member', {'type':'way', 'ref':str(member.id), 'role':role})
+                xmlobject.append(member)
+            
+            tag = etree.Element('tag', {'k':'type', 'v':'multipolygon'})
+            xmlobject.append(tag)
+            if relation in featuresmap:
+                for (key, value) in featuresmap[relation].tags.items():
+                    tag = etree.Element('tag', {'k':key, 'v':value})
+                    xmlobject.append(tag)
+            f.write(etree.tostring(xmlobject))
 
         
         f.write('</osm>')
