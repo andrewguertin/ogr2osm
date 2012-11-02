@@ -121,6 +121,10 @@ parser.add_option("--no-memory-copy", dest="noMemoryCopy", action="store_true",
 parser.add_option("--no-upload-false", dest="noUploadFalse", action="store_true",
                     help="Omit upload=false from the completed file to surpress JOSM warnings when uploading.")
 
+# Positive IDs can cause big problems if used inappropriately so hide the help for this
+parser.add_option("--positive-id", dest="positiveID", action="store_true",
+                    help=optparse.SUPPRESS_HELP)
+
 parser.set_defaults(sourceEPSG=None, sourcePROJ4=None, verbose=False,
                     debugTags=False,
                     translationMethod=None, outputFile=None,
@@ -239,7 +243,10 @@ features = []
 elementIdCounter = 0
 def getNewID():
     global elementIdCounter
-    elementIdCounter -= 1
+    if options.positiveID:
+        elementIdCounter += 1
+    else:
+        elementIdCounter -= 1
     return elementIdCounter
 
 # Classes
