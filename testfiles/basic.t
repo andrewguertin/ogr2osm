@@ -201,3 +201,34 @@ version:
   Checking list
   Outputting XML
   $ xmllint --format test1.osm | diff -uNr - $TESTDIR/version.xml
+
+timestamp:
+  $ ogr2osm -f --add-timestamp $TESTDIR/shapefiles/test1.shp
+  running with lxml.etree
+  Preparing to convert file .* (re)
+  Will try to detect projection from source metadata, or fall back to EPSG:4326
+  Using default translations
+  Using default filterLayer
+  Using default filterFeature
+  Using default filterTags
+  Using default filterFeaturePost
+  Using default preOutputTransform
+  Parsing data
+  Detected projection metadata:
+  PROJCS["NAD_1983_UTM_Zone_10N",
+      GEOGCS["GCS_NAD83 [CSRS] 4.0.0.BC.1.GVRD_2005-04-05",
+          DATUM["North_American_Datum_1983",
+              SPHEROID["GRS_1980",6378137.0,298.257222101]],
+          PRIMEM["Greenwich",0.0],
+          UNIT["Degree",0.017453292519943295]],
+      PROJECTION["Transverse_Mercator"],
+      PARAMETER["False_Easting",500000.0],
+      PARAMETER["False_Northing",0.0],
+      PARAMETER["Central_Meridian",-123.0],
+      PARAMETER["Scale_Factor",0.9996],
+      PARAMETER["Latitude_Of_Origin",0.0],
+      UNIT["Meter",1.0]]
+  Merging points
+  Making list
+  Checking list
+  Outputting XML
