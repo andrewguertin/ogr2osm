@@ -153,7 +153,10 @@ if len(args) < 1:
 elif len(args) > 1:
     parser.error("you have specified too many arguments, " +
                  "only supply the source filename")
-
+                 
+if options.addTimestamp:
+    from datetime import datetime
+    
 # Input and output file
 # if no output file given, use the basename of the source but with .osm
 sourceFile = os.path.realpath(args[0])
