@@ -562,23 +562,30 @@ def output():
         else:
             f.write('<?xml version="1.0"?>\n<osm version="0.6" upload="false" generator="uvmogr2osm">')
 
+        # Build up a dict for optional settings
+        attributes = {}
+        if options.addVersion:
+            attributes.update({'version':'1'})
         
         for node in nodes:
-            if options.addVersion:
-                xmlobject = etree.Element('node', {'visible':'true', 'version':'1', 'id':str(node.id), 'lat':str(node.y*10**-options.significantDigits), 'lon':str(node.x*10**-options.significantDigits)})
-            else:
-                xmlobject = etree.Element('node', {'visible':'true', 'id':str(node.id), 'lat':str(node.y*10**-options.significantDigits), 'lon':str(node.x*10**-options.significantDigits)})
+            xmlattrs = {'visible':'true','id':str(node.id), 'lat':str(node.y*10**-options.significantDigits), 'lon':str(node.x*10**-options.significantDigits)}
+            xmlattrs.update(attributes)
+            
+            xmlobject = etree.Element('node', xmlattrs)
+            
             if node in featuresmap:
                 for (key, value) in featuresmap[node].tags.items():
                     tag = etree.Element('tag', {'k':key, 'v':value})
                     xmlobject.append(tag)
+                    
             f.write(etree.tostring(xmlobject))
             
         for way in ways:
-            if options.addVersion:
-                xmlobject = etree.Element('way', {'visible':'true', 'version':'1', 'id':str(way.id)})
-            else:
-                xmlobject = etree.Element('way', {'visible':'true', 'id':str(way.id)})
+            xmlattrs = {'visible':'true', 'id':str(way.id)}
+            xmlattrs.update(attributes)
+            
+            xmlobject = etree.Element('way', xmlattrs)
+            
             for node in way.points:
                 nd = etree.Element('nd',{'ref':str(node.id)})
                 xmlobject.append(nd)
@@ -586,13 +593,15 @@ def output():
                 for (key, value) in featuresmap[way].tags.items():
                     tag = etree.Element('tag', {'k':key, 'v':value})
                     xmlobject.append(tag)
+                    
             f.write(etree.tostring(xmlobject))
         
         for relation in relations:
-            if options.addVersion:
-                xmlobject = etree.Element('relation', {'visible':'true', 'version':'1', 'id':str(relation.id)})
-            else:
-                xmlobject = etree.Element('relation', {'visible':'true', 'id':str(relation.id)})
+            xmlattrs = {'visible':'true', 'id':str(way.id)}
+            xmlattrs.update(attributes)
+            
+            xmlobject = etree.Element('relation', xmlattrs)
+            
             for (member, role) in relation.members:
                 member = etree.Element('member', {'type':'way', 'ref':str(member.id), 'role':role})
                 xmlobject.append(member)
@@ -603,9 +612,9 @@ def output():
                 for (key, value) in featuresmap[relation].tags.items():
                     tag = etree.Element('tag', {'k':key, 'v':value})
                     xmlobject.append(tag)
+                    
             f.write(etree.tostring(xmlobject))
 
-        
         f.write('</osm>')
 
 
