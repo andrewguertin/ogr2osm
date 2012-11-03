@@ -129,6 +129,10 @@ parser.add_option("--positive-id", dest="positiveID", action="store_true",
 parser.add_option("--add-version", dest="addVersion", action="store_true",
                     help=optparse.SUPPRESS_HELP)
 
+# Add timestamp attributes. Again, this can cause big problems so surpress the help
+parser.add_option("--add-timestamp", dest="addTimestamp", action="store_true",
+                    help=optparse.SUPPRESS_HELP)
+
 parser.set_defaults(sourceEPSG=None, sourcePROJ4=None, verbose=False,
                     debugTags=False,
                     translationMethod=None, outputFile=None,
@@ -566,7 +570,10 @@ def output():
         attributes = {}
         if options.addVersion:
             attributes.update({'version':'1'})
-        
+            
+        if options.addTimestamp:
+            attributes.update({'timestamp':datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')})
+            
         for node in nodes:
             xmlattrs = {'visible':'true','id':str(node.id), 'lat':str(node.y*10**-options.significantDigits), 'lon':str(node.x*10**-options.significantDigits)}
             xmlattrs.update(attributes)
