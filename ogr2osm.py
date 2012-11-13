@@ -188,7 +188,7 @@ if options.translationMethod:
         # first check translations in the subdir translations of cwd
         sys.path.insert(0, os.path.join(os.getcwd(), "translations"))
         # then check subdir of script dir
-        sys.path.insert(1, os.path.join(os.path.abspath(__file__), "translations"))
+        sys.path.insert(1, os.path.join(os.path.dirname(__file__), "translations"))
         # (the cwd will also be checked implicityly)
 
     # strip .py if present, as import wants just the module name
@@ -197,11 +197,16 @@ if options.translationMethod:
 
     try:
         translations = __import__(options.translationMethod)
-    except:
+    except ImportError as e:
         parser.error("Could not load translation method '%s'. Translation "
                "script must be in your current directory, or in the "
                "translations/ subdirectory of your current or ogr2osm.py "
-               "directory.") % (options.translationMethod)
+               "directory. The following directories have been considered: %s"
+               % (options.translationMethod, str(sys.path)))
+    except SyntaxError as e:
+        parser.error("Syntax error in '%s'. Translation script is malformed:\n%s"
+               % (options.translationMethod, e))
+
     l.info("Successfully loaded '%s' translation method ('%s')."
            % (options.translationMethod, os.path.realpath(translations.__file__)))
 else:
