@@ -232,6 +232,7 @@ timestamp:
   Making list
   Checking list
   Outputting XML
+
 utf8:
   $ ogr2osm -f $TESTDIR/shapefiles/sp_usinas.shp
   running with lxml.etree
@@ -254,3 +255,4 @@ utf8:
   Making list
   Checking list
   Outputting XML
+  $ xmllint --format sp_usinas.osm | diff -uNr - $TESTDIR/utf8.xml
