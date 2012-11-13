@@ -232,3 +232,25 @@ timestamp:
   Making list
   Checking list
   Outputting XML
+utf8:
+  $ ogr2osm -f $TESTDIR/shapefiles/sp_usinas.shp
+  running with lxml.etree
+  Preparing to convert file .* (re)
+  Will try to detect projection from source metadata, or fall back to EPSG:4326
+  Using default translations
+  Using default filterLayer
+  Using default filterFeature
+  Using default filterTags
+  Using default filterFeaturePost
+  Using default preOutputTransform
+  Parsing data
+  Detected projection metadata:
+  GEOGCS["GCS_South_American_1969",
+      DATUM["South_American_Datum_1969",
+          SPHEROID["GRS_1967_Modified",6378160.0,298.25]],
+      PRIMEM["Greenwich",0.0],
+      UNIT["Degree",0.0174532925199433]]
+  Merging points
+  Making list
+  Checking list
+  Outputting XML
