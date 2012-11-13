@@ -48,6 +48,7 @@ Based very heavily on code released under the following terms:
 
 import sys
 import os
+import codecs
 import optparse
 import logging as l
 l.basicConfig(level=l.DEBUG, format="%(message)s")
@@ -567,7 +568,7 @@ def output():
     featuresmap = {feature.geometry : feature for feature in features}
 
     # Open up the output file with the system default buffering
-    with open(options.outputFile, 'w', -1) as f:
+    with codecs.open(options.outputFile, 'w', 'utf-8', buffering=-1) as f:
         
         if options.noUploadFalse:
             f.write('<?xml version="1.0"?>\n<osm version="0.6" generator="uvmogr2osm">')
@@ -590,7 +591,7 @@ def output():
             
             if node in featuresmap:
                 for (key, value) in featuresmap[node].tags.items():
-                    tag = etree.Element('tag', {'k':key, 'v':value})
+                    tag = etree.Element('tag', {'k':unicode(key,'utf-8'), 'v':unicode(value, 'utf-8')})
                     xmlobject.append(tag)
                     
             f.write(etree.tostring(xmlobject))
@@ -606,7 +607,7 @@ def output():
                 xmlobject.append(nd)
             if way in featuresmap:
                 for (key, value) in featuresmap[way].tags.items():
-                    tag = etree.Element('tag', {'k':key, 'v':value})
+                    tag = etree.Element('tag', {'k':unicode(key,'utf-8'), 'v':unicode(value, 'utf-8')})
                     xmlobject.append(tag)
                     
             f.write(etree.tostring(xmlobject))
@@ -625,7 +626,7 @@ def output():
             xmlobject.append(tag)
             if relation in featuresmap:
                 for (key, value) in featuresmap[relation].tags.items():
-                    tag = etree.Element('tag', {'k':key, 'v':value})
+                    tag = etree.Element('tag', {'k':unicode(key,'utf-8'), 'v':unicode(value, 'utf-8')})
                     xmlobject.append(tag)
                     
             f.write(etree.tostring(xmlobject))
