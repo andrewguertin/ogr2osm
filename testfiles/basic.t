@@ -25,6 +25,8 @@ usage:
     -v, --verbose         
     -d, --debug-tags      Output the tags for every feature parsed.
     -f, --force           Force overwrite of output file.
+    --encoding=ENCODING   Encoding of the source file. If specified, overrides
+                          the default of utf-8
     --significant-digits=SIGNIFICANTDIGITS
                           Number of decimal places for coordinates
     --rounding-digits=ROUNDINGDIGITS

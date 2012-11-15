@@ -110,6 +110,10 @@ parser.add_option("-d", "--debug-tags", dest="debugTags", action="store_true",
 parser.add_option("-f", "--force", dest="forceOverwrite", action="store_true",
                   help="Force overwrite of output file.")
 
+parser.add_option("--encoding", dest="encoding",
+                  help="Encoding of the source file. If specified, overrides " +
+                  "the default of utf-8", default="utf-8")
+
 parser.add_option("--significant-digits",  dest="significantDigits", type=int,
                   help="Number of decimal places for coordinates", default=9)
                   
