@@ -258,3 +258,22 @@ utf8:
   Checking list
   Outputting XML
   $ xmllint --format sp_usinas.osm | diff -uNr - $TESTDIR/utf8.xml
+
+japanese:
+  $ ogr2osm --encoding shift_jis -f $TESTDIR/shapefiles/japanese.shp
+  running with lxml.etree
+  Preparing to convert file .* (re)
+  Will try to detect projection from source metadata, or fall back to EPSG:4326
+  Using default translations
+  Using default filterLayer
+  Using default filterFeature
+  Using default filterTags
+  Using default filterFeaturePost
+  Using default preOutputTransform
+  Parsing data
+  No projection metadata, falling back to EPSG:4326
+  Merging points
+  Making list
+  Checking list
+  Outputting XML
+  $ xmllint --format japanese.osm | diff -uNr - $TESTDIR/japanese.xml
