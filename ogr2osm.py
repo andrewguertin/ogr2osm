@@ -616,7 +616,7 @@ def output():
             f.write(etree.tostring(xmlobject))
         
         for relation in relations:
-            xmlattrs = {'visible':'true', 'id':str(way.id)}
+            xmlattrs = {'visible':'true', 'id':str(relation.id)}
             xmlattrs.update(attributes)
             
             xmlobject = etree.Element('relation', xmlattrs)
