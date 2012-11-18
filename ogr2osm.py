@@ -125,6 +125,9 @@ parser.add_option("--no-memory-copy", dest="noMemoryCopy", action="store_true",
 parser.add_option("--no-upload-false", dest="noUploadFalse", action="store_true",
                     help="Omit upload=false from the completed file to surpress JOSM warnings when uploading.")
 
+parser.add_option("--id", dest="id", type=int, default=0,
+                    help="ID to start counting from for the output file. Defaults to 0.")
+
 # Positive IDs can cause big problems if used inappropriately so hide the help for this
 parser.add_option("--positive-id", dest="positiveID", action="store_true",
                     help=optparse.SUPPRESS_HELP)
@@ -260,7 +263,8 @@ geometries = []
 features = []
 
 # Helper function to get a new ID
-elementIdCounter = 0
+elementIdCounter = options.id
+
 def getNewID():
     global elementIdCounter
     if options.positiveID:

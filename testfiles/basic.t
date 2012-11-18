@@ -34,6 +34,8 @@ usage:
     --no-memory-copy      Do not make an in-memory working copy
     --no-upload-false     Omit upload=false from the completed file to surpress
                           JOSM warnings when uploading.
+    --id=ID               ID to start counting from for the output file.
+                          Defaults to 0.
 						  
 test1:
   $ rm -f test1.osm
