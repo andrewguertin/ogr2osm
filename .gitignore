@@ -4,4 +4,8 @@
 *.shx
 *.prj
 *.dbf
+*.SHP
+*.SHX
+*.PRJ
+*.DBF
 .DS_Store
