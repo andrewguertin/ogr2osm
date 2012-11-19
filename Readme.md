@@ -65,9 +65,11 @@ Usage
 	  -p PROJ4_STRING, --proj4=PROJ4_STRING
 							PROJ.4 string. If specified, overrides projection from
 							source metadata if it exists.
-	  -v, --verbose
+	  -v, --verbose         
 	  -d, --debug-tags      Output the tags for every feature parsed.
 	  -f, --force           Force overwrite of output file.
+	  --encoding=ENCODING   Encoding of the source file. If specified, overrides
+							the default of utf-8
 	  --significant-digits=SIGNIFICANTDIGITS
 							Number of decimal places for coordinates
 	  --rounding-digits=ROUNDINGDIGITS
@@ -75,3 +77,5 @@ Usage
 	  --no-memory-copy      Do not make an in-memory working copy
 	  --no-upload-false     Omit upload=false from the completed file to surpress
 							JOSM warnings when uploading.
+	  --id=ID               ID to start counting from for the output file.
+							Defaults to 0.
