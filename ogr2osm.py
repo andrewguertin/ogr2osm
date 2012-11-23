@@ -578,9 +578,9 @@ def output():
     with open(options.outputFile, 'w', -1) as f:
         
         if options.noUploadFalse:
-            f.write('<?xml version="1.0"?>\n<osm version="0.6" generator="uvmogr2osm">')
+            f.write('<?xml version="1.0"?>\n<osm version="0.6" generator="uvmogr2osm">\n')
         else:
-            f.write('<?xml version="1.0"?>\n<osm version="0.6" upload="false" generator="uvmogr2osm">')
+            f.write('<?xml version="1.0"?>\n<osm version="0.6" upload="false" generator="uvmogr2osm">\n')
 
         # Build up a dict for optional settings
         attributes = {}
@@ -602,6 +602,7 @@ def output():
                     xmlobject.append(tag)
                     
             f.write(etree.tostring(xmlobject))
+            f.write('\n')
             
         for way in ways:
             xmlattrs = {'visible':'true', 'id':str(way.id)}
@@ -618,7 +619,8 @@ def output():
                     xmlobject.append(tag)
                     
             f.write(etree.tostring(xmlobject))
-        
+            f.write('\n')
+            
         for relation in relations:
             xmlattrs = {'visible':'true', 'id':str(relation.id)}
             xmlattrs.update(attributes)
@@ -637,7 +639,8 @@ def output():
                     xmlobject.append(tag)
                     
             f.write(etree.tostring(xmlobject))
-
+            f.write('\n')
+            
         f.write('</osm>')
 
 
