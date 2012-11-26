@@ -203,7 +203,7 @@ if options.translationMethod:
         options.translationMethod = os.path.basename(root)
 
     try:
-        translations = __import__(options.translationMethod)
+        translations = __import__(options.translationMethod, fromlist = [''])
     except ImportError as e:
         parser.error("Could not load translation method '%s'. Translation "
                "script must be in your current directory, or in the "
