@@ -393,9 +393,13 @@ def getLayerFields(layer):
     return fieldNames
 
 def getFeatureTags(ogrfeature, fieldNames):
+    '''
+    This function builds up a dictionary with the source data attributes and passes them to the filterTags function, returning the result.
+    '''
     tags = {}
     for i in range(len(fieldNames)):
-        tags[fieldNames[i].decode(options.encoding)] = ogrfeature.GetFieldAsString(i).decode(options.encoding)
+        # The field needs to be put into the appropriate encoding and leading or trailing spaces stripped
+        tags[fieldNames[i].decode(options.encoding)] = ogrfeature.GetFieldAsString(i).decode(options.encoding).strip()
     return translations.filterTags(tags)
 
 def parseLayer(layer):

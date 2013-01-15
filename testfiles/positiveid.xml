@@ -529,8 +529,8 @@
     <tag k="GCROADS" v="114A AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -538,15 +538,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="114A Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12722"/>
+    <tag k="RIGHTFROM" v="12722"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12723"/>
+    <tag k="LEFTFROM" v="12723"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -559,16 +559,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="114A"/>
-    <tag k="LEFTTO" v="      12799"/>
+    <tag k="LEFTTO" v="12799"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12798"/>
+    <tag k="RIGHTTO" v="12798"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="4">
     <nd ref="5"/>
@@ -577,8 +577,8 @@
     <tag k="GCROADS" v="115A AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              4.800000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="4.800000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -586,15 +586,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="115A Ave"/>
-    <tag k="LC_COST" v="             12.539999999999999"/>
+    <tag k="LC_COST" v="12.539999999999999"/>
     <tag k="WTR_VEHCL" v="Tandem and One Ton"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12802"/>
+    <tag k="RIGHTFROM" v="12802"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12801"/>
+    <tag k="LEFTFROM" v="12801"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -607,16 +607,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="115A"/>
-    <tag k="LEFTTO" v="      12899"/>
+    <tag k="LEFTTO" v="12899"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12898"/>
+    <tag k="RIGHTTO" v="12898"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="7">
     <nd ref="8"/>
@@ -627,8 +627,8 @@
     <tag k="GCROADS" v="113 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -636,15 +636,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="113 Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12478"/>
+    <tag k="RIGHTFROM" v="12478"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12477"/>
+    <tag k="LEFTFROM" v="12477"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -657,16 +657,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="113"/>
-    <tag k="LEFTTO" v="      12551"/>
+    <tag k="LEFTTO" v="12551"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12552"/>
+    <tag k="RIGHTTO" v="12552"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="12">
     <nd ref="13"/>
@@ -675,8 +675,8 @@
     <tag k="GCROADS" v="124 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -684,15 +684,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="124 St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11302"/>
+    <tag k="RIGHTFROM" v="11302"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11301"/>
+    <tag k="LEFTFROM" v="11301"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -705,16 +705,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="124"/>
-    <tag k="LEFTTO" v="      11369"/>
+    <tag k="LEFTTO" v="11369"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11368"/>
+    <tag k="RIGHTTO" v="11368"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="15">
     <nd ref="16"/>
@@ -723,8 +723,8 @@
     <tag k="GCROADS" v="112B AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -732,15 +732,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="112B Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12652"/>
+    <tag k="RIGHTFROM" v="12652"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12651"/>
+    <tag k="LEFTFROM" v="12651"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -753,16 +753,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="112B"/>
-    <tag k="LEFTTO" v="      12719"/>
+    <tag k="LEFTTO" v="12719"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12720"/>
+    <tag k="RIGHTTO" v="12720"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="18">
     <nd ref="19"/>
@@ -772,8 +772,8 @@
     <tag k="GCROADS" v="114 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -781,15 +781,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="114 Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12684"/>
+    <tag k="RIGHTFROM" v="12684"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12687"/>
+    <tag k="LEFTFROM" v="12687"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -802,16 +802,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="114"/>
-    <tag k="LEFTTO" v="      12729"/>
+    <tag k="LEFTTO" v="12729"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12728"/>
+    <tag k="RIGHTTO" v="12728"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="22">
     <nd ref="23"/>
@@ -820,8 +820,8 @@
     <tag k="GCROADS" v="124 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.900000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.900000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -829,15 +829,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="124 St"/>
-    <tag k="LC_COST" v="             19.000000000000000"/>
+    <tag k="LC_COST" v="19.000000000000000"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11402"/>
+    <tag k="RIGHTFROM" v="11402"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11401"/>
+    <tag k="LEFTFROM" v="11401"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -850,16 +850,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="124"/>
-    <tag k="LEFTTO" v="      11599"/>
+    <tag k="LEFTTO" v="11599"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11598"/>
+    <tag k="RIGHTTO" v="11598"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="25">
     <nd ref="11"/>
@@ -868,8 +868,8 @@
     <tag k="GCROADS" v="113 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -877,15 +877,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="113 Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12570"/>
+    <tag k="RIGHTFROM" v="12570"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12563"/>
+    <tag k="LEFTFROM" v="12563"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -898,16 +898,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="113"/>
-    <tag k="LEFTTO" v="      12669"/>
+    <tag k="LEFTTO" v="12669"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12666"/>
+    <tag k="RIGHTTO" v="12666"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="27">
     <nd ref="28"/>
@@ -917,8 +917,8 @@
     <tag k="GCROADS" v="KING GEORGE BLVD"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          6"/>
-    <tag k="YTD_COST" v="            442.560000000000002"/>
+    <tag k="NO_LANE" v="6"/>
+    <tag k="YTD_COST" v="442.560000000000002"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -926,15 +926,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="King George Blvd"/>
-    <tag k="LC_COST" v="           2563.670000000000073"/>
+    <tag k="LC_COST" v="2563.670000000000073"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12750"/>
+    <tag k="RIGHTFROM" v="12750"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12745"/>
+    <tag k="LEFTFROM" v="12745"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -947,16 +947,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="KING GEORGE"/>
-    <tag k="LEFTTO" v="      12799"/>
+    <tag k="LEFTTO" v="12799"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12798"/>
+    <tag k="RIGHTTO" v="12798"/>
     <tag k="SNW_RTEZON" v="1 W"/>
     <tag k="SPEED" v="60"/>
     <tag k="DISR_ROUTE" v="Secondary"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="31">
     <nd ref="32"/>
@@ -966,8 +966,8 @@
     <tag k="GCROADS" v="115B AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -975,15 +975,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="115B Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12652"/>
+    <tag k="RIGHTFROM" v="12652"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12651"/>
+    <tag k="LEFTFROM" v="12651"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -996,16 +996,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="115B"/>
-    <tag k="LEFTTO" v="      12749"/>
+    <tag k="LEFTTO" v="12749"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12748"/>
+    <tag k="RIGHTTO" v="12748"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="35">
     <nd ref="36"/>
@@ -1014,8 +1014,8 @@
     <tag k="GCROADS" v="114B AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1023,15 +1023,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="114B Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12752"/>
+    <tag k="RIGHTFROM" v="12752"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12751"/>
+    <tag k="LEFTFROM" v="12751"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -1044,16 +1044,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="114B"/>
-    <tag k="LEFTTO" v="      12799"/>
+    <tag k="LEFTTO" v="12799"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12798"/>
+    <tag k="RIGHTTO" v="12798"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="38">
     <nd ref="39"/>
@@ -1062,8 +1062,8 @@
     <tag k="GCROADS" v="124 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1071,15 +1071,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="124 St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11278"/>
+    <tag k="RIGHTFROM" v="11278"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11279"/>
+    <tag k="LEFTFROM" v="11279"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -1092,16 +1092,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="124"/>
-    <tag k="LEFTTO" v="      11291"/>
+    <tag k="LEFTTO" v="11291"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11290"/>
+    <tag k="RIGHTTO" v="11290"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="41">
     <nd ref="34"/>
@@ -1110,8 +1110,8 @@
     <tag k="GCROADS" v="115B AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1119,15 +1119,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="115B Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12750"/>
+    <tag k="RIGHTFROM" v="12750"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12751"/>
+    <tag k="LEFTFROM" v="12751"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -1140,16 +1140,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="115B"/>
-    <tag k="LEFTTO" v="      12799"/>
+    <tag k="LEFTTO" v="12799"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12798"/>
+    <tag k="RIGHTTO" v="12798"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="43">
     <nd ref="17"/>
@@ -1158,8 +1158,8 @@
     <tag k="GCROADS" v="112B AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1167,15 +1167,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="112B Ave"/>
-    <tag k="LC_COST" v="            770.620000000000005"/>
+    <tag k="LC_COST" v="770.620000000000005"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12722"/>
+    <tag k="RIGHTFROM" v="12722"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12723"/>
+    <tag k="LEFTFROM" v="12723"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -1188,16 +1188,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="112B"/>
-    <tag k="LEFTTO" v="      12799"/>
+    <tag k="LEFTTO" v="12799"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12798"/>
+    <tag k="RIGHTTO" v="12798"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="45">
     <nd ref="46"/>
@@ -1209,8 +1209,8 @@
     <tag k="GCROADS" v="112 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="            149.870000000000005"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="149.870000000000005"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1218,15 +1218,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="112 Ave"/>
-    <tag k="LC_COST" v="            301.670000000000016"/>
+    <tag k="LC_COST" v="301.670000000000016"/>
     <tag k="WTR_VEHCL" v="Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12402"/>
+    <tag k="RIGHTFROM" v="12402"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12401"/>
+    <tag k="LEFTFROM" v="12401"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -1239,16 +1239,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="112"/>
-    <tag k="LEFTTO" v="      12449"/>
+    <tag k="LEFTTO" v="12449"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12448"/>
+    <tag k="RIGHTTO" v="12448"/>
     <tag k="SNW_RTEZON" v="1 W"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="51">
     <nd ref="23"/>
@@ -1257,8 +1257,8 @@
     <tag k="GCROADS" v="114 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1266,15 +1266,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="114 Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12402"/>
+    <tag k="RIGHTFROM" v="12402"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12401"/>
+    <tag k="LEFTFROM" v="12401"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -1287,16 +1287,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="114"/>
-    <tag k="LEFTTO" v="      12549"/>
+    <tag k="LEFTTO" v="12549"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12548"/>
+    <tag k="RIGHTTO" v="12548"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="53">
     <nd ref="54"/>
@@ -1311,8 +1311,8 @@
     <tag k="GCROADS" v="112 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="            211.090000000000003"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="211.090000000000003"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1320,15 +1320,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="112 Ave"/>
-    <tag k="LC_COST" v="            574.210000000000036"/>
+    <tag k="LC_COST" v="574.210000000000036"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12230"/>
+    <tag k="RIGHTFROM" v="12230"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12231"/>
+    <tag k="LEFTFROM" v="12231"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -1341,16 +1341,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="112"/>
-    <tag k="LEFTTO" v="      12399"/>
+    <tag k="LEFTTO" v="12399"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12398"/>
+    <tag k="RIGHTTO" v="12398"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="61">
     <nd ref="3"/>
@@ -1359,8 +1359,8 @@
     <tag k="GCROADS" v="114A AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              4.800000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="4.800000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1368,15 +1368,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="114A Ave"/>
-    <tag k="LC_COST" v="             12.539999999999999"/>
+    <tag k="LC_COST" v="12.539999999999999"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12802"/>
+    <tag k="RIGHTFROM" v="12802"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12801"/>
+    <tag k="LEFTFROM" v="12801"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -1389,16 +1389,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="114A"/>
-    <tag k="LEFTTO" v="      12899"/>
+    <tag k="LEFTTO" v="12899"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12898"/>
+    <tag k="RIGHTTO" v="12898"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="63">
     <nd ref="64"/>
@@ -1409,8 +1409,8 @@
     <tag k="GCROADS" v=""/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          1"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="1"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1418,7 +1418,7 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v=""/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
     <tag k="RIGHTFROM" v=""/>
@@ -1448,7 +1448,7 @@
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v=""/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          4"/>
+    <tag k="RC_TYPE" v="4"/>
   </way>
   <way visible="true" id="68">
     <nd ref="69"/>
@@ -1457,8 +1457,8 @@
     <tag k="GCROADS" v="113B AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             22.280000000000001"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="22.280000000000001"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1466,15 +1466,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="113B Ave"/>
-    <tag k="LC_COST" v="             40.340000000000003"/>
+    <tag k="LC_COST" v="40.340000000000003"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12722"/>
+    <tag k="RIGHTFROM" v="12722"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12721"/>
+    <tag k="LEFTFROM" v="12721"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -1487,16 +1487,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="113B"/>
-    <tag k="LEFTTO" v="      12799"/>
+    <tag k="LEFTTO" v="12799"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12798"/>
+    <tag k="RIGHTTO" v="12798"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="71">
     <nd ref="39"/>
@@ -1506,8 +1506,8 @@
     <tag k="GCROADS" v="112A AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="            191.340000000000003"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="191.340000000000003"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1515,15 +1515,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="112A Ave"/>
-    <tag k="LC_COST" v="            265.600000000000023"/>
+    <tag k="LC_COST" v="265.600000000000023"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12400"/>
+    <tag k="RIGHTFROM" v="12400"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v="2006/10/30"/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12413"/>
+    <tag k="LEFTFROM" v="12413"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -1536,16 +1536,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="112A"/>
-    <tag k="LEFTTO" v="      12475"/>
+    <tag k="LEFTTO" v="12475"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12548"/>
+    <tag k="RIGHTTO" v="12548"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="74">
     <nd ref="75"/>
@@ -1554,8 +1554,8 @@
     <tag k="GCROADS" v="115A AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             30.800000000000001"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="30.800000000000001"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1563,15 +1563,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="115A Ave"/>
-    <tag k="LC_COST" v="             48.859999999999999"/>
+    <tag k="LC_COST" v="48.859999999999999"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12744"/>
+    <tag k="RIGHTFROM" v="12744"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12745"/>
+    <tag k="LEFTFROM" v="12745"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -1584,16 +1584,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="115A"/>
-    <tag k="LEFTTO" v="      12775"/>
+    <tag k="LEFTTO" v="12775"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12782"/>
+    <tag k="RIGHTTO" v="12782"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="76">
     <nd ref="21"/>
@@ -1602,8 +1602,8 @@
     <tag k="GCROADS" v="114 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1611,15 +1611,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="114 Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12748"/>
+    <tag k="RIGHTFROM" v="12748"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12743"/>
+    <tag k="LEFTFROM" v="12743"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -1632,16 +1632,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="114"/>
-    <tag k="LEFTTO" v="      12775"/>
+    <tag k="LEFTTO" v="12775"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12782"/>
+    <tag k="RIGHTTO" v="12782"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="78">
     <nd ref="79"/>
@@ -1650,8 +1650,8 @@
     <tag k="GCROADS" v="113A AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1659,15 +1659,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="113A Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12722"/>
+    <tag k="RIGHTFROM" v="12722"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12723"/>
+    <tag k="LEFTFROM" v="12723"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -1680,16 +1680,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="113A"/>
-    <tag k="LEFTTO" v="      12799"/>
+    <tag k="LEFTTO" v="12799"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12798"/>
+    <tag k="RIGHTTO" v="12798"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="81">
     <nd ref="82"/>
@@ -1699,8 +1699,8 @@
     <tag k="GCROADS" v="114 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1708,15 +1708,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="114 Ave"/>
-    <tag k="LC_COST" v="             78.390000000000001"/>
+    <tag k="LC_COST" v="78.390000000000001"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12266"/>
+    <tag k="RIGHTFROM" v="12266"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12265"/>
+    <tag k="LEFTFROM" v="12265"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -1729,16 +1729,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="114"/>
-    <tag k="LEFTTO" v="      12399"/>
+    <tag k="LEFTTO" v="12399"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12398"/>
+    <tag k="RIGHTTO" v="12398"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="84">
     <nd ref="85"/>
@@ -1747,8 +1747,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1756,15 +1756,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11250"/>
+    <tag k="RIGHTFROM" v="11250"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11251"/>
+    <tag k="LEFTFROM" v="11251"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -1777,16 +1777,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11269"/>
+    <tag k="LEFTTO" v="11269"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11268"/>
+    <tag k="RIGHTTO" v="11268"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="86">
     <nd ref="87"/>
@@ -1795,8 +1795,8 @@
     <tag k="GCROADS" v="114A AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1804,15 +1804,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="114A Ave"/>
-    <tag k="LC_COST" v="             19.940000000000001"/>
+    <tag k="LC_COST" v="19.940000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12652"/>
+    <tag k="RIGHTFROM" v="12652"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12651"/>
+    <tag k="LEFTFROM" v="12651"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -1825,16 +1825,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="114A"/>
-    <tag k="LEFTTO" v="      12719"/>
+    <tag k="LEFTTO" v="12719"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12720"/>
+    <tag k="RIGHTTO" v="12720"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="88">
     <nd ref="89"/>
@@ -1846,8 +1846,8 @@
     <tag k="GCROADS" v=""/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          1"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="1"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1855,7 +1855,7 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v=""/>
-    <tag k="LC_COST" v="             19.120000000000001"/>
+    <tag k="LC_COST" v="19.120000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
     <tag k="RIGHTFROM" v=""/>
@@ -1885,7 +1885,7 @@
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v=""/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          4"/>
+    <tag k="RC_TYPE" v="4"/>
   </way>
   <way visible="true" id="94">
     <nd ref="30"/>
@@ -1902,8 +1902,8 @@
     <tag k="GCROADS" v="KING GEORGE BLVD"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          6"/>
-    <tag k="YTD_COST" v="            152.520000000000010"/>
+    <tag k="NO_LANE" v="6"/>
+    <tag k="YTD_COST" v="152.520000000000010"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1911,15 +1911,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="King George Blvd"/>
-    <tag k="LC_COST" v="           2264.710000000000036"/>
+    <tag k="LC_COST" v="2264.710000000000036"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12808"/>
+    <tag k="RIGHTFROM" v="12808"/>
     <tag k="ROW_WIDTH" v="37"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12827"/>
+    <tag k="LEFTFROM" v="12827"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -1932,16 +1932,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="KING GEORGE"/>
-    <tag k="LEFTTO" v="      12959"/>
+    <tag k="LEFTTO" v="12959"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12858"/>
+    <tag k="RIGHTTO" v="12858"/>
     <tag k="SNW_RTEZON" v="1 W"/>
     <tag k="SPEED" v="60"/>
     <tag k="DISR_ROUTE" v="Secondary"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="104">
     <nd ref="105"/>
@@ -1950,8 +1950,8 @@
     <tag k="GCROADS" v="112A AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -1959,15 +1959,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="112A Ave"/>
-    <tag k="LC_COST" v="             95.099999999999994"/>
+    <tag k="LC_COST" v="95.099999999999994"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12310"/>
+    <tag k="RIGHTFROM" v="12310"/>
     <tag k="ROW_WIDTH" v="22"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12317"/>
+    <tag k="LEFTFROM" v="12317"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -1980,16 +1980,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="112A"/>
-    <tag k="LEFTTO" v="      12327"/>
+    <tag k="LEFTTO" v="12327"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12376"/>
+    <tag k="RIGHTTO" v="12376"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="106">
     <nd ref="107"/>
@@ -2001,8 +2001,8 @@
     <tag k="GCROADS" v=""/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          1"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="1"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -2010,7 +2010,7 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v=""/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
     <tag k="RIGHTFROM" v=""/>
@@ -2040,7 +2040,7 @@
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v=""/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          4"/>
+    <tag k="RC_TYPE" v="4"/>
   </way>
   <way visible="true" id="112">
     <nd ref="14"/>
@@ -2049,8 +2049,8 @@
     <tag k="GCROADS" v="113B AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             96.390000000000001"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="96.390000000000001"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -2058,15 +2058,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="113B Ave"/>
-    <tag k="LC_COST" v="            114.450000000000003"/>
+    <tag k="LC_COST" v="114.450000000000003"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12402"/>
+    <tag k="RIGHTFROM" v="12402"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12401"/>
+    <tag k="LEFTFROM" v="12401"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -2079,16 +2079,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="113B"/>
-    <tag k="LEFTTO" v="      12549"/>
+    <tag k="LEFTTO" v="12549"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12548"/>
+    <tag k="RIGHTTO" v="12548"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="114">
     <nd ref="115"/>
@@ -2097,8 +2097,8 @@
     <tag k="GCROADS" v="128 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -2106,7 +2106,7 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="128 St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
     <tag k="RIGHTFROM" v=""/>
@@ -2114,7 +2114,7 @@
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11257"/>
+    <tag k="LEFTFROM" v="11257"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -2127,7 +2127,7 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="128"/>
-    <tag k="LEFTTO" v="      11271"/>
+    <tag k="LEFTTO" v="11271"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
@@ -2136,7 +2136,7 @@
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="116">
     <nd ref="87"/>
@@ -2145,8 +2145,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -2154,15 +2154,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11470"/>
+    <tag k="RIGHTFROM" v="11470"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11469"/>
+    <tag k="LEFTFROM" v="11469"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -2175,16 +2175,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11477"/>
+    <tag k="LEFTTO" v="11477"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11478"/>
+    <tag k="RIGHTTO" v="11478"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="118">
     <nd ref="119"/>
@@ -2193,8 +2193,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -2202,15 +2202,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11472"/>
+    <tag k="RIGHTFROM" v="11472"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11471"/>
+    <tag k="LEFTFROM" v="11471"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -2223,16 +2223,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11499"/>
+    <tag k="LEFTTO" v="11499"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11498"/>
+    <tag k="RIGHTTO" v="11498"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="121">
     <nd ref="122"/>
@@ -2438,7 +2438,7 @@
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v=""/>
     <tag k="NO_LANE" v=""/>
-    <tag k="YTD_COST" v="              0.000000000000000"/>
+    <tag k="YTD_COST" v="0.000000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -2476,7 +2476,7 @@
     <tag k="SNW_RTEZON" v=""/>
     <tag k="SPEED" v=""/>
     <tag k="DISR_ROUTE" v=""/>
-    <tag k="RC_TYPE" v="          5"/>
+    <tag k="RC_TYPE" v="5"/>
   </way>
   <way visible="true" id="320">
     <nd ref="321"/>
@@ -2579,7 +2579,7 @@
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Gravel"/>
     <tag k="NO_LANE" v=""/>
-    <tag k="YTD_COST" v="              0.000000000000000"/>
+    <tag k="YTD_COST" v="0.000000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -2617,7 +2617,7 @@
     <tag k="SNW_RTEZON" v=""/>
     <tag k="SPEED" v=""/>
     <tag k="DISR_ROUTE" v=""/>
-    <tag k="RC_TYPE" v="          5"/>
+    <tag k="RC_TYPE" v="5"/>
   </way>
   <way visible="true" id="416">
     <nd ref="70"/>
@@ -2626,8 +2626,8 @@
     <tag k="GCROADS" v="113B AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             25.539999999999999"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="25.539999999999999"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -2635,15 +2635,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="113B Ave"/>
-    <tag k="LC_COST" v="             33.280000000000001"/>
+    <tag k="LC_COST" v="33.280000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12800"/>
+    <tag k="RIGHTFROM" v="12800"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12801"/>
+    <tag k="LEFTFROM" v="12801"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -2656,16 +2656,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="113B"/>
-    <tag k="LEFTTO" v="      12899"/>
+    <tag k="LEFTTO" v="12899"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12898"/>
+    <tag k="RIGHTTO" v="12898"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="418">
     <nd ref="52"/>
@@ -2674,8 +2674,8 @@
     <tag k="GCROADS" v="125A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -2683,7 +2683,7 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="125A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
     <tag k="RIGHTFROM" v=""/>
@@ -2691,7 +2691,7 @@
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11429"/>
+    <tag k="LEFTFROM" v="11429"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -2704,7 +2704,7 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="125A"/>
-    <tag k="LEFTTO" v="      11447"/>
+    <tag k="LEFTTO" v="11447"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
@@ -2713,7 +2713,7 @@
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="420">
     <nd ref="119"/>
@@ -2722,8 +2722,8 @@
     <tag k="GCROADS" v="114B AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -2731,15 +2731,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="114B Ave"/>
-    <tag k="LC_COST" v="            272.560000000000002"/>
+    <tag k="LC_COST" v="272.560000000000002"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12652"/>
+    <tag k="RIGHTFROM" v="12652"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v="2006/10/30"/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12651"/>
+    <tag k="LEFTFROM" v="12651"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -2752,16 +2752,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="114B"/>
-    <tag k="LEFTTO" v="      12749"/>
+    <tag k="LEFTTO" v="12749"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12748"/>
+    <tag k="RIGHTTO" v="12748"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="421">
     <nd ref="113"/>
@@ -2770,8 +2770,8 @@
     <tag k="GCROADS" v="113B AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -2779,15 +2779,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="113B Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12552"/>
+    <tag k="RIGHTFROM" v="12552"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12551"/>
+    <tag k="LEFTFROM" v="12551"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -2800,16 +2800,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="113B"/>
-    <tag k="LEFTTO" v="      12649"/>
+    <tag k="LEFTTO" v="12649"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12648"/>
+    <tag k="RIGHTTO" v="12648"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="423">
     <nd ref="424"/>
@@ -2818,8 +2818,8 @@
     <tag k="GCROADS" v=""/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          1"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="1"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -2827,7 +2827,7 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v=""/>
-    <tag k="LC_COST" v="            294.540000000000020"/>
+    <tag k="LC_COST" v="294.540000000000020"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
     <tag k="RIGHTFROM" v=""/>
@@ -2857,7 +2857,7 @@
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v=""/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          4"/>
+    <tag k="RC_TYPE" v="4"/>
   </way>
   <way visible="true" id="426">
     <nd ref="427"/>
@@ -2869,8 +2869,8 @@
     <tag k="GCROADS" v=""/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          1"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="1"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -2878,7 +2878,7 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v=""/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
     <tag k="RIGHTFROM" v=""/>
@@ -2908,7 +2908,7 @@
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v=""/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          4"/>
+    <tag k="RC_TYPE" v="4"/>
   </way>
   <way visible="true" id="432">
     <nd ref="433"/>
@@ -2919,8 +2919,8 @@
     <tag k="GCROADS" v=""/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          1"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="1"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -2928,7 +2928,7 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v=""/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
     <tag k="RIGHTFROM" v=""/>
@@ -2958,7 +2958,7 @@
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v=""/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          4"/>
+    <tag k="RC_TYPE" v="4"/>
   </way>
   <way visible="true" id="437">
     <nd ref="438"/>
@@ -2967,8 +2967,8 @@
     <tag k="GCROADS" v="KING GEORGE BLVD"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          6"/>
-    <tag k="YTD_COST" v="            104.219999999999999"/>
+    <tag k="NO_LANE" v="6"/>
+    <tag k="YTD_COST" v="104.219999999999999"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -2976,15 +2976,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="King George Blvd"/>
-    <tag k="LC_COST" v="           5414.449999999999818"/>
+    <tag k="LC_COST" v="5414.449999999999818"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12676"/>
+    <tag k="RIGHTFROM" v="12676"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12669"/>
+    <tag k="LEFTFROM" v="12669"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -2997,16 +2997,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="KING GEORGE"/>
-    <tag k="LEFTTO" v="      12739"/>
+    <tag k="LEFTTO" v="12739"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12742"/>
+    <tag k="RIGHTTO" v="12742"/>
     <tag k="SNW_RTEZON" v="1 W"/>
     <tag k="SPEED" v="60"/>
     <tag k="DISR_ROUTE" v="Secondary"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="439">
     <nd ref="440"/>
@@ -3015,8 +3015,8 @@
     <tag k="GCROADS" v="113A AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3024,15 +3024,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="113A Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12652"/>
+    <tag k="RIGHTFROM" v="12652"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12651"/>
+    <tag k="LEFTFROM" v="12651"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -3045,16 +3045,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="113A"/>
-    <tag k="LEFTTO" v="      12719"/>
+    <tag k="LEFTTO" v="12719"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12720"/>
+    <tag k="RIGHTTO" v="12720"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="441">
     <nd ref="117"/>
@@ -3063,8 +3063,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3072,15 +3072,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11472"/>
+    <tag k="RIGHTFROM" v="11472"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11471"/>
+    <tag k="LEFTFROM" v="11471"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -3093,16 +3093,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11477"/>
+    <tag k="LEFTTO" v="11477"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11478"/>
+    <tag k="RIGHTTO" v="11478"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="442">
     <nd ref="443"/>
@@ -3111,8 +3111,8 @@
     <tag k="GCROADS" v="115 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3120,15 +3120,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="115 Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12560"/>
+    <tag k="RIGHTFROM" v="12560"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12559"/>
+    <tag k="LEFTFROM" v="12559"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -3141,16 +3141,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="115"/>
-    <tag k="LEFTTO" v="      12667"/>
+    <tag k="LEFTTO" v="12667"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12560"/>
+    <tag k="RIGHTTO" v="12560"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="444">
     <nd ref="445"/>
@@ -3162,8 +3162,8 @@
     <tag k="GCROADS" v="SCOTT RD"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3171,15 +3171,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="Scott Rd"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v="Tandem"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11194"/>
+    <tag k="RIGHTFROM" v="11194"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11195"/>
+    <tag k="LEFTFROM" v="11195"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -3192,16 +3192,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="SCOTT"/>
-    <tag k="LEFTTO" v="      11199"/>
+    <tag k="LEFTTO" v="11199"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11198"/>
+    <tag k="RIGHTTO" v="11198"/>
     <tag k="SNW_RTEZON" v="1 W"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="450">
     <nd ref="73"/>
@@ -3210,8 +3210,8 @@
     <tag k="GCROADS" v="112A AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             73.840000000000003"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="73.840000000000003"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3219,15 +3219,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="112A Ave"/>
-    <tag k="LC_COST" v="           3254.550000000000182"/>
+    <tag k="LC_COST" v="3254.550000000000182"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12552"/>
+    <tag k="RIGHTFROM" v="12552"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12551"/>
+    <tag k="LEFTFROM" v="12551"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -3240,16 +3240,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="112A"/>
-    <tag k="LEFTTO" v="      12649"/>
+    <tag k="LEFTTO" v="12649"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12648"/>
+    <tag k="RIGHTTO" v="12648"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="451">
     <nd ref="422"/>
@@ -3258,8 +3258,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3267,15 +3267,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             89.840000000000003"/>
+    <tag k="LC_COST" v="89.840000000000003"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11372"/>
+    <tag k="RIGHTFROM" v="11372"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11371"/>
+    <tag k="LEFTFROM" v="11371"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -3288,16 +3288,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11377"/>
+    <tag k="LEFTTO" v="11377"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11378"/>
+    <tag k="RIGHTTO" v="11378"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="453">
     <nd ref="13"/>
@@ -3307,8 +3307,8 @@
     <tag k="GCROADS" v="113 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3316,15 +3316,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="113 Ave"/>
-    <tag k="LC_COST" v="            352.209999999999980"/>
+    <tag k="LC_COST" v="352.209999999999980"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12412"/>
+    <tag k="RIGHTFROM" v="12412"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12419"/>
+    <tag k="LEFTFROM" v="12419"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -3337,16 +3337,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="113"/>
-    <tag k="LEFTTO" v="      12471"/>
+    <tag k="LEFTTO" v="12471"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12470"/>
+    <tag k="RIGHTTO" v="12470"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="456">
     <nd ref="452"/>
@@ -3355,8 +3355,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3364,15 +3364,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             89.859999999999999"/>
+    <tag k="LC_COST" v="89.859999999999999"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11372"/>
+    <tag k="RIGHTFROM" v="11372"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11371"/>
+    <tag k="LEFTFROM" v="11371"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -3385,16 +3385,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11399"/>
+    <tag k="LEFTTO" v="11399"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11398"/>
+    <tag k="RIGHTTO" v="11398"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="457">
     <nd ref="458"/>
@@ -3404,8 +3404,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3413,15 +3413,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11670"/>
+    <tag k="RIGHTFROM" v="11670"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11601"/>
+    <tag k="LEFTFROM" v="11601"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -3434,16 +3434,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11669"/>
+    <tag k="LEFTTO" v="11669"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11670"/>
+    <tag k="RIGHTTO" v="11670"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="461">
     <nd ref="443"/>
@@ -3452,8 +3452,8 @@
     <tag k="GCROADS" v="125A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3461,15 +3461,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="125A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11502"/>
+    <tag k="RIGHTFROM" v="11502"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11501"/>
+    <tag k="LEFTFROM" v="11501"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -3482,16 +3482,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="125A"/>
-    <tag k="LEFTTO" v="      11569"/>
+    <tag k="LEFTTO" v="11569"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11568"/>
+    <tag k="RIGHTTO" v="11568"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="463">
     <nd ref="464"/>
@@ -3500,8 +3500,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3509,15 +3509,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11552"/>
+    <tag k="RIGHTFROM" v="11552"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11551"/>
+    <tag k="LEFTFROM" v="11551"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -3530,16 +3530,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11569"/>
+    <tag k="LEFTTO" v="11569"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11568"/>
+    <tag k="RIGHTTO" v="11568"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="466">
     <nd ref="11"/>
@@ -3548,8 +3548,8 @@
     <tag k="GCROADS" v="125A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3557,15 +3557,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="125A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11302"/>
+    <tag k="RIGHTFROM" v="11302"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11301"/>
+    <tag k="LEFTFROM" v="11301"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -3578,16 +3578,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="125A"/>
-    <tag k="LEFTTO" v="      11369"/>
+    <tag k="LEFTTO" v="11369"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11368"/>
+    <tag k="RIGHTTO" v="11368"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="467">
     <nd ref="113"/>
@@ -3596,8 +3596,8 @@
     <tag k="GCROADS" v="125A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3605,15 +3605,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="125A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11372"/>
+    <tag k="RIGHTFROM" v="11372"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11371"/>
+    <tag k="LEFTFROM" v="11371"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -3626,16 +3626,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="125A"/>
-    <tag k="LEFTTO" v="      11399"/>
+    <tag k="LEFTTO" v="11399"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11398"/>
+    <tag k="RIGHTTO" v="11398"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="468">
     <nd ref="14"/>
@@ -3644,8 +3644,8 @@
     <tag k="GCROADS" v="124 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3653,15 +3653,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="124 St"/>
-    <tag k="LC_COST" v="            157.039999999999992"/>
+    <tag k="LC_COST" v="157.039999999999992"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11372"/>
+    <tag k="RIGHTFROM" v="11372"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11371"/>
+    <tag k="LEFTFROM" v="11371"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -3674,16 +3674,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="124"/>
-    <tag k="LEFTTO" v="      11399"/>
+    <tag k="LEFTTO" v="11399"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11398"/>
+    <tag k="RIGHTTO" v="11398"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="469">
     <nd ref="440"/>
@@ -3692,8 +3692,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3701,15 +3701,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11350"/>
+    <tag k="RIGHTFROM" v="11350"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11351"/>
+    <tag k="LEFTFROM" v="11351"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -3722,16 +3722,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11369"/>
+    <tag k="LEFTTO" v="11369"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11368"/>
+    <tag k="RIGHTTO" v="11368"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="470">
     <nd ref="471"/>
@@ -3740,8 +3740,8 @@
     <tag k="GCROADS" v="112A AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3749,15 +3749,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="112A Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12650"/>
+    <tag k="RIGHTFROM" v="12650"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12651"/>
+    <tag k="LEFTFROM" v="12651"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -3770,16 +3770,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="112A"/>
-    <tag k="LEFTTO" v="      12749"/>
+    <tag k="LEFTTO" v="12749"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12748"/>
+    <tag k="RIGHTTO" v="12748"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="473">
     <nd ref="462"/>
@@ -3788,8 +3788,8 @@
     <tag k="GCROADS" v="125A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3797,15 +3797,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="125A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11572"/>
+    <tag k="RIGHTFROM" v="11572"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11571"/>
+    <tag k="LEFTFROM" v="11571"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -3818,16 +3818,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="125A"/>
-    <tag k="LEFTTO" v="      11589"/>
+    <tag k="LEFTTO" v="11589"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11590"/>
+    <tag k="RIGHTTO" v="11590"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="475">
     <nd ref="73"/>
@@ -3836,8 +3836,8 @@
     <tag k="GCROADS" v="125A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             73.840000000000003"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="73.840000000000003"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3845,15 +3845,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="125A St"/>
-    <tag k="LC_COST" v="             91.900000000000006"/>
+    <tag k="LC_COST" v="91.900000000000006"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11252"/>
+    <tag k="RIGHTFROM" v="11252"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11251"/>
+    <tag k="LEFTFROM" v="11251"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -3866,16 +3866,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="125A"/>
-    <tag k="LEFTTO" v="      11299"/>
+    <tag k="LEFTTO" v="11299"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11298"/>
+    <tag k="RIGHTTO" v="11298"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="476">
     <nd ref="477"/>
@@ -3884,8 +3884,8 @@
     <tag k="GCROADS" v=""/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          1"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="1"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3893,7 +3893,7 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v=""/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
     <tag k="RIGHTFROM" v=""/>
@@ -3923,7 +3923,7 @@
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v=""/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          4"/>
+    <tag k="RC_TYPE" v="4"/>
   </way>
   <way visible="true" id="479">
     <nd ref="44"/>
@@ -3932,8 +3932,8 @@
     <tag k="GCROADS" v="128 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3941,7 +3941,7 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="128 St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
     <tag k="RIGHTFROM" v=""/>
@@ -3949,7 +3949,7 @@
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11293"/>
+    <tag k="LEFTFROM" v="11293"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -3962,7 +3962,7 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="128"/>
-    <tag k="LEFTTO" v="      11309"/>
+    <tag k="LEFTTO" v="11309"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
@@ -3971,7 +3971,7 @@
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="480">
     <nd ref="472"/>
@@ -3980,8 +3980,8 @@
     <tag k="GCROADS" v="112A AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -3989,15 +3989,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="112A Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12750"/>
+    <tag k="RIGHTFROM" v="12750"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12751"/>
+    <tag k="LEFTFROM" v="12751"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -4010,16 +4010,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="112A"/>
-    <tag k="LEFTTO" v="      12799"/>
+    <tag k="LEFTTO" v="12799"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12798"/>
+    <tag k="RIGHTTO" v="12798"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="482">
     <nd ref="419"/>
@@ -4028,8 +4028,8 @@
     <tag k="GCROADS" v="125A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4037,15 +4037,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="125A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11452"/>
+    <tag k="RIGHTFROM" v="11452"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11451"/>
+    <tag k="LEFTFROM" v="11451"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -4058,16 +4058,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="125A"/>
-    <tag k="LEFTTO" v="      11499"/>
+    <tag k="LEFTTO" v="11499"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11498"/>
+    <tag k="RIGHTTO" v="11498"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="483">
     <nd ref="52"/>
@@ -4077,8 +4077,8 @@
     <tag k="GCROADS" v="114 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4086,15 +4086,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="114 Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12552"/>
+    <tag k="RIGHTFROM" v="12552"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12551"/>
+    <tag k="LEFTFROM" v="12551"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -4107,16 +4107,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="114"/>
-    <tag k="LEFTTO" v="      12649"/>
+    <tag k="LEFTTO" v="12649"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12666"/>
+    <tag k="RIGHTTO" v="12666"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="485">
     <nd ref="26"/>
@@ -4125,8 +4125,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4134,15 +4134,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11302"/>
+    <tag k="RIGHTFROM" v="11302"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11301"/>
+    <tag k="LEFTFROM" v="11301"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -4155,16 +4155,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11349"/>
+    <tag k="LEFTTO" v="11349"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11348"/>
+    <tag k="RIGHTTO" v="11348"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="486">
     <nd ref="481"/>
@@ -4177,8 +4177,8 @@
     <tag k="GCROADS" v="128 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="            203.379999999999995"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="203.379999999999995"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4186,15 +4186,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="128 St"/>
-    <tag k="LC_COST" v="           3215.530000000000200"/>
+    <tag k="LC_COST" v="3215.530000000000200"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11242"/>
+    <tag k="RIGHTFROM" v="11242"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11251"/>
+    <tag k="LEFTFROM" v="11251"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -4207,16 +4207,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="128"/>
-    <tag k="LEFTTO" v="      11269"/>
+    <tag k="LEFTTO" v="11269"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11250"/>
+    <tag k="RIGHTTO" v="11250"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="492">
     <nd ref="458"/>
@@ -4225,8 +4225,8 @@
     <tag k="GCROADS" v="116 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             78.760000000000005"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="78.760000000000005"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4234,15 +4234,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="116 Ave"/>
-    <tag k="LC_COST" v="            473.550000000000011"/>
+    <tag k="LC_COST" v="473.550000000000011"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12770"/>
+    <tag k="RIGHTFROM" v="12770"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12745"/>
+    <tag k="LEFTFROM" v="12745"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -4255,16 +4255,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="116"/>
-    <tag k="LEFTTO" v="      12745"/>
+    <tag k="LEFTTO" v="12745"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12770"/>
+    <tag k="RIGHTTO" v="12770"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="494">
     <nd ref="471"/>
@@ -4274,8 +4274,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4283,15 +4283,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11270"/>
+    <tag k="RIGHTFROM" v="11270"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11271"/>
+    <tag k="LEFTFROM" v="11271"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -4304,16 +4304,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11277"/>
+    <tag k="LEFTTO" v="11277"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11278"/>
+    <tag k="RIGHTTO" v="11278"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="496">
     <nd ref="37"/>
@@ -4322,8 +4322,8 @@
     <tag k="GCROADS" v="128 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4331,15 +4331,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="128 St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11472"/>
+    <tag k="RIGHTFROM" v="11472"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11471"/>
+    <tag k="LEFTFROM" v="11471"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -4352,16 +4352,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="128"/>
-    <tag k="LEFTTO" v="      11549"/>
+    <tag k="LEFTTO" v="11549"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11548"/>
+    <tag k="RIGHTTO" v="11548"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="497">
     <nd ref="77"/>
@@ -4370,8 +4370,8 @@
     <tag k="GCROADS" v="128 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4379,15 +4379,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="128 St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11402"/>
+    <tag k="RIGHTFROM" v="11402"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11401"/>
+    <tag k="LEFTFROM" v="11401"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -4400,16 +4400,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="128"/>
-    <tag k="LEFTTO" v="      11449"/>
+    <tag k="LEFTTO" v="11449"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11448"/>
+    <tag k="RIGHTTO" v="11448"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="498">
     <nd ref="42"/>
@@ -4418,8 +4418,8 @@
     <tag k="GCROADS" v="115B AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              4.800000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="4.800000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4427,15 +4427,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="115B Ave"/>
-    <tag k="LC_COST" v="             12.539999999999999"/>
+    <tag k="LC_COST" v="12.539999999999999"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12802"/>
+    <tag k="RIGHTFROM" v="12802"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12801"/>
+    <tag k="LEFTFROM" v="12801"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -4448,16 +4448,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="115B"/>
-    <tag k="LEFTTO" v="      12899"/>
+    <tag k="LEFTTO" v="12899"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12898"/>
+    <tag k="RIGHTTO" v="12898"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="500">
     <nd ref="501"/>
@@ -4474,8 +4474,8 @@
     <tag k="GCROADS" v="SCOTT RD"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             81.810000000000002"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="81.810000000000002"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4483,15 +4483,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="Scott Rd"/>
-    <tag k="LC_COST" v="           1184.859999999999900"/>
+    <tag k="LC_COST" v="1184.859999999999900"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11192"/>
+    <tag k="RIGHTFROM" v="11192"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11191"/>
+    <tag k="LEFTFROM" v="11191"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -4504,16 +4504,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="SCOTT"/>
-    <tag k="LEFTTO" v="      11199"/>
+    <tag k="LEFTTO" v="11199"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11198"/>
+    <tag k="RIGHTTO" v="11198"/>
     <tag k="SNW_RTEZON" v="1 W"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="510">
     <nd ref="70"/>
@@ -4522,8 +4522,8 @@
     <tag k="GCROADS" v="128 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             22.300000000000001"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="22.300000000000001"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4531,15 +4531,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="128 St"/>
-    <tag k="LC_COST" v="             40.359999999999999"/>
+    <tag k="LC_COST" v="40.359999999999999"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11366"/>
+    <tag k="RIGHTFROM" v="11366"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11371"/>
+    <tag k="LEFTFROM" v="11371"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -4552,16 +4552,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="128"/>
-    <tag k="LEFTTO" v="      11399"/>
+    <tag k="LEFTTO" v="11399"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11398"/>
+    <tag k="RIGHTTO" v="11398"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="511">
     <nd ref="24"/>
@@ -4570,8 +4570,8 @@
     <tag k="GCROADS" v="116 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             78.760000000000005"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="78.760000000000005"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4579,15 +4579,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="116 Ave"/>
-    <tag k="LC_COST" v="           4777.810000000000400"/>
+    <tag k="LC_COST" v="4777.810000000000400"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12402"/>
+    <tag k="RIGHTFROM" v="12402"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12401"/>
+    <tag k="LEFTFROM" v="12401"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -4600,16 +4600,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="116"/>
-    <tag k="LEFTTO" v="      12549"/>
+    <tag k="LEFTTO" v="12549"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12548"/>
+    <tag k="RIGHTTO" v="12548"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="513">
     <nd ref="493"/>
@@ -4619,8 +4619,8 @@
     <tag k="GCROADS" v="116 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             82.019999999999996"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="82.019999999999996"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4628,15 +4628,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="116 Ave"/>
-    <tag k="LC_COST" v="            854.809999999999945"/>
+    <tag k="LC_COST" v="854.809999999999945"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12802"/>
+    <tag k="RIGHTFROM" v="12802"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12801"/>
+    <tag k="LEFTFROM" v="12801"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -4649,16 +4649,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="116"/>
-    <tag k="LEFTTO" v="      12899"/>
+    <tag k="LEFTTO" v="12899"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12898"/>
+    <tag k="RIGHTTO" v="12898"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="516">
     <nd ref="30"/>
@@ -4668,8 +4668,8 @@
     <tag k="GCROADS" v="128 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="            248.379999999999995"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="248.379999999999995"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4677,7 +4677,7 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="128 St"/>
-    <tag k="LC_COST" v="           1258.170000000000073"/>
+    <tag k="LC_COST" v="1258.170000000000073"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
     <tag k="RIGHTFROM" v=""/>
@@ -4685,7 +4685,7 @@
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11231"/>
+    <tag k="LEFTFROM" v="11231"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -4698,7 +4698,7 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="128"/>
-    <tag k="LEFTTO" v="      11231"/>
+    <tag k="LEFTTO" v="11231"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
@@ -4707,7 +4707,7 @@
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="518">
     <nd ref="82"/>
@@ -4717,8 +4717,8 @@
     <tag k="GCROADS" v="INDUSTRIAL RD"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             78.760000000000005"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="78.760000000000005"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4726,15 +4726,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="Industrial Rd"/>
-    <tag k="LC_COST" v="            406.459999999999980"/>
+    <tag k="LC_COST" v="406.459999999999980"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12290"/>
+    <tag k="RIGHTFROM" v="12290"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12289"/>
+    <tag k="LEFTFROM" v="12289"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -4747,16 +4747,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="INDUSTRIAL"/>
-    <tag k="LEFTTO" v="      12399"/>
+    <tag k="LEFTTO" v="12399"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12398"/>
+    <tag k="RIGHTTO" v="12398"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="520">
     <nd ref="3"/>
@@ -4765,8 +4765,8 @@
     <tag k="GCROADS" v="128 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4774,15 +4774,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="128 St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11452"/>
+    <tag k="RIGHTFROM" v="11452"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11451"/>
+    <tag k="LEFTFROM" v="11451"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -4795,16 +4795,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="128"/>
-    <tag k="LEFTTO" v="      11469"/>
+    <tag k="LEFTTO" v="11469"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11468"/>
+    <tag k="RIGHTTO" v="11468"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="521">
     <nd ref="77"/>
@@ -4813,8 +4813,8 @@
     <tag k="GCROADS" v="114 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              4.800000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="4.800000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4822,15 +4822,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="114 Ave"/>
-    <tag k="LC_COST" v="             12.539999999999999"/>
+    <tag k="LC_COST" v="12.539999999999999"/>
     <tag k="WTR_VEHCL" v="Tandem"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12800"/>
+    <tag k="RIGHTFROM" v="12800"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12801"/>
+    <tag k="LEFTFROM" v="12801"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -4843,16 +4843,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="114"/>
-    <tag k="LEFTTO" v="      12899"/>
+    <tag k="LEFTTO" v="12899"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12898"/>
+    <tag k="RIGHTTO" v="12898"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="523">
     <nd ref="524"/>
@@ -4872,8 +4872,8 @@
     <tag k="GCROADS" v="KING GEORGE BLVD"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              2.130000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="2.130000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4881,15 +4881,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="King George Blvd"/>
-    <tag k="LC_COST" v="             14.090000000000000"/>
+    <tag k="LC_COST" v="14.090000000000000"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12200"/>
+    <tag k="RIGHTFROM" v="12200"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12201"/>
+    <tag k="LEFTFROM" v="12201"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -4902,16 +4902,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="KING GEORGE"/>
-    <tag k="LEFTTO" v="      12649"/>
+    <tag k="LEFTTO" v="12649"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12648"/>
+    <tag k="RIGHTTO" v="12648"/>
     <tag k="SNW_RTEZON" v="1 W"/>
     <tag k="SPEED" v="60"/>
     <tag k="DISR_ROUTE" v="Secondary"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="536">
     <nd ref="445"/>
@@ -4927,8 +4927,8 @@
     <tag k="GCROADS" v="SCOTT RD"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4936,15 +4936,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="Scott Rd"/>
-    <tag k="LC_COST" v="            462.399999999999977"/>
+    <tag k="LC_COST" v="462.399999999999977"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11196"/>
+    <tag k="RIGHTFROM" v="11196"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11195"/>
+    <tag k="LEFTFROM" v="11195"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -4957,16 +4957,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="SCOTT"/>
-    <tag k="LEFTTO" v="      11199"/>
+    <tag k="LEFTTO" v="11199"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11198"/>
+    <tag k="RIGHTTO" v="11198"/>
     <tag k="SNW_RTEZON" v="1 W"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="544">
     <nd ref="512"/>
@@ -4976,8 +4976,8 @@
     <tag k="GCROADS" v="116 AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             78.760000000000005"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="78.760000000000005"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -4985,15 +4985,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="116 Ave"/>
-    <tag k="LC_COST" v="            860.919999999999959"/>
+    <tag k="LC_COST" v="860.919999999999959"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12550"/>
+    <tag k="RIGHTFROM" v="12550"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12551"/>
+    <tag k="LEFTFROM" v="12551"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -5006,16 +5006,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="116"/>
-    <tag k="LEFTTO" v="      12665"/>
+    <tag k="LEFTTO" v="12665"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12654"/>
+    <tag k="RIGHTTO" v="12654"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="546">
     <nd ref="547"/>
@@ -5025,8 +5025,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5034,15 +5034,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11242"/>
+    <tag k="RIGHTFROM" v="11242"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11243"/>
+    <tag k="LEFTFROM" v="11243"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -5055,16 +5055,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11249"/>
+    <tag k="LEFTTO" v="11249"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11248"/>
+    <tag k="RIGHTTO" v="11248"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="548">
     <nd ref="549"/>
@@ -5073,8 +5073,8 @@
     <tag k="GCROADS" v="INDUSTRIAL RD"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="            280.629999999999995"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="280.629999999999995"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5082,15 +5082,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="Industrial Rd"/>
-    <tag k="LC_COST" v="            608.330000000000041"/>
+    <tag k="LC_COST" v="608.330000000000041"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12212"/>
+    <tag k="RIGHTFROM" v="12212"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12221"/>
+    <tag k="LEFTFROM" v="12221"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -5103,16 +5103,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="INDUSTRIAL"/>
-    <tag k="LEFTTO" v="      12277"/>
+    <tag k="LEFTTO" v="12277"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12280"/>
+    <tag k="RIGHTTO" v="12280"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="550">
     <nd ref="120"/>
@@ -5121,8 +5121,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5130,15 +5130,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11500"/>
+    <tag k="RIGHTFROM" v="11500"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11501"/>
+    <tag k="LEFTFROM" v="11501"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -5151,16 +5151,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11549"/>
+    <tag k="LEFTTO" v="11549"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11548"/>
+    <tag k="RIGHTTO" v="11548"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="551">
     <nd ref="552"/>
@@ -5170,8 +5170,8 @@
     <tag k="GCROADS" v="128 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="            143.310000000000002"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="143.310000000000002"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5179,15 +5179,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="128 St"/>
-    <tag k="LC_COST" v="           1236.470000000000027"/>
+    <tag k="LC_COST" v="1236.470000000000027"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11146"/>
+    <tag k="RIGHTFROM" v="11146"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11157"/>
+    <tag k="LEFTFROM" v="11157"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -5200,16 +5200,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="128"/>
-    <tag k="LEFTTO" v="      11173"/>
+    <tag k="LEFTTO" v="11173"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11164"/>
+    <tag k="RIGHTTO" v="11164"/>
     <tag k="SNW_RTEZON" v="1 W"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="554">
     <nd ref="478"/>
@@ -5221,8 +5221,8 @@
     <tag k="GCROADS" v=""/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          1"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="1"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5230,7 +5230,7 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v=""/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
     <tag k="RIGHTFROM" v=""/>
@@ -5260,7 +5260,7 @@
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v=""/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          4"/>
+    <tag k="RC_TYPE" v="4"/>
   </way>
   <way visible="true" id="559">
     <nd ref="491"/>
@@ -5274,8 +5274,8 @@
     <tag k="GCROADS" v="128 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             22.280000000000001"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="22.280000000000001"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5283,15 +5283,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="128 St"/>
-    <tag k="LC_COST" v="             40.340000000000003"/>
+    <tag k="LC_COST" v="40.340000000000003"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11348"/>
+    <tag k="RIGHTFROM" v="11348"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11329"/>
+    <tag k="LEFTFROM" v="11329"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -5304,16 +5304,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="128"/>
-    <tag k="LEFTTO" v="      11347"/>
+    <tag k="LEFTTO" v="11347"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11348"/>
+    <tag k="RIGHTTO" v="11348"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="565">
     <nd ref="566"/>
@@ -5322,8 +5322,8 @@
     <tag k="GCROADS" v="KING GEORGE BLVD"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          6"/>
-    <tag k="YTD_COST" v="            104.810000000000002"/>
+    <tag k="NO_LANE" v="6"/>
+    <tag k="YTD_COST" v="104.810000000000002"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5331,15 +5331,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="King George Blvd"/>
-    <tag k="LC_COST" v="           2221.219999999999800"/>
+    <tag k="LC_COST" v="2221.219999999999800"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12400"/>
+    <tag k="RIGHTFROM" v="12400"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12401"/>
+    <tag k="LEFTFROM" v="12401"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -5352,16 +5352,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="KING GEORGE"/>
-    <tag k="LEFTTO" v="      12449"/>
+    <tag k="LEFTTO" v="12449"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12400"/>
+    <tag k="RIGHTTO" v="12400"/>
     <tag k="SNW_RTEZON" v="1 W"/>
     <tag k="SPEED" v="60"/>
     <tag k="DISR_ROUTE" v="Secondary"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="567">
     <nd ref="16"/>
@@ -5370,8 +5370,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5379,15 +5379,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11272"/>
+    <tag k="RIGHTFROM" v="11272"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11271"/>
+    <tag k="LEFTFROM" v="11271"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -5400,16 +5400,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11299"/>
+    <tag k="LEFTTO" v="11299"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11298"/>
+    <tag k="RIGHTTO" v="11298"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="568">
     <nd ref="42"/>
@@ -5418,8 +5418,8 @@
     <tag k="GCROADS" v="128 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5427,15 +5427,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="128 St"/>
-    <tag k="LC_COST" v="             86.689999999999998"/>
+    <tag k="LC_COST" v="86.689999999999998"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11572"/>
+    <tag k="RIGHTFROM" v="11572"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11571"/>
+    <tag k="LEFTFROM" v="11571"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -5448,16 +5448,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="128"/>
-    <tag k="LEFTTO" v="      11599"/>
+    <tag k="LEFTTO" v="11599"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11598"/>
+    <tag k="RIGHTTO" v="11598"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="569">
     <nd ref="524"/>
@@ -5466,8 +5466,8 @@
     <tag k="GCROADS" v="KING GEORGE BLVD"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          6"/>
-    <tag k="YTD_COST" v="             79.349999999999994"/>
+    <tag k="NO_LANE" v="6"/>
+    <tag k="YTD_COST" v="79.349999999999994"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5475,15 +5475,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="King George Blvd"/>
-    <tag k="LC_COST" v="            879.009999999999991"/>
+    <tag k="LC_COST" v="879.009999999999991"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11206"/>
+    <tag k="RIGHTFROM" v="11206"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11207"/>
+    <tag k="LEFTFROM" v="11207"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -5496,16 +5496,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="KING GEORGE"/>
-    <tag k="LEFTTO" v="      11223"/>
+    <tag k="LEFTTO" v="11223"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11224"/>
+    <tag k="RIGHTTO" v="11224"/>
     <tag k="SNW_RTEZON" v="1 W"/>
     <tag k="SPEED" v="60"/>
     <tag k="DISR_ROUTE" v="Secondary"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="570">
     <nd ref="40"/>
@@ -5516,8 +5516,8 @@
     <tag k="GCROADS" v="124 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5525,15 +5525,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="124 St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11252"/>
+    <tag k="RIGHTFROM" v="11252"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11251"/>
+    <tag k="LEFTFROM" v="11251"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -5546,16 +5546,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="124"/>
-    <tag k="LEFTTO" v="      11299"/>
+    <tag k="LEFTTO" v="11299"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11298"/>
+    <tag k="RIGHTTO" v="11298"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="573">
     <nd ref="105"/>
@@ -5564,8 +5564,8 @@
     <tag k="GCROADS" v="123 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5573,15 +5573,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="123 St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11252"/>
+    <tag k="RIGHTFROM" v="11252"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11251"/>
+    <tag k="LEFTFROM" v="11251"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -5594,16 +5594,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="123"/>
-    <tag k="LEFTTO" v="      11325"/>
+    <tag k="LEFTTO" v="11325"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11326"/>
+    <tag k="RIGHTTO" v="11326"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="575">
     <nd ref="576"/>
@@ -5613,8 +5613,8 @@
     <tag k="GCROADS" v="125A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             73.840000000000003"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="73.840000000000003"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5622,15 +5622,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="125A St"/>
-    <tag k="LC_COST" v="             91.900000000000006"/>
+    <tag k="LC_COST" v="91.900000000000006"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11242"/>
+    <tag k="RIGHTFROM" v="11242"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11241"/>
+    <tag k="LEFTFROM" v="11241"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -5643,16 +5643,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="125A"/>
-    <tag k="LEFTTO" v="      11249"/>
+    <tag k="LEFTTO" v="11249"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11248"/>
+    <tag k="RIGHTTO" v="11248"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="578">
     <nd ref="5"/>
@@ -5661,8 +5661,8 @@
     <tag k="GCROADS" v="128 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5670,15 +5670,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="128 St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11552"/>
+    <tag k="RIGHTFROM" v="11552"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11551"/>
+    <tag k="LEFTFROM" v="11551"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -5691,16 +5691,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="128"/>
-    <tag k="LEFTTO" v="      11569"/>
+    <tag k="LEFTTO" v="11569"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11568"/>
+    <tag k="RIGHTTO" v="11568"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="579">
     <nd ref="75"/>
@@ -5709,8 +5709,8 @@
     <tag k="GCROADS" v="127A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5718,15 +5718,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="127A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11552"/>
+    <tag k="RIGHTFROM" v="11552"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11525"/>
+    <tag k="LEFTFROM" v="11525"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -5739,16 +5739,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="127A"/>
-    <tag k="LEFTTO" v="      11569"/>
+    <tag k="LEFTTO" v="11569"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11568"/>
+    <tag k="RIGHTTO" v="11568"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="580">
     <nd ref="37"/>
@@ -5758,8 +5758,8 @@
     <tag k="GCROADS" v="114B AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              4.800000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="4.800000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5767,15 +5767,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="114B Ave"/>
-    <tag k="LC_COST" v="             12.539999999999999"/>
+    <tag k="LC_COST" v="12.539999999999999"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12800"/>
+    <tag k="RIGHTFROM" v="12800"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12801"/>
+    <tag k="LEFTFROM" v="12801"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -5788,16 +5788,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="114B"/>
-    <tag k="LEFTTO" v="      12899"/>
+    <tag k="LEFTTO" v="12899"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12898"/>
+    <tag k="RIGHTTO" v="12898"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="583">
     <nd ref="449"/>
@@ -5806,8 +5806,8 @@
     <tag k="GCROADS" v="KING GEORGE BLVD"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          6"/>
-    <tag k="YTD_COST" v="            104.219999999999999"/>
+    <tag k="NO_LANE" v="6"/>
+    <tag k="YTD_COST" v="104.219999999999999"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5815,15 +5815,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="King George Blvd"/>
-    <tag k="LC_COST" v="           2226.730000000000018"/>
+    <tag k="LC_COST" v="2226.730000000000018"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12570"/>
+    <tag k="RIGHTFROM" v="12570"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12607"/>
+    <tag k="LEFTFROM" v="12607"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -5836,16 +5836,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="KING GEORGE"/>
-    <tag k="LEFTTO" v="      12667"/>
+    <tag k="LEFTTO" v="12667"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12674"/>
+    <tag k="RIGHTTO" v="12674"/>
     <tag k="SNW_RTEZON" v="1 W"/>
     <tag k="SPEED" v="60"/>
     <tag k="DISR_ROUTE" v="Secondary"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="584">
     <nd ref="585"/>
@@ -5854,8 +5854,8 @@
     <tag k="GCROADS" v="KING GEORGE BLVD"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          6"/>
-    <tag k="YTD_COST" v="            104.219999999999999"/>
+    <tag k="NO_LANE" v="6"/>
+    <tag k="YTD_COST" v="104.219999999999999"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5863,15 +5863,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="King George Blvd"/>
-    <tag k="LC_COST" v="           2227.710000000000036"/>
+    <tag k="LC_COST" v="2227.710000000000036"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12550"/>
+    <tag k="RIGHTFROM" v="12550"/>
     <tag k="ROW_WIDTH" v="30"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12551"/>
+    <tag k="LEFTFROM" v="12551"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -5884,16 +5884,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="KING GEORGE"/>
-    <tag k="LEFTTO" v="      12569"/>
+    <tag k="LEFTTO" v="12569"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12568"/>
+    <tag k="RIGHTTO" v="12568"/>
     <tag k="SNW_RTEZON" v="1 W"/>
     <tag k="SPEED" v="60"/>
     <tag k="DISR_ROUTE" v="Secondary"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="586">
     <nd ref="452"/>
@@ -5902,8 +5902,8 @@
     <tag k="GCROADS" v="113B AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -5911,15 +5911,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="113B Ave"/>
-    <tag k="LC_COST" v="            227.780000000000001"/>
+    <tag k="LC_COST" v="227.780000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12652"/>
+    <tag k="RIGHTFROM" v="12652"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12651"/>
+    <tag k="LEFTFROM" v="12651"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -5932,16 +5932,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="113B"/>
-    <tag k="LEFTTO" v="      12719"/>
+    <tag k="LEFTTO" v="12719"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12718"/>
+    <tag k="RIGHTTO" v="12718"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="587">
     <nd ref="588"/>
@@ -5986,7 +5986,7 @@
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Gravel"/>
     <tag k="NO_LANE" v=""/>
-    <tag k="YTD_COST" v="              0.000000000000000"/>
+    <tag k="YTD_COST" v="0.000000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -6024,7 +6024,7 @@
     <tag k="SNW_RTEZON" v=""/>
     <tag k="SPEED" v=""/>
     <tag k="DISR_ROUTE" v=""/>
-    <tag k="RC_TYPE" v="          5"/>
+    <tag k="RC_TYPE" v="5"/>
   </way>
   <way visible="true" id="625">
     <nd ref="462"/>
@@ -6034,8 +6034,8 @@
     <tag k="GCROADS" v="115B AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -6043,15 +6043,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="115B Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12552"/>
+    <tag k="RIGHTFROM" v="12552"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12551"/>
+    <tag k="LEFTFROM" v="12551"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -6064,16 +6064,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="115B"/>
-    <tag k="LEFTTO" v="      12649"/>
+    <tag k="LEFTTO" v="12649"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12648"/>
+    <tag k="RIGHTTO" v="12648"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="627">
     <nd ref="464"/>
@@ -6082,8 +6082,8 @@
     <tag k="GCROADS" v="115A AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -6091,15 +6091,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="115A Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12652"/>
+    <tag k="RIGHTFROM" v="12652"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12651"/>
+    <tag k="LEFTFROM" v="12651"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -6112,16 +6112,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="115A"/>
-    <tag k="LEFTTO" v="      12743"/>
+    <tag k="LEFTTO" v="12743"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12742"/>
+    <tag k="RIGHTTO" v="12742"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="628">
     <nd ref="549"/>
@@ -6130,8 +6130,8 @@
     <tag k="GCROADS" v="112A AVE"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -6139,15 +6139,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="112A Ave"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      12246"/>
+    <tag k="RIGHTFROM" v="12246"/>
     <tag k="ROW_WIDTH" v="22"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12255"/>
+    <tag k="LEFTFROM" v="12255"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -6160,16 +6160,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="112A"/>
-    <tag k="LEFTTO" v="      12299"/>
+    <tag k="LEFTTO" v="12299"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      12300"/>
+    <tag k="RIGHTTO" v="12300"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="629">
     <nd ref="32"/>
@@ -6178,8 +6178,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -6187,15 +6187,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11572"/>
+    <tag k="RIGHTFROM" v="11572"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11571"/>
+    <tag k="LEFTFROM" v="11571"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -6208,16 +6208,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11599"/>
+    <tag k="LEFTTO" v="11599"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11598"/>
+    <tag k="RIGHTTO" v="11598"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="630">
     <nd ref="19"/>
@@ -6226,8 +6226,8 @@
     <tag k="GCROADS" v="126A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -6235,15 +6235,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="126A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11402"/>
+    <tag k="RIGHTFROM" v="11402"/>
     <tag k="ROW_WIDTH" v=""/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11401"/>
+    <tag k="LEFTFROM" v="11401"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Local"/>
@@ -6256,16 +6256,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="126A"/>
-    <tag k="LEFTTO" v="      11467"/>
+    <tag k="LEFTTO" v="11467"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11468"/>
+    <tag k="RIGHTTO" v="11468"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="631">
     <nd ref="46"/>
@@ -6275,8 +6275,8 @@
     <tag k="GCROADS" v="124 ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="             81.219999999999999"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="81.219999999999999"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -6284,15 +6284,15 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="124 St"/>
-    <tag k="LC_COST" v="            481.319999999999993"/>
+    <tag k="LC_COST" v="481.319999999999993"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
-    <tag k="RIGHTFROM" v="      11202"/>
+    <tag k="RIGHTFROM" v="11202"/>
     <tag k="ROW_WIDTH" v="24"/>
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      11201"/>
+    <tag k="LEFTFROM" v="11201"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Major Collector"/>
@@ -6305,16 +6305,16 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="124"/>
-    <tag k="LEFTTO" v="      11249"/>
+    <tag k="LEFTTO" v="11249"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
     <tag k="OWNER" v="Surrey"/>
-    <tag k="RIGHTTO" v="      11248"/>
+    <tag k="RIGHTTO" v="11248"/>
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="633">
     <nd ref="50"/>
@@ -6325,8 +6325,8 @@
     <tag k="GCROADS" v="KING GEORGE BLVD"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          6"/>
-    <tag k="YTD_COST" v="            104.219999999999999"/>
+    <tag k="NO_LANE" v="6"/>
+    <tag k="YTD_COST" v="104.219999999999999"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -6334,7 +6334,7 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="King George Blvd"/>
-    <tag k="LC_COST" v="           2226.730000000000018"/>
+    <tag k="LC_COST" v="2226.730000000000018"/>
     <tag k="WTR_VEHCL" v="Tandem and Brine"/>
     <tag k="STR_ROUTE" v=""/>
     <tag k="RIGHTFROM" v=""/>
@@ -6342,7 +6342,7 @@
     <tag k="DATECONST" v=""/>
     <tag k="LOCATION" v=""/>
     <tag k="PROJ_NO" v=""/>
-    <tag k="LEFTFROM" v="      12473"/>
+    <tag k="LEFTFROM" v="12473"/>
     <tag k="STATUS" v="Open"/>
     <tag k="PAV_DATE" v=""/>
     <tag k="RD_CLASS" v="Arterial"/>
@@ -6355,7 +6355,7 @@
     <tag k="DESIGNTN" v=""/>
     <tag k="CONDTN" v=""/>
     <tag k="GCNAME" v="KING GEORGE"/>
-    <tag k="LEFTTO" v="      12525"/>
+    <tag k="LEFTTO" v="12525"/>
     <tag k="WAR_DATE" v=""/>
     <tag k="RC_TYPE2" v="Road"/>
     <tag k="LEGACYID" v=""/>
@@ -6364,7 +6364,7 @@
     <tag k="SNW_RTEZON" v="1 W"/>
     <tag k="SPEED" v="60"/>
     <tag k="DISR_ROUTE" v="Secondary"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
   <way visible="true" id="636">
     <nd ref="36"/>
@@ -6373,8 +6373,8 @@
     <tag k="GCROADS" v="127A ST"/>
     <tag k="GCPREDIR" v=""/>
     <tag k="MATERIAL" v="Asphalt"/>
-    <tag k="NO_LANE" v="          2"/>
-    <tag k="YTD_COST" v="              1.540000000000000"/>
+    <tag k="NO_LANE" v="2"/>
+    <tag k="YTD_COST" v="1.540000000000000"/>
     <tag k="COMMENTS" v=""/>
     <tag k="GREENWAY" v=""/>
     <tag k="GCSUFDIR" v=""/>
@@ -6382,7 +6382,7 @@
     <tag k="YR" v=""/>
     <tag k="CONDDATE" v=""/>
     <tag k="ROAD_NAME" v="127A St"/>
-    <tag k="LC_COST" v="             19.600000000000001"/>
+    <tag k="LC_COST" v="19.600000000000001"/>
     <tag k="WTR_VEHCL" v=""/>
     <tag k="STR_ROUTE" v=""/>
     <tag k="RIGHTFROM" v=""/>
@@ -6412,6 +6412,6 @@
     <tag k="SNW_RTEZON" v="1 E"/>
     <tag k="SPEED" v="50"/>
     <tag k="DISR_ROUTE" v="None"/>
-    <tag k="RC_TYPE" v="          0"/>
+    <tag k="RC_TYPE" v="0"/>
   </way>
 </osm>
