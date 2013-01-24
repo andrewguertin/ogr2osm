@@ -24,7 +24,7 @@ latitude-longitude)
 For additional usage information, run ogr2osm.py --help
 
 
-Copyright (c) 2012 Paul Norman
+Copyright (c) 2012-2013 Paul Norman
 <penorman@mac.com>
 Released under the MIT license: http://opensource.org/licenses/mit-license.php
 
