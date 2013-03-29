@@ -221,40 +221,20 @@ else:
     translations = types.ModuleType("translationmodule")
     l.info("Using default translations")
 
-try:
-    translations.filterLayer(None)
-    l.debug("Using user filterLayer")
-except:
-    l.debug("Using default filterLayer")
-    translations.filterLayer = lambda layer: layer
+default_translations = [
+    ('filterLayer', lambda layer: layer),
+    ('filterFeature', lambda feature, fieldNames, reproject: feature),
+    ('filterTags', lambda tags: tags),
+    ('filterFeaturePost', lambda feature, fieldNames, reproject: feature),
+    ('preOutputTransform', lambda geometries, features: None),
+    ]
 
-try:
-    translations.filterFeature(None, None, None)
-    l.debug("Using user filterFeature")
-except:
-    l.debug("Using default filterFeature")
-    translations.filterFeature = lambda feature, fieldNames, reproject: feature
-
-try:
-    translations.filterTags(None)
-    l.debug("Using user filterTags")
-except:
-    l.debug("Using default filterTags")
-    translations.filterTags = lambda tags: tags
-
-try:
-    translations.filterFeaturePost(None, None, None)
-    l.debug("Using user filterFeaturePost")
-except:
-    l.debug("Using default filterFeaturePost")
-    translations.filterFeaturePost = lambda feature, fieldNames, reproject: feature
-
-try:
-    translations.preOutputTransform(None, None)
-    l.debug("Using user preOutputTransform")
-except:
-    l.debug("Using default preOutputTransform")
-    translations.preOutputTransform = lambda geometries, features: None
+for (k, v) in default_translations:
+    if hasattr(translations, k) and getattr(translations, k):
+        l.debug("Using user " + k)
+    else:
+        l.debug("Using default " + k)
+        setattr(translations, k, v)
 
 # Done options parsing, now to program code
 
