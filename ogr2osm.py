@@ -293,7 +293,7 @@ class Relation(Geometry):
         Geometry.__init__(self)
         self.members = []
     def replacejwithi(self, i, j):
-        self.members = [i if x == j else x for x in self.members]
+        self.members = [(i, x[1]) if x[0] == j else x for x in self.members]
         j.removeparent(self)
         i.addparent(self)
 
