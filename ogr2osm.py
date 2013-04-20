@@ -315,7 +315,7 @@ def getFileData(filename):
         
     fileDataSource = ogr.Open(filename, 0)  # 0 means read-only
     if fileDataSource is None:
-        l.error('OGR failed to open ' + filename + ', format may be unsuported')
+        l.error('OGR failed to open ' + filename + ', format may be unsupported')
         sys.exit(1)
     if options.noMemoryCopy:
         return fileDataSource
