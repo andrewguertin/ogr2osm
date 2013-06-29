@@ -28,6 +28,10 @@ Copyright (c) 2012-2013 Paul Norman
 <penorman@mac.com>
 Released under the MIT license: http://opensource.org/licenses/mit-license.php
 
+Copyright (c) 2013 Sebastiaan Couwenberg
+<sebastic@xs4all.nl>
+Released under the MIT license: http://opensource.org/licenses/mit-license.php
+
 Copyright (c) 2012 The University of Vermont
 <andrew.guertin@uvm.edu>
 Released under the MIT license: http://opensource.org/licenses/mit-license.php
@@ -549,6 +553,25 @@ def mergePoints():
                 for parent in set(point.parents):
                     parent.replacejwithi(pointsatloc[0], point)
         
+def mergeWayPoints():
+    l.debug("Merging duplicate points in ways")
+    global geometries
+    ways = [geometry for geometry in geometries if type(geometry) == Way]
+
+    # Remove duplicate points from ways,
+    # a duplicate has the same id as its predecessor
+    for way in ways:
+        previous = options.id
+        merged_points = []
+
+        for node in way.points:
+            if previous == options.id or previous != node.id:
+                merged_points.append(node)
+                previous = node.id
+           
+        if len(merged_points) > 0:
+            way.points = merged_points
+
 def output():
     l.debug("Outputting XML")
     # First, set up a few data structures for optimization purposes
@@ -632,5 +655,6 @@ def output():
 data = getFileData(sourceFile)
 parseData(data)
 mergePoints()
+mergeWayPoints()
 translations.preOutputTransform(geometries, features)
 output()
