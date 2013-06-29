@@ -67,6 +67,7 @@ test1:
   Merging points
   Making list
   Checking list
+  Merging duplicate points in ways
   Outputting XML
   $ xmllint --format test1.osm | diff -uNr - $TESTDIR/test1.xml
 
@@ -107,6 +108,7 @@ force:
   Merging points
   Making list
   Checking list
+  Merging duplicate points in ways
   Outputting XML
   $ xmllint --format test1.osm | diff -uNr - $TESTDIR/test1.xml
 
@@ -139,6 +141,7 @@ nomemorycopy:
   Merging points
   Making list
   Checking list
+  Merging duplicate points in ways
   Outputting XML
   $ xmllint --format test1.osm | diff -uNr - $TESTDIR/test1.xml
 
@@ -171,6 +174,7 @@ positiveid:
   Merging points
   Making list
   Checking list
+  Merging duplicate points in ways
   Outputting XML
   $ xmllint --format test1.osm | diff -uNr - $TESTDIR/positiveid.xml
 
@@ -203,6 +207,7 @@ version:
   Merging points
   Making list
   Checking list
+  Merging duplicate points in ways
   Outputting XML
   $ xmllint --format test1.osm | diff -uNr - $TESTDIR/version.xml
 
@@ -235,6 +240,7 @@ timestamp:
   Merging points
   Making list
   Checking list
+  Merging duplicate points in ways
   Outputting XML
 
 utf8:
@@ -258,6 +264,7 @@ utf8:
   Merging points
   Making list
   Checking list
+  Merging duplicate points in ways
   Outputting XML
   $ xmllint --format sp_usinas.osm | diff -uNr - $TESTDIR/utf8.xml
 
@@ -277,6 +284,7 @@ japanese:
   Merging points
   Making list
   Checking list
+  Merging duplicate points in ways
   Outputting XML
   $ xmllint --format japanese.osm | diff -uNr - $TESTDIR/japanese.xml
 
@@ -348,5 +356,6 @@ duplicatewaynodes:
   Merging points
   Making list
   Checking list
+  Merging duplicate points in ways
   Outputting XML
   $ xmllint --format duplicate-way-nodes.osm | diff -uNr - $TESTDIR/duplicate-way-nodes.xml
