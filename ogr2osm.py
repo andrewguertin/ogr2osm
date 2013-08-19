@@ -314,9 +314,18 @@ class Feature(object):
         i.addparent(self)
 
 def getFileData(filename):
-    if not os.path.exists(filename):
-        parser.error("the file '%s' does not exist" % (filename))
-        
+    if filename.find('/vsicurl/') < 0:
+        if filename.find('/vsigzip/') == 0:
+            real_filename = filename[9:]
+        elif filename.find('/vsizip/') == 0:
+            real_filename = filename[8:]
+        elif filename.find('/vsitar/') == 0:
+            real_filename = filename[8:]
+        else:
+            real_filename = filename
+        if not os.path.exists(real_filename):
+            parser.error("the file '%s' does not exist" % (real_filename))
+
     fileDataSource = ogr.Open(filename, 0)  # 0 means read-only
     if fileDataSource is None:
         l.error('OGR failed to open ' + filename + ', format may be unsupported')
