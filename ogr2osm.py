@@ -132,6 +132,12 @@ parser.add_option("--no-upload-false", dest="noUploadFalse", action="store_true"
 parser.add_option("--id", dest="id", type=int, default=0,
                     help="ID to start counting from for the output file. Defaults to 0.")
 
+parser.add_option("--idfile", dest="idfile", type=str, default=None,
+                    help="Read ID to start counting from from a file.")
+
+parser.add_option("--saveid", dest="saveid", type=str, default=None,
+                    help="Save last ID after execution to a file.")
+
 # Positive IDs can cause big problems if used inappropriately so hide the help for this
 parser.add_option("--positive-id", dest="positiveID", action="store_true",
                     help=optparse.SUPPRESS_HELP)
@@ -248,6 +254,10 @@ features = []
 
 # Helper function to get a new ID
 elementIdCounter = options.id
+if options.idfile:
+    with open(options.idfile, 'r') as ff:
+        elementIdCounter = int(ff.readline(20))
+    l.info("Using '%d' as starting counter value." % elementIdCounter)
 
 def getNewID():
     global elementIdCounter
@@ -675,3 +685,8 @@ mergePoints()
 mergeWayPoints()
 translations.preOutputTransform(geometries, features)
 output()
+if options.saveid:
+    with open(options.saveid, 'w') as ff:
+        ff.write(str(elementIdCounter))
+    l.info("Wrote elementIdCounter '%d' to file '%s'"
+        % (elementIdCounter, options.saveid))
