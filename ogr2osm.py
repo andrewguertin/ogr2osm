@@ -325,6 +325,14 @@ def getFileData(filename):
             real_filename = filename
         if not os.path.exists(real_filename):
             parser.error("the file '%s' does not exist" % (real_filename))
+        if len(filename) == len(real_filename):
+            if filename.endswith('.gz'):
+                filename = '/vsigzip/' + filename
+            elif filename.endswith('.tar') or filename.endswith('.tgz') or \
+              filename.endswith('.tar.gz'):
+                filename = '/vsitar/' + filename
+            elif filename.endswith('.zip'):
+                filename = '/vsizip/' + filename
 
     fileDataSource = ogr.Open(filename, 0)  # 0 means read-only
     if fileDataSource is None:
