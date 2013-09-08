@@ -246,30 +246,14 @@ for (k, v) in default_translations:
         l.debug("Using default " + k)
         setattr(translations, k, v)
 
-# Done options parsing, now to program code
-
 # Some global variables to hold stuff...
 geometries = []
 features = []
 
-# Helper function to get a new ID
-elementIdCounter = options.id
-if options.idfile:
-    with open(options.idfile, 'r') as ff:
-        elementIdCounter = int(ff.readline(20))
-    l.info("Using '%d' as starting counter value." % elementIdCounter)
-
-def getNewID():
-    global elementIdCounter
-    if options.positiveID:
-        elementIdCounter += 1
-    else:
-        elementIdCounter -= 1
-    return elementIdCounter
-
 # Classes
 class Geometry(object):
-    id = 0
+    elementIdCounter = 0
+    elementIdCounterIncr = -1
     def __init__(self):
         self.id = getNewID()
         self.parents = set()
@@ -284,6 +268,21 @@ class Geometry(object):
         if shoulddestroy and len(self.parents) == 0:
             global geometries
             geometries.remove(self)
+
+# Helper function to get a new ID
+def getNewID():
+    Geometry.elementIdCounter += Geometry.elementIdCounterIncr
+    return Geometry.elementIdCounter
+
+Geometry.elementIdCounter = options.id
+if options.idfile:
+    with open(options.idfile, 'r') as ff:
+        Geometry.elementIdCounter = int(ff.readline(20))
+    l.info("Starting counter value '%d' read from file '%s'." \
+        % (Geometry.elementIdCounter, options.idfile))
+
+if options.positiveID:
+    Geometry.elementIdCounterIncr = 1 # default is -1
 
 class Point(Geometry):
     def __init__(self, x, y):
@@ -687,6 +686,6 @@ translations.preOutputTransform(geometries, features)
 output()
 if options.saveid:
     with open(options.saveid, 'w') as ff:
-        ff.write(str(elementIdCounter))
+        ff.write(str(Geometry.elementIdCounter))
     l.info("Wrote elementIdCounter '%d' to file '%s'"
-        % (elementIdCounter, options.saveid))
+        % (Geometry.elementIdCounter, options.saveid))
