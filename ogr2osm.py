@@ -246,19 +246,15 @@ for (k, v) in default_translations:
         l.debug("Using default " + k)
         setattr(translations, k, v)
 
-# Some global variables to hold stuff...
-geometries = []
-features = []
-
 # Classes
 class Geometry(object):
     elementIdCounter = 0
     elementIdCounterIncr = -1
+    geometries = []
     def __init__(self):
         self.id = getNewID()
         self.parents = set()
-        global geometries
-        geometries.append(self)
+        Geometry.geometries.append(self)
     def replacejwithi(self, i, j):
         pass
     def addparent(self, parent):
@@ -266,8 +262,7 @@ class Geometry(object):
     def removeparent(self, parent, shoulddestroy=True):
         self.parents.discard(parent)
         if shoulddestroy and len(self.parents) == 0:
-            global geometries
-            geometries.remove(self)
+            Geometry.geometries.remove(self)
 
 # Helper function to get a new ID
 def getNewID():
@@ -311,11 +306,11 @@ class Relation(Geometry):
         i.addparent(self)
 
 class Feature(object):
-    geometry = None
-    tags = {}
+    features = []
     def __init__(self):
-        global features
-        features.append(self)
+        self.geometry = None
+        self.tags = {}
+        Feature.features.append(self)
     def replacejwithi(self, i, j):
         if self.geometry == j:
             self.geometry = i
@@ -557,9 +552,8 @@ def parseCollection(ogrgeometry):
 
 def mergePoints():
     l.debug("Merging points")
-    global geometries
-    points = [geometry for geometry in geometries if type(geometry) == Point]
-    
+    points = [geom for geom in Geometry.geometries if type(geom) == Point]
+
     # Make list of Points at each location
     l.debug("Making list")
     pointcoords = {}
@@ -578,11 +572,10 @@ def mergePoints():
             for point in pointsatloc[1:]:
                 for parent in set(point.parents):
                     parent.replacejwithi(pointsatloc[0], point)
-        
+
 def mergeWayPoints():
     l.debug("Merging duplicate points in ways")
-    global geometries
-    ways = [geometry for geometry in geometries if type(geometry) == Way]
+    ways = [geom for geom in Geometry.geometries if type(geom) == Way]
 
     # Remove duplicate points from ways,
     # a duplicate has the same id as its predecessor
@@ -601,11 +594,10 @@ def mergeWayPoints():
 def output():
     l.debug("Outputting XML")
     # First, set up a few data structures for optimization purposes
-    global geometries, features
-    nodes = [geometry for geometry in geometries if type(geometry) == Point]
-    ways = [geometry for geometry in geometries if type(geometry) == Way]
-    relations = [geometry for geometry in geometries if type(geometry) == Relation]
-    featuresmap = {feature.geometry : feature for feature in features}
+    nodes = [geom for geom in Geometry.geometries if type(geom) == Point]
+    ways = [geom for geom in Geometry.geometries if type(geom) == Way]
+    relations = [geom for geom in Geometry.geometries if type(geom) == Relation]
+    featuresmap = {feature.geometry : feature for feature in Feature.features}
 
     # Open up the output file with the system default buffering
     with open(options.outputFile, 'w', -1) as f:
@@ -682,7 +674,7 @@ data = getFileData(sourceFile)
 parseData(data)
 mergePoints()
 mergeWayPoints()
-translations.preOutputTransform(geometries, features)
+translations.preOutputTransform(Geometry.geometries, Feature.features)
 output()
 if options.saveid:
     with open(options.saveid, 'w') as ff:
