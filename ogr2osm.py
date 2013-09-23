@@ -177,7 +177,7 @@ if options.addTimestamp:
     
 # Input and output file
 # if no output file given, use the basename of the source but with .osm
-sourceFile = os.path.realpath(args[0])
+sourceFile = args[0]
 if options.outputFile is not None:
     options.outputFile = os.path.realpath(options.outputFile)
 else:
@@ -258,15 +258,21 @@ if options.positiveID:
     Geometry.elementIdCounterIncr = 1 # default is -1
 
 def getFileData(filename):
-    if filename.find('/vsicurl/') < 0:
-        if filename.find('/vsigzip/') == 0:
-            real_filename = filename[9:]
-        elif filename.find('/vsizip/') == 0:
-            real_filename = filename[8:]
-        elif filename.find('/vsitar/') == 0:
-            real_filename = filename[8:]
-        else:
-            real_filename = filename
+    ogr_accessmethods = [ "/vsicurl/", "/vsicurl_streaming/", "/vsisubfile/",
+        "/vsistdin/" ]
+    ogr_filemethods = [ "/vsisparse/", "/vsigzip/", "/vsitar/", "/vsizip/" ]
+    ogr_unsupported = [ "/vsimem/", "/vsistdout/", ]
+    has_unsup = [ m for m in ogr_unsupported if m[1:-1] in filename.split('/') ]
+    if has_unsup:
+        parser.error("Unsupported OGR access method(s) found: %s."
+            % str(has_unsup)[1:-1])
+    if not any([ m[1:-1] in filename.split('/') for m in ogr_accessmethods ]):
+        # Not using any ogr_accessmethods
+        real_filename = filename
+        for fm in ogr_filemethods:
+            if filename.find(fm) == 0:
+                real_filename = filename[len(fm):]
+                break
         if not os.path.exists(real_filename):
             parser.error("the file '%s' does not exist" % (real_filename))
         if len(filename) == len(real_filename):
