@@ -36,6 +36,8 @@ usage:
                           JOSM warnings when uploading.
     --id=ID               ID to start counting from for the output file.
                           Defaults to 0.
+    --idfile=IDFILE       Read ID to start counting from from a file.
+    --saveid=SAVEID       Save last ID after execution to a file.
 						  
 test1:
   $ rm -f test1.osm

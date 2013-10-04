@@ -58,6 +58,7 @@ l.basicConfig(level=l.DEBUG, format="%(message)s")
 
 from osgeo import ogr
 from osgeo import osr
+from geom import *
 
 
 '''
@@ -132,6 +133,12 @@ parser.add_option("--no-upload-false", dest="noUploadFalse", action="store_true"
 parser.add_option("--id", dest="id", type=int, default=0,
                     help="ID to start counting from for the output file. Defaults to 0.")
 
+parser.add_option("--idfile", dest="idfile", type=str, default=None,
+                    help="Read ID to start counting from from a file.")
+
+parser.add_option("--saveid", dest="saveid", type=str, default=None,
+                    help="Save last ID after execution to a file.")
+
 # Positive IDs can cause big problems if used inappropriately so hide the help for this
 parser.add_option("--positive-id", dest="positiveID", action="store_true",
                     help=optparse.SUPPRESS_HELP)
@@ -170,7 +177,7 @@ if options.addTimestamp:
     
 # Input and output file
 # if no output file given, use the basename of the source but with .osm
-sourceFile = os.path.realpath(args[0])
+sourceFile = args[0]
 if options.outputFile is not None:
     options.outputFile = os.path.realpath(options.outputFile)
 else:
@@ -240,83 +247,43 @@ for (k, v) in default_translations:
         l.debug("Using default " + k)
         setattr(translations, k, v)
 
-# Done options parsing, now to program code
+Geometry.elementIdCounter = options.id
+if options.idfile:
+    with open(options.idfile, 'r') as ff:
+        Geometry.elementIdCounter = int(ff.readline(20))
+    l.info("Starting counter value '%d' read from file '%s'." \
+        % (Geometry.elementIdCounter, options.idfile))
 
-# Some global variables to hold stuff...
-geometries = []
-features = []
-
-# Helper function to get a new ID
-elementIdCounter = options.id
-
-def getNewID():
-    global elementIdCounter
-    if options.positiveID:
-        elementIdCounter += 1
-    else:
-        elementIdCounter -= 1
-    return elementIdCounter
-
-# Classes
-class Geometry(object):
-    id = 0
-    def __init__(self):
-        self.id = getNewID()
-        self.parents = set()
-        global geometries
-        geometries.append(self)
-    def replacejwithi(self, i, j):
-        pass
-    def addparent(self, parent):
-        self.parents.add(parent)
-    def removeparent(self, parent, shoulddestroy=True):
-        self.parents.discard(parent)
-        if shoulddestroy and len(self.parents) == 0:
-            global geometries
-            geometries.remove(self)
-
-class Point(Geometry):
-    def __init__(self, x, y):
-        Geometry.__init__(self)
-        self.x = x
-        self.y = y
-    def replacejwithi(self, i, j):
-        pass
-
-class Way(Geometry):
-    def __init__(self):
-        Geometry.__init__(self)
-        self.points = []
-    def replacejwithi(self, i, j):
-        self.points = [i if x == j else x for x in self.points]
-        j.removeparent(self)
-        i.addparent(self)
-
-class Relation(Geometry):
-    def __init__(self):
-        Geometry.__init__(self)
-        self.members = []
-    def replacejwithi(self, i, j):
-        self.members = [(i, x[1]) if x[0] == j else x for x in self.members]
-        j.removeparent(self)
-        i.addparent(self)
-
-class Feature(object):
-    geometry = None
-    tags = {}
-    def __init__(self):
-        global features
-        features.append(self)
-    def replacejwithi(self, i, j):
-        if self.geometry == j:
-            self.geometry = i
-        j.removeparent(self)
-        i.addparent(self)
+if options.positiveID:
+    Geometry.elementIdCounterIncr = 1 # default is -1
 
 def getFileData(filename):
-    if not os.path.exists(filename):
-        parser.error("the file '%s' does not exist" % (filename))
-        
+    ogr_accessmethods = [ "/vsicurl/", "/vsicurl_streaming/", "/vsisubfile/",
+        "/vsistdin/" ]
+    ogr_filemethods = [ "/vsisparse/", "/vsigzip/", "/vsitar/", "/vsizip/" ]
+    ogr_unsupported = [ "/vsimem/", "/vsistdout/", ]
+    has_unsup = [ m for m in ogr_unsupported if m[1:-1] in filename.split('/') ]
+    if has_unsup:
+        parser.error("Unsupported OGR access method(s) found: %s."
+            % str(has_unsup)[1:-1])
+    if not any([ m[1:-1] in filename.split('/') for m in ogr_accessmethods ]):
+        # Not using any ogr_accessmethods
+        real_filename = filename
+        for fm in ogr_filemethods:
+            if filename.find(fm) == 0:
+                real_filename = filename[len(fm):]
+                break
+        if not os.path.exists(real_filename):
+            parser.error("the file '%s' does not exist" % (real_filename))
+        if len(filename) == len(real_filename):
+            if filename.endswith('.gz'):
+                filename = '/vsigzip/' + filename
+            elif filename.endswith('.tar') or filename.endswith('.tgz') or \
+              filename.endswith('.tar.gz'):
+                filename = '/vsitar/' + filename
+            elif filename.endswith('.zip'):
+                filename = '/vsizip/' + filename
+
     fileDataSource = ogr.Open(filename, 0)  # 0 means read-only
     if fileDataSource is None:
         l.error('OGR failed to open ' + filename + ', format may be unsupported')
@@ -531,9 +498,8 @@ def parseCollection(ogrgeometry):
 
 def mergePoints():
     l.debug("Merging points")
-    global geometries
-    points = [geometry for geometry in geometries if type(geometry) == Point]
-    
+    points = [geom for geom in Geometry.geometries if type(geom) == Point]
+
     # Make list of Points at each location
     l.debug("Making list")
     pointcoords = {}
@@ -552,11 +518,10 @@ def mergePoints():
             for point in pointsatloc[1:]:
                 for parent in set(point.parents):
                     parent.replacejwithi(pointsatloc[0], point)
-        
+
 def mergeWayPoints():
     l.debug("Merging duplicate points in ways")
-    global geometries
-    ways = [geometry for geometry in geometries if type(geometry) == Way]
+    ways = [geom for geom in Geometry.geometries if type(geom) == Way]
 
     # Remove duplicate points from ways,
     # a duplicate has the same id as its predecessor
@@ -575,11 +540,10 @@ def mergeWayPoints():
 def output():
     l.debug("Outputting XML")
     # First, set up a few data structures for optimization purposes
-    global geometries, features
-    nodes = [geometry for geometry in geometries if type(geometry) == Point]
-    ways = [geometry for geometry in geometries if type(geometry) == Way]
-    relations = [geometry for geometry in geometries if type(geometry) == Relation]
-    featuresmap = {feature.geometry : feature for feature in features}
+    nodes = [geom for geom in Geometry.geometries if type(geom) == Point]
+    ways = [geom for geom in Geometry.geometries if type(geom) == Way]
+    relations = [geom for geom in Geometry.geometries if type(geom) == Relation]
+    featuresmap = {feature.geometry : feature for feature in Feature.features}
 
     # Open up the output file with the system default buffering
     with open(options.outputFile, 'w', -1) as f:
@@ -656,5 +620,10 @@ data = getFileData(sourceFile)
 parseData(data)
 mergePoints()
 mergeWayPoints()
-translations.preOutputTransform(geometries, features)
+translations.preOutputTransform(Geometry.geometries, Feature.features)
 output()
+if options.saveid:
+    with open(options.saveid, 'w') as ff:
+        ff.write(str(Geometry.elementIdCounter))
+    l.info("Wrote elementIdCounter '%d' to file '%s'"
+        % (Geometry.elementIdCounter, options.saveid))
