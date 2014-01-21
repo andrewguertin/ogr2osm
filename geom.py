@@ -2,7 +2,8 @@
 #
 # Copyright (c) 2012-2013 Paul Norman
 # <penorman@mac.com>
-# Released under the MIT license: http://opensource.org/licenses/mit-license.php
+# Released under the MIT license, as given in the file LICENSE, which must
+# accompany any distribution of this code.
 
 # Classes
 class Geometry(object):

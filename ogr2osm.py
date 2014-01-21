@@ -26,7 +26,8 @@ For additional usage information, run ogr2osm.py --help
 Copyright (c) 2012-2013 Paul Norman <penorman@mac.com>, Sebastiaan Couwenberg 
 <sebastic@xs4all.nl>, The University of Vermont <andrew.guertin@uvm.edu>
 
-Released under the MIT license: http://opensource.org/licenses/mit-license.php
+Released under the MIT license, as given in the file LICENSE, which must
+accompany any distribution of this code.
 
 Based very heavily on code released under the following terms:
 
