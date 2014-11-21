@@ -46,6 +46,7 @@ import sys
 import os
 import optparse
 import logging as l
+import re
 l.basicConfig(level=l.DEBUG, format="%(message)s")
 
 from osgeo import ogr
@@ -85,7 +86,10 @@ except ImportError:
 
 
 # Setup program usage
-usage = "usage: %prog SRCFILE"
+usage = """%prog SRCFILE
+
+SRCFILE can be a file path or a org PostgreSQL connection string such as:
+"PG:dbname=pdx_bldgs user=emma host=localhost" (including the quotes)"""
 parser = optparse.OptionParser(usage=usage)
 parser.add_option("-t", "--translation", dest="translationMethod",
                   metavar="TRANSLATION",
@@ -143,6 +147,9 @@ parser.add_option("--add-version", dest="addVersion", action="store_true",
 parser.add_option("--add-timestamp", dest="addTimestamp", action="store_true",
                     help=optparse.SUPPRESS_HELP)
 
+parser.add_option("--sql", dest="sqlQuery", type=str, default=None,
+                     help="SQL query to execute on a PostgreSQL source")
+
 parser.set_defaults(sourceEPSG=None, sourcePROJ4=None, verbose=False,
                     debugTags=False,
                     translationMethod=None, outputFile=None,
@@ -169,15 +176,23 @@ if options.addTimestamp:
     
 # Input and output file
 # if no output file given, use the basename of the source but with .osm
-sourceFile = args[0]
+source = args[0]
+sourceIsDatabase = bool(re.match('^PG:', source))
+
 if options.outputFile is not None:
     options.outputFile = os.path.realpath(options.outputFile)
+elif sourceIsDatabase:
+    parser.error("ERROR: An output file must be explicitly specified when using a database source")
 else:
-    (base, ext) = os.path.splitext(os.path.basename(sourceFile))
+    (base, ext) = os.path.splitext(os.path.basename(source))
     options.outputFile = os.path.join(os.getcwd(), base + ".osm")
+
+if options.sqlQuery and not sourceIsDatabase:
+    parser.error("ERROR: You must use a database source when specifying a query with --sql")
+
 if not options.forceOverwrite and os.path.exists(options.outputFile):
     parser.error("ERROR: output file '%s' exists" % (options.outputFile))
-l.info("Preparing to convert file '%s' to '%s'." % (sourceFile, options.outputFile))
+l.info("Preparing to convert '%s' to '%s'." % (source, options.outputFile))
 
 # Projection
 if not options.sourcePROJ4 and not options.sourceEPSG:
@@ -249,6 +264,20 @@ if options.idfile:
 if options.positiveID:
     Geometry.elementIdCounterIncr = 1 # default is -1
 
+def openData(source):
+    if re.match('^PG:', source):
+        return openDatabaseSource(source)
+    else:
+        return getFileData(source)
+
+def openDatabaseSource(source):
+    dataSource = ogr.Open(source, 0)  # 0 means read-only
+    if dataSource is None:
+        l.error('OGR failed to open connection to' + source)
+        sys.exit(1)
+    else:
+        return dataSource
+
 def getFileData(filename):
     ogr_accessmethods = [ "/vsicurl/", "/vsicurl_streaming/", "/vsisubfile/",
         "/vsistdin/" ]
@@ -289,10 +318,15 @@ def getFileData(filename):
 def parseData(dataSource):
     l.debug("Parsing data")
     global translations
-    for i in range(dataSource.GetLayerCount()):
-        layer = dataSource.GetLayer(i)
+    if options.sqlQuery:
+        layer = dataSource.ExecuteSQL(options.sqlQuery)
         layer.ResetReading()
         parseLayer(translations.filterLayer(layer))
+    else:
+        for i in range(dataSource.GetLayerCount()):
+            layer = dataSource.GetLayer(i)
+            layer.ResetReading()
+            parseLayer(translations.filterLayer(layer))
 
 def getTransform(layer):
     global options
@@ -608,7 +642,7 @@ def output():
 
 
 # Main flow
-data = getFileData(sourceFile)
+data = openData(source)
 parseData(data)
 mergePoints()
 mergeWayPoints()
