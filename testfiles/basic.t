@@ -8,6 +8,9 @@ usage:
   running with lxml.etree
   Usage: ogr2osm.py SRCFILE
   
+  SRCFILE can be a file path or a org PostgreSQL connection string such as:
+  "PG:dbname=pdx_bldgs user=emma host=localhost" (including the quotes)
+  
   Options:
     -h, --help            show this help message and exit
     -t TRANSLATION, --translation=TRANSLATION
@@ -38,12 +41,13 @@ usage:
                           Defaults to 0.
     --idfile=IDFILE       Read ID to start counting from from a file.
     --saveid=SAVEID       Save last ID after execution to a file.
+    --sql=SQLQUERY        SQL query to execute on a PostgreSQL source
 						  
 test1:
   $ rm -f test1.osm
   $ ogr2osm $TESTDIR/shapefiles/test1.shp
   running with lxml.etree
-  Preparing to convert file .* (re)
+  Preparing to convert .* (re)
   Will try to detect projection from source metadata, or fall back to EPSG:4326
   Using default translations
   Using default filterLayer
@@ -78,13 +82,17 @@ duplicatefile:
   running with lxml.etree
   Usage: ogr2osm.py SRCFILE
   
+  SRCFILE can be a file path or a org PostgreSQL connection string such as:
+  "PG:dbname=pdx_bldgs user=emma host=localhost" (including the quotes)
+  
   ogr2osm.py: error: ERROR: output file .*test1.osm' exists (re)
   [2]
+
 
 force:
   $ ogr2osm -f $TESTDIR/shapefiles/test1.shp
   running with lxml.etree
-  Preparing to convert file .* (re)
+  Preparing to convert .* (re)
   Will try to detect projection from source metadata, or fall back to EPSG:4326
   Using default translations
   Using default filterLayer
@@ -117,7 +125,7 @@ force:
 nomemorycopy:
   $ ogr2osm -f --no-memory-copy $TESTDIR/shapefiles/test1.shp
   running with lxml.etree
-  Preparing to convert file .* (re)
+  Preparing to convert .* (re)
   Will try to detect projection from source metadata, or fall back to EPSG:4326
   Using default translations
   Using default filterLayer
@@ -150,7 +158,7 @@ nomemorycopy:
 positiveid:
   $ ogr2osm -f --positive-id $TESTDIR/shapefiles/test1.shp
   running with lxml.etree
-  Preparing to convert file .* (re)
+  Preparing to convert .* (re)
   Will try to detect projection from source metadata, or fall back to EPSG:4326
   Using default translations
   Using default filterLayer
@@ -183,7 +191,7 @@ positiveid:
 version:
   $ ogr2osm -f --add-version $TESTDIR/shapefiles/test1.shp
   running with lxml.etree
-  Preparing to convert file .* (re)
+  Preparing to convert .* (re)
   Will try to detect projection from source metadata, or fall back to EPSG:4326
   Using default translations
   Using default filterLayer
@@ -216,7 +224,7 @@ version:
 timestamp:
   $ ogr2osm -f --add-timestamp $TESTDIR/shapefiles/test1.shp
   running with lxml.etree
-  Preparing to convert file .* (re)
+  Preparing to convert .* (re)
   Will try to detect projection from source metadata, or fall back to EPSG:4326
   Using default translations
   Using default filterLayer
@@ -248,7 +256,7 @@ timestamp:
 utf8:
   $ ogr2osm -f $TESTDIR/shapefiles/sp_usinas.shp
   running with lxml.etree
-  Preparing to convert file .* (re)
+  Preparing to convert .* (re)
   Will try to detect projection from source metadata, or fall back to EPSG:4326
   Using default translations
   Using default filterLayer
@@ -273,7 +281,7 @@ utf8:
 japanese:
   $ ogr2osm --encoding shift_jis -f $TESTDIR/shapefiles/japanese.shp
   running with lxml.etree
-  Preparing to convert file .* (re)
+  Preparing to convert .* (re)
   Will try to detect projection from source metadata, or fall back to EPSG:4326
   Using default translations
   Using default filterLayer
@@ -293,7 +301,7 @@ japanese:
 duplicatewaynodes:
   $ ogr2osm -f $TESTDIR/duplicate-way-nodes.gml
   running with lxml.etree
-  Preparing to convert file .* (re)
+  Preparing to convert .* (re)
   Will try to detect projection from source metadata, or fall back to EPSG:4326
   Using default translations
   Using default filterLayer
