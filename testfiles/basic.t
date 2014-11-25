@@ -369,3 +369,27 @@ duplicatewaynodes:
   Merging duplicate points in ways
   Outputting XML
   $ xmllint --format duplicate-way-nodes.osm | diff -uNr - $TESTDIR/duplicate-way-nodes.xml
+
+require_output_file_when_using_db_source:
+
+  $ ogr2osm "PG:dbname=test"
+  running with lxml.etree
+  Usage: ogr2osm.py SRCFILE
+  
+  SRCFILE can be a file path or a org PostgreSQL connection string such as:
+  "PG:dbname=pdx_bldgs user=emma host=localhost" (including the quotes)
+  
+  ogr2osm.py: error: ERROR: An output file must be explicitly specified when using a database source
+  [2]
+
+require_db_source_for_sql_query:
+
+  $ ogr2osm $TESTDIR/shapefiles/test1.shp --sql="SELECT * FROM wombats"
+  running with lxml.etree
+  Usage: ogr2osm.py SRCFILE
+  
+  SRCFILE can be a file path or a org PostgreSQL connection string such as:
+  "PG:dbname=pdx_bldgs user=emma host=localhost" (including the quotes)
+  
+  ogr2osm.py: error: ERROR: You must use a database source when specifying a query with --sql
+  [2]
