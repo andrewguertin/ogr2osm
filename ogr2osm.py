@@ -351,13 +351,13 @@ def getTransform(layer):
         # Some python magic: skip reprojection altogether by using a dummy
         # lamdba funcion. Otherwise, the lambda will be a call to the OGR
         # reprojection stuff.
-        reproject = lambda(geometry): None
+        reproject = lambda geometry: None
     else:
         destSpatialRef = osr.SpatialReference()
         # Destionation projection will *always* be EPSG:4326, WGS84 lat-lon
         destSpatialRef.ImportFromEPSG(4326)
         coordTrans = osr.CoordinateTransformation(spatialRef, destSpatialRef)
-        reproject = lambda(geometry): geometry.Transform(coordTrans)
+        reproject = lambda geometry: geometry.Transform(coordTrans)
 
     return reproject
 
