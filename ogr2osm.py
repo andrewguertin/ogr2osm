@@ -23,7 +23,7 @@ latitude-longitude)
 
 For additional usage information, run ogr2osm.py --help
 
-Copyright (c) 2012-2013 Paul Norman <penorman@mac.com>, Sebastiaan Couwenberg 
+Copyright (c) 2012-2013 Paul Norman <penorman@mac.com>, Sebastiaan Couwenberg
 <sebastic@xs4all.nl>, The University of Vermont <andrew.guertin@uvm.edu>
 
 Released under the MIT license: http://opensource.org/licenses/mit-license.php
@@ -53,6 +53,8 @@ from osgeo import ogr
 from osgeo import osr
 from geom import *
 
+# Determine major Python version is 2 or 3
+IS_PYTHON2 = sys.version_info < (3, 0)
 
 '''
 
@@ -116,13 +118,13 @@ parser.add_option("--encoding", dest="encoding",
 
 parser.add_option("--significant-digits",  dest="significantDigits", type=int,
                   help="Number of decimal places for coordinates", default=9)
-                  
+
 parser.add_option("--rounding-digits",  dest="roundingDigits", type=int,
                   help="Number of decimal places for rounding", default=7)
 
 parser.add_option("--no-memory-copy", dest="noMemoryCopy", action="store_true",
                     help="Do not make an in-memory working copy")
-                    
+
 parser.add_option("--no-upload-false", dest="noUploadFalse", action="store_true",
                     help="Omit upload=false from the completed file to surpress JOSM warnings when uploading.")
 
@@ -170,10 +172,10 @@ if len(args) < 1:
 elif len(args) > 1:
     parser.error("you have specified too many arguments, " +
                  "only supply the source filename")
-                 
+
 if options.addTimestamp:
     from datetime import datetime
-    
+
 # Input and output file
 # if no output file given, use the basename of the source but with .osm
 source = args[0]
@@ -351,13 +353,13 @@ def getTransform(layer):
         # Some python magic: skip reprojection altogether by using a dummy
         # lamdba funcion. Otherwise, the lambda will be a call to the OGR
         # reprojection stuff.
-        reproject = lambda(geometry): None
+        reproject = lambda geometry: None
     else:
         destSpatialRef = osr.SpatialReference()
         # Destionation projection will *always* be EPSG:4326, WGS84 lat-lon
         destSpatialRef.ImportFromEPSG(4326)
         coordTrans = osr.CoordinateTransformation(spatialRef, destSpatialRef)
-        reproject = lambda(geometry): geometry.Transform(coordTrans)
+        reproject = lambda geometry: geometry.Transform(coordTrans)
 
     return reproject
 
@@ -376,7 +378,10 @@ def getFeatureTags(ogrfeature, fieldNames):
     tags = {}
     for i in range(len(fieldNames)):
         # The field needs to be put into the appropriate encoding and leading or trailing spaces stripped
-        tags[fieldNames[i].decode(options.encoding)] = ogrfeature.GetFieldAsString(i).decode(options.encoding).strip()
+        if IS_PYTHON2:
+            tags[fieldNames[i].decode(options.encoding)] = ogrfeature.GetFieldAsString(i).decode(options.encoding).strip()
+        else:
+            tags[fieldNames[i]] = ogrfeature.GetFieldAsString(i).strip()
     return translations.filterTags(tags)
 
 def parseLayer(layer):
@@ -384,7 +389,7 @@ def parseLayer(layer):
         return
     fieldNames = getLayerFields(layer)
     reproject = getTransform(layer)
-    
+
     for j in range(layer.GetFeatureCount()):
         ogrfeature = layer.GetNextFeature()
         parseFeature(translations.filterFeature(ogrfeature, fieldNames, reproject), fieldNames, reproject)
@@ -398,7 +403,7 @@ def parseFeature(ogrfeature, fieldNames, reproject):
         return
     reproject(ogrgeometry)
     geometries = parseGeometry([ogrgeometry])
-    
+
     for geometry in geometries:
         if geometry is None:
             return
@@ -407,9 +412,9 @@ def parseFeature(ogrfeature, fieldNames, reproject):
         feature.tags = getFeatureTags(ogrfeature, fieldNames)
         feature.geometry = geometry
         geometry.addparent(feature)
-        
+
         translations.filterFeaturePost(feature, ogrfeature, ogrgeometry)
-    
+
 
 def parseGeometry(ogrgeometries):
     returngeometries = []
@@ -439,9 +444,9 @@ def parseGeometry(ogrgeometries):
         else:
             l.warning("unhandled geometry, type: " + str(geometryType))
             returngeometries.append(None)
-            
+
     return returngeometries
-            
+
 def parsePoint(ogrgeometry):
     x = int(round(ogrgeometry.GetX() * 10**options.significantDigits))
     y = int(round(ogrgeometry.GetY() * 10**options.significantDigits))
@@ -559,7 +564,7 @@ def mergeWayPoints():
             if previous == options.id or previous != node.id:
                 merged_points.append(node)
                 previous = node.id
-           
+
         if len(merged_points) > 0:
             way.points = merged_points
 
@@ -572,8 +577,8 @@ def output():
     featuresmap = {feature.geometry : feature for feature in Feature.features}
 
     # Open up the output file with the system default buffering
-    with open(options.outputFile, 'w', -1) as f:
-        
+    with open(options.outputFile, 'w', buffering=-1) as f:
+
         if options.noUploadFalse:
             f.write('<?xml version="1.0"?>\n<osm version="0.6" generator="uvmogr2osm">\n')
         else:
@@ -583,30 +588,32 @@ def output():
         attributes = {}
         if options.addVersion:
             attributes.update({'version':'1'})
-            
+
         if options.addTimestamp:
             attributes.update({'timestamp':datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')})
-            
+
         for node in nodes:
             xmlattrs = {'visible':'true','id':str(node.id), 'lat':str(node.y*10**-options.significantDigits), 'lon':str(node.x*10**-options.significantDigits)}
             xmlattrs.update(attributes)
-            
+
             xmlobject = etree.Element('node', xmlattrs)
-            
+
             if node in featuresmap:
                 for (key, value) in featuresmap[node].tags.items():
                     tag = etree.Element('tag', {'k':key, 'v':value})
                     xmlobject.append(tag)
-                    
-            f.write(etree.tostring(xmlobject))
+            if IS_PYTHON2:
+                f.write(etree.tostring(xmlobject))
+            else:
+                f.write(etree.tostring(xmlobject, encoding='unicode'))
             f.write('\n')
-            
+
         for way in ways:
             xmlattrs = {'visible':'true', 'id':str(way.id)}
             xmlattrs.update(attributes)
-            
+
             xmlobject = etree.Element('way', xmlattrs)
-            
+
             for node in way.points:
                 nd = etree.Element('nd',{'ref':str(node.id)})
                 xmlobject.append(nd)
@@ -614,30 +621,36 @@ def output():
                 for (key, value) in featuresmap[way].tags.items():
                     tag = etree.Element('tag', {'k':key, 'v':value})
                     xmlobject.append(tag)
-                    
-            f.write(etree.tostring(xmlobject))
+
+            if IS_PYTHON2:
+                f.write(etree.tostring(xmlobject))
+            else:
+                f.write(etree.tostring(xmlobject, encoding='unicode'))
             f.write('\n')
-            
+
         for relation in relations:
             xmlattrs = {'visible':'true', 'id':str(relation.id)}
             xmlattrs.update(attributes)
-            
+
             xmlobject = etree.Element('relation', xmlattrs)
-            
+
             for (member, role) in relation.members:
                 member = etree.Element('member', {'type':'way', 'ref':str(member.id), 'role':role})
                 xmlobject.append(member)
-            
+
             tag = etree.Element('tag', {'k':'type', 'v':'multipolygon'})
             xmlobject.append(tag)
             if relation in featuresmap:
                 for (key, value) in featuresmap[relation].tags.items():
                     tag = etree.Element('tag', {'k':key, 'v':value})
                     xmlobject.append(tag)
-                    
-            f.write(etree.tostring(xmlobject))
+
+            if IS_PYTHON2:
+                f.write(etree.tostring(xmlobject))
+            else:
+                f.write(etree.tostring(xmlobject, encoding='unicode'))
             f.write('\n')
-            
+
         f.write('</osm>')
 
 
@@ -649,7 +662,7 @@ mergeWayPoints()
 translations.preOutputTransform(Geometry.geometries, Feature.features)
 output()
 if options.saveid:
-    with open(options.saveid, 'w') as ff:
+    with open(options.saveid, 'wb') as ff:
         ff.write(str(Geometry.elementIdCounter))
     l.info("Wrote elementIdCounter '%d' to file '%s'"
         % (Geometry.elementIdCounter, options.saveid))
