@@ -134,6 +134,10 @@ parser.add_option("--id", dest="id", type=int, default=0,
 parser.add_option("--idfile", dest="idfile", type=str, default=None,
                     help="Read ID to start counting from from a file.")
 
+parser.add_option("--split-ways", dest="maxNodesPerWay", type=int, default=1800,
+                    help="Split ways with more than the specified number of nodes. Defaults to 1800. " +
+                    "Any value below 2 - do not split.")
+
 parser.add_option("--saveid", dest="saveid", type=str, default=None,
                     help="Save last ID after execution to a file.")
 
@@ -712,7 +716,8 @@ data = openData(source)
 parseData(data)
 mergePoints()
 mergeWayPoints()
-splitLongWays(1800)
+if options.maxNodesPerWay >= 2:
+    splitLongWays(options.maxNodesPerWay)
 translations.preOutputTransform(Geometry.geometries, Feature.features)
 output()
 if options.saveid:
