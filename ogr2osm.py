@@ -482,7 +482,11 @@ def parsePolygon(ogrgeometry):
     if ogrgeometry.GetGeometryCount() == 0:
         l.warning("Polygon with no rings?")
     elif ogrgeometry.GetGeometryCount() == 1:
-        return parseLineString(ogrgeometry.GetGeometryRef(0))
+        result = parseLineString(ogrgeometry.GetGeometryRef(0))
+        if result.points > options.maxNodesPerWay:
+            global longWaysFromPolygons
+            longWaysFromPolygons.add(result)
+        return result
     else:
         geometry = Relation()
         try:
@@ -572,7 +576,7 @@ def mergeWayPoints():
         if len(merged_points) > 0:
             way.points = merged_points
 
-def splitLongWays(max_points_in_way):
+def splitLongWays(max_points_in_way, waysToCreateRelationFor):
     l.debug("Splitting long ways")
     ways = [geom for geom in Geometry.geometries if type(geom) == Way]
 
@@ -584,7 +588,8 @@ def splitLongWays(max_points_in_way):
         if len(way.points) > max_points_in_way:
             way_parts = splitWay(way, max_points_in_way, featuresmap, is_way_in_relation)
             if not is_way_in_relation:
-                mergeIntoNewRelation(way_parts)
+                if way in waysToCreateRelationFor:
+                    mergeIntoNewRelation(way_parts)
             else:
                 for rel in way.parents:
                     splitWayInRelation(rel, way_parts)
@@ -713,11 +718,12 @@ def output():
 
 # Main flow
 data = openData(source)
+longWaysFromPolygons = set()
 parseData(data)
 mergePoints()
 mergeWayPoints()
 if options.maxNodesPerWay >= 2:
-    splitLongWays(options.maxNodesPerWay)
+    splitLongWays(options.maxNodesPerWay, longWaysFromPolygons)
 translations.preOutputTransform(Geometry.geometries, Feature.features)
 output()
 if options.saveid:
