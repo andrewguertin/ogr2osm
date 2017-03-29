@@ -134,6 +134,10 @@ parser.add_option("--id", dest="id", type=int, default=0,
 parser.add_option("--idfile", dest="idfile", type=str, default=None,
                     help="Read ID to start counting from from a file.")
 
+parser.add_option("--split-ways", dest="maxNodesPerWay", type=int, default=1800,
+                    help="Split ways with more than the specified number of nodes. Defaults to 1800. " +
+                    "Any value below 2 - do not split.")
+
 parser.add_option("--saveid", dest="saveid", type=str, default=None,
                     help="Save last ID after execution to a file.")
 
@@ -478,7 +482,11 @@ def parsePolygon(ogrgeometry):
     if ogrgeometry.GetGeometryCount() == 0:
         l.warning("Polygon with no rings?")
     elif ogrgeometry.GetGeometryCount() == 1:
-        return parseLineString(ogrgeometry.GetGeometryRef(0))
+        result = parseLineString(ogrgeometry.GetGeometryRef(0))
+        if result.points > options.maxNodesPerWay:
+            global longWaysFromPolygons
+            longWaysFromPolygons.add(result)
+        return result
     else:
         geometry = Relation()
         try:
@@ -568,6 +576,60 @@ def mergeWayPoints():
         if len(merged_points) > 0:
             way.points = merged_points
 
+def splitLongWays(max_points_in_way, waysToCreateRelationFor):
+    l.debug("Splitting long ways")
+    ways = [geom for geom in Geometry.geometries if type(geom) == Way]
+
+    featuresmap = {feature.geometry : feature for feature in Feature.features}
+
+
+    for way in ways:
+        is_way_in_relation = len([p for p in way.parents if type(p) == Relation]) > 0
+        if len(way.points) > max_points_in_way:
+            way_parts = splitWay(way, max_points_in_way, featuresmap, is_way_in_relation)
+            if not is_way_in_relation:
+                if way in waysToCreateRelationFor:
+                    mergeIntoNewRelation(way_parts)
+            else:
+                for rel in way.parents:
+                    splitWayInRelation(rel, way_parts)
+
+def splitWay(way, max_points_in_way, features_map, is_way_in_relation):
+    new_points = [way.points[i:i + max_points_in_way] for i in range(0, len(way.points), max_points_in_way - 1)]
+    new_ways = [way, ] + [Way() for i in range(len(new_points) - 1)]
+
+    if not is_way_in_relation:
+        way_tags = features_map[way].tags
+
+        for new_way in new_ways:
+            if new_way != way:
+                feat = Feature()
+                feat.geometry = new_way
+                feat.tags = way_tags
+
+    for new_way, points in zip(new_ways, new_points):
+        new_way.points = points
+        if new_way.id != way.id:
+            for point in points:
+                point.removeparent(way, shoulddestroy=False)
+                point.addparent(new_way)
+
+    return new_ways
+
+def mergeIntoNewRelation(way_parts):
+    new_relation = Relation()
+    feat = Feature()
+    feat.geometry = new_relation
+    new_relation.members = [(way, "outer") for way in way_parts]
+    for way in way_parts:
+        way.addparent(new_relation)
+
+def splitWayInRelation(rel, way_parts):
+    way_roles = [m[1] for m in rel.members if m[0] == way_parts[0]]
+    way_role = "" if len(way_roles) == 0 else way_roles[0]
+    for way in way_parts[1:]:
+        rel.members.append((way, way_role))
+
 def output():
     l.debug("Outputting XML")
     # First, set up a few data structures for optimization purposes
@@ -656,9 +718,12 @@ def output():
 
 # Main flow
 data = openData(source)
+longWaysFromPolygons = set()
 parseData(data)
 mergePoints()
 mergeWayPoints()
+if options.maxNodesPerWay >= 2:
+    splitLongWays(options.maxNodesPerWay, longWaysFromPolygons)
 translations.preOutputTransform(Geometry.geometries, Feature.features)
 output()
 if options.saveid:
