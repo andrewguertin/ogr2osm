@@ -483,7 +483,7 @@ def parsePolygon(ogrgeometry):
         l.warning("Polygon with no rings?")
     elif ogrgeometry.GetGeometryCount() == 1:
         result = parseLineString(ogrgeometry.GetGeometryRef(0))
-        if result.points > options.maxNodesPerWay:
+        if len(result.points) > options.maxNodesPerWay:
             global longWaysFromPolygons
             longWaysFromPolygons.add(result)
         return result
