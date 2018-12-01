@@ -47,7 +47,6 @@ import os
 import optparse
 import logging as l
 import re
-l.basicConfig(level=l.DEBUG, format="%(message)s")
 
 from osgeo import ogr
 from osgeo import osr
@@ -87,194 +86,17 @@ except ImportError:
                 raise
 
 
-# Setup program usage
-usage = """%prog SRCFILE
+# Initialize
+l.basicConfig(level=l.DEBUG, format="%(message)s")
+LINESTRING_POINTS = {}
 
-SRCFILE can be a file path or a org PostgreSQL connection string such as:
-"PG:dbname=pdx_bldgs user=emma host=localhost" (including the quotes)"""
-parser = optparse.OptionParser(usage=usage)
-parser.add_option("-t", "--translation", dest="translationMethod",
-                  metavar="TRANSLATION",
-                  help="Select the attribute-tags translation method. See " +
-                  "the translations/ directory for valid values.")
-parser.add_option("-o", "--output", dest="outputFile", metavar="OUTPUT",
-                  help="Set destination .osm file name and location.")
-parser.add_option("-e", "--epsg", dest="sourceEPSG", metavar="EPSG_CODE",
-                  help="EPSG code of source file. Do not include the " +
-                       "'EPSG:' prefix. If specified, overrides projection " +
-                       "from source metadata if it exists.")
-parser.add_option("-p", "--proj4", dest="sourcePROJ4", metavar="PROJ4_STRING",
-                  help="PROJ.4 string. If specified, overrides projection " +
-                       "from source metadata if it exists.")
-parser.add_option("-v", "--verbose", dest="verbose", action="store_true")
-parser.add_option("-d", "--debug-tags", dest="debugTags", action="store_true",
-                  help="Output the tags for every feature parsed.")
-parser.add_option("-f", "--force", dest="forceOverwrite", action="store_true",
-                  help="Force overwrite of output file.")
-
-parser.add_option("--encoding", dest="encoding",
-                  help="Encoding of the source file. If specified, overrides " +
-                  "the default of utf-8", default="utf-8")
-
-parser.add_option("--significant-digits",  dest="significantDigits", type=int,
-                  help="Number of decimal places for coordinates", default=9)
-
-parser.add_option("--rounding-digits",  dest="roundingDigits", type=int,
-                  help="Number of decimal places for rounding", default=7)
-
-parser.add_option("--no-memory-copy", dest="noMemoryCopy", action="store_true",
-                    help="Do not make an in-memory working copy")
-
-parser.add_option("--no-upload-false", dest="noUploadFalse", action="store_true",
-                    help="Omit upload=false from the completed file to surpress JOSM warnings when uploading.")
-
-parser.add_option("--id", dest="id", type=int, default=0,
-                    help="ID to start counting from for the output file. Defaults to 0.")
-
-parser.add_option("--idfile", dest="idfile", type=str, default=None,
-                    help="Read ID to start counting from from a file.")
-
-parser.add_option("--split-ways", dest="maxNodesPerWay", type=int, default=1800,
-                    help="Split ways with more than the specified number of nodes. Defaults to 1800. " +
-                    "Any value below 2 - do not split.")
-
-parser.add_option("--saveid", dest="saveid", type=str, default=None,
-                    help="Save last ID after execution to a file.")
-
-# Positive IDs can cause big problems if used inappropriately so hide the help for this
-parser.add_option("--positive-id", dest="positiveID", action="store_true",
-                    help=optparse.SUPPRESS_HELP)
-
-# Add version attributes. Again, this can cause big problems so surpress the help
-parser.add_option("--add-version", dest="addVersion", action="store_true",
-                    help=optparse.SUPPRESS_HELP)
-
-# Add timestamp attributes. Again, this can cause big problems so surpress the help
-parser.add_option("--add-timestamp", dest="addTimestamp", action="store_true",
-                    help=optparse.SUPPRESS_HELP)
-
-parser.add_option("--sql", dest="sqlQuery", type=str, default=None,
-                     help="SQL query to execute on a PostgreSQL source")
-
-parser.set_defaults(sourceEPSG=None, sourcePROJ4=None, verbose=False,
-                    debugTags=False,
-                    translationMethod=None, outputFile=None,
-                    forceOverwrite=False, noUploadFalse=False)
-
-# Parse and process arguments
-(options, args) = parser.parse_args()
-
-try:
-    if options.sourceEPSG:
-        options.sourceEPSG = int(options.sourceEPSG)
-except:
-    parser.error("EPSG code must be numeric (e.g. '4326', not 'epsg:4326')")
-
-if len(args) < 1:
-    parser.print_help()
-    parser.error("you must specify a source filename")
-elif len(args) > 1:
-    parser.error("you have specified too many arguments, " +
-                 "only supply the source filename")
-
-if options.addTimestamp:
-    from datetime import datetime
-
-# Input and output file
-# if no output file given, use the basename of the source but with .osm
-source = args[0]
-sourceIsDatabase = bool(re.match('^PG:', source))
-
-if options.outputFile is not None:
-    options.outputFile = os.path.realpath(options.outputFile)
-elif sourceIsDatabase:
-    parser.error("ERROR: An output file must be explicitly specified when using a database source")
-else:
-    (base, ext) = os.path.splitext(os.path.basename(source))
-    options.outputFile = os.path.join(os.getcwd(), base + ".osm")
-
-if options.sqlQuery and not sourceIsDatabase:
-    parser.error("ERROR: You must use a database source when specifying a query with --sql")
-
-if not options.forceOverwrite and os.path.exists(options.outputFile):
-    parser.error("ERROR: output file '%s' exists" % (options.outputFile))
-l.info("Preparing to convert '%s' to '%s'." % (source, options.outputFile))
-
-# Projection
-if not options.sourcePROJ4 and not options.sourceEPSG:
-    l.info("Will try to detect projection from source metadata, or fall back to EPSG:4326")
-elif options.sourcePROJ4:
-    l.info("Will use the PROJ.4 string: " + options.sourcePROJ4)
-elif options.sourceEPSG:
-    l.info("Will use EPSG:" + str(options.sourceEPSG))
-
-# Stuff needed for locating translation methods
-if options.translationMethod:
-    # add dirs to path if necessary
-    (root, ext) = os.path.splitext(options.translationMethod)
-    if os.path.exists(options.translationMethod) and ext == '.py':
-        # user supplied translation file directly
-        sys.path.insert(0, os.path.dirname(root))
-    else:
-        # first check translations in the subdir translations of cwd
-        sys.path.insert(0, os.path.join(os.getcwd(), "translations"))
-        # then check subdir of script dir
-        sys.path.insert(1, os.path.join(os.path.dirname(__file__), "translations"))
-        # (the cwd will also be checked implicityly)
-
-    # strip .py if present, as import wants just the module name
-    if ext == '.py':
-        options.translationMethod = os.path.basename(root)
-
-    try:
-        translations = __import__(options.translationMethod, fromlist = [''])
-    except ImportError as e:
-        parser.error("Could not load translation method '%s'. Translation "
-               "script must be in your current directory, or in the "
-               "translations/ subdirectory of your current or ogr2osm.py "
-               "directory. The following directories have been considered: %s"
-               % (options.translationMethod, str(sys.path)))
-    except SyntaxError as e:
-        parser.error("Syntax error in '%s'. Translation script is malformed:\n%s"
-               % (options.translationMethod, e))
-
-    l.info("Successfully loaded '%s' translation method ('%s')."
-           % (options.translationMethod, os.path.realpath(translations.__file__)))
-else:
-    import types
-    translations = types.ModuleType("translationmodule")
-    l.info("Using default translations")
-
-default_translations = [
-    ('filterLayer', lambda layer: layer),
-    ('filterFeature', lambda feature, fieldNames, reproject: feature),
-    ('filterTags', lambda tags: tags),
-    ('filterFeaturePost', lambda feature, fieldNames, reproject: feature),
-    ('preOutputTransform', lambda geometries, features: None),
-    ]
-
-for (k, v) in default_translations:
-    if hasattr(translations, k) and getattr(translations, k):
-        l.debug("Using user " + k)
-    else:
-        l.debug("Using default " + k)
-        setattr(translations, k, v)
-
-Geometry.elementIdCounter = options.id
-if options.idfile:
-    with open(options.idfile, 'r') as ff:
-        Geometry.elementIdCounter = int(ff.readline(20))
-    l.info("Starting counter value '%d' read from file '%s'." \
-        % (Geometry.elementIdCounter, options.idfile))
-
-if options.positiveID:
-    Geometry.elementIdCounterIncr = 1 # default is -1
 
 def openData(source):
     if re.match('^PG:', source):
         return openDatabaseSource(source)
     else:
         return getFileData(source)
+
 
 def openDatabaseSource(source):
     dataSource = ogr.Open(source, 0)  # 0 means read-only
@@ -283,6 +105,7 @@ def openDatabaseSource(source):
         sys.exit(1)
     else:
         return dataSource
+
 
 def getFileData(filename):
     ogr_accessmethods = [ "/vsicurl/", "/vsicurl_streaming/", "/vsisubfile/",
@@ -315,36 +138,38 @@ def getFileData(filename):
     if fileDataSource is None:
         l.error('OGR failed to open ' + filename + ', format may be unsupported')
         sys.exit(1)
-    if options.noMemoryCopy:
+    if OPTIONS.noMemoryCopy:
         return fileDataSource
     else:
         memoryDataSource = ogr.GetDriverByName('Memory').CopyDataSource(fileDataSource,'memoryCopy')
         return memoryDataSource
 
+
 def parseData(dataSource):
     l.debug("Parsing data")
-    global translations
-    if options.sqlQuery:
-        layer = dataSource.ExecuteSQL(options.sqlQuery)
+    global TRANSLATIONS
+    if OPTIONS.sqlQuery:
+        layer = dataSource.ExecuteSQL(OPTIONS.sqlQuery)
         layer.ResetReading()
-        parseLayer(translations.filterLayer(layer))
+        parseLayer(TRANSLATIONS.filterLayer(layer))
     else:
         for i in range(dataSource.GetLayerCount()):
             layer = dataSource.GetLayer(i)
             layer.ResetReading()
-            parseLayer(translations.filterLayer(layer))
+            parseLayer(TRANSLATIONS.filterLayer(layer))
+
 
 def getTransform(layer):
-    global options
+    global OPTIONS
     # First check if the user supplied a projection, then check the layer,
     # then fall back to a default
     spatialRef = None
-    if options.sourcePROJ4:
+    if OPTIONS.sourcePROJ4:
         spatialRef = osr.SpatialReference()
-        spatialRef.ImportFromProj4(options.sourcePROJ4)
-    elif options.sourceEPSG:
+        spatialRef.ImportFromProj4(OPTIONS.sourcePROJ4)
+    elif OPTIONS.sourceEPSG:
         spatialRef = osr.SpatialReference()
-        spatialRef.ImportFromEPSG(options.sourceEPSG)
+        spatialRef.ImportFromEPSG(OPTIONS.sourceEPSG)
     else:
         spatialRef = layer.GetSpatialRef()
         if spatialRef != None:
@@ -367,6 +192,7 @@ def getTransform(layer):
 
     return reproject
 
+
 def getLayerFields(layer):
     featureDefinition = layer.GetLayerDefn()
     fieldNames = []
@@ -374,6 +200,7 @@ def getLayerFields(layer):
     for j in range(fieldCount):
         fieldNames.append(featureDefinition.GetFieldDefn(j).GetNameRef())
     return fieldNames
+
 
 def getFeatureTags(ogrfeature, fieldNames):
     '''
@@ -383,10 +210,11 @@ def getFeatureTags(ogrfeature, fieldNames):
     for i in range(len(fieldNames)):
         # The field needs to be put into the appropriate encoding and leading or trailing spaces stripped
         if IS_PYTHON2:
-            tags[fieldNames[i].decode(options.encoding)] = ogrfeature.GetFieldAsString(i).decode(options.encoding).strip()
+            tags[fieldNames[i].decode(OPTIONS.encoding)] = ogrfeature.GetFieldAsString(i).decode(OPTIONS.encoding).strip()
         else:
             tags[fieldNames[i]] = ogrfeature.GetFieldAsString(i).strip()
-    return translations.filterTags(tags)
+    return TRANSLATIONS.filterTags(tags)
+
 
 def parseLayer(layer):
     if layer is None:
@@ -396,7 +224,8 @@ def parseLayer(layer):
 
     for j in range(layer.GetFeatureCount()):
         ogrfeature = layer.GetNextFeature()
-        parseFeature(translations.filterFeature(ogrfeature, fieldNames, reproject), fieldNames, reproject)
+        parseFeature(TRANSLATIONS.filterFeature(ogrfeature, fieldNames, reproject), fieldNames, reproject)
+
 
 def parseFeature(ogrfeature, fieldNames, reproject):
     if ogrfeature is None:
@@ -417,7 +246,7 @@ def parseFeature(ogrfeature, fieldNames, reproject):
         feature.geometry = geometry
         geometry.addparent(feature)
 
-        translations.filterFeaturePost(feature, ogrfeature, ogrgeometry)
+        TRANSLATIONS.filterFeaturePost(feature, ogrfeature, ogrgeometry)
 
 
 def parseGeometry(ogrgeometries):
@@ -451,30 +280,32 @@ def parseGeometry(ogrgeometries):
 
     return returngeometries
 
+
 def parsePoint(ogrgeometry):
-    x = int(round(ogrgeometry.GetX() * 10**options.significantDigits))
-    y = int(round(ogrgeometry.GetY() * 10**options.significantDigits))
+    x = int(round(ogrgeometry.GetX() * 10**OPTIONS.significantDigits))
+    y = int(round(ogrgeometry.GetY() * 10**OPTIONS.significantDigits))
     geometry = Point(x, y)
     return geometry
 
-linestring_points = {}
+
 def parseLineString(ogrgeometry):
     geometry = Way()
     # LineString.GetPoint() returns a tuple, so we can't call parsePoint on it
     # and instead have to create the point ourself
-    global linestring_points
+    global LINESTRING_POINTS
     for i in range(ogrgeometry.GetPointCount()):
         (x, y, unused) = ogrgeometry.GetPoint(i)
-        (rx, ry) = (int(round(x*10**options.roundingDigits)), int(round(y*10**options.roundingDigits)))
-        (x, y) = (int(round(x*10**options.significantDigits)), int(round(y*10**options.significantDigits)))
-        if (rx,ry) in linestring_points:
-            mypoint = linestring_points[(rx,ry)]
+        (rx, ry) = (int(round(x*10**OPTIONS.roundingDigits)), int(round(y*10**OPTIONS.roundingDigits)))
+        (x, y) = (int(round(x*10**OPTIONS.significantDigits)), int(round(y*10**OPTIONS.significantDigits)))
+        if (rx,ry) in LINESTRING_POINTS:
+            mypoint = LINESTRING_POINTS[(rx,ry)]
         else:
             mypoint = Point(x, y)
-            linestring_points[(rx,ry)] = mypoint
+            LINESTRING_POINTS[(rx,ry)] = mypoint
         geometry.points.append(mypoint)
         mypoint.addparent(geometry)
     return geometry
+
 
 def parsePolygon(ogrgeometry):
     # Special case polygons with only one ring. This does not (or at least
@@ -483,9 +314,9 @@ def parsePolygon(ogrgeometry):
         l.warning("Polygon with no rings?")
     elif ogrgeometry.GetGeometryCount() == 1:
         result = parseLineString(ogrgeometry.GetGeometryRef(0))
-        if len(result.points) > options.maxNodesPerWay:
-            global longWaysFromPolygons
-            longWaysFromPolygons.add(result)
+        if len(result.points) > OPTIONS.maxNodesPerWay:
+            global LONG_WAYS_FROM_POLYGONS
+            LONG_WAYS_FROM_POLYGONS.add(result)
         return result
     else:
         geometry = Relation()
@@ -501,6 +332,7 @@ def parsePolygon(ogrgeometry):
             interior.addparent(geometry)
             geometry.members.append((interior, "inner"))
         return geometry
+
 
 def parseCollection(ogrgeometry):
     # OGR MultiPolygon maps easily to osm multipolygon, so special case it
@@ -535,6 +367,7 @@ def parseCollection(ogrgeometry):
             geometry.members.append((member, "member"))
         return [geometry]
 
+
 def mergePoints():
     l.debug("Merging points")
     points = [geom for geom in Geometry.geometries if type(geom) == Point]
@@ -543,8 +376,8 @@ def mergePoints():
     l.debug("Making list")
     pointcoords = {}
     for i in points:
-        rx = int(round(i.x * 10**(options.significantDigits-options.roundingDigits)))
-        ry = int(round(i.y * 10**(options.significantDigits-options.roundingDigits)))
+        rx = int(round(i.x * 10**(OPTIONS.significantDigits-OPTIONS.roundingDigits)))
+        ry = int(round(i.y * 10**(OPTIONS.significantDigits-OPTIONS.roundingDigits)))
         if (rx, ry) in pointcoords:
             pointcoords[(rx, ry)].append(i)
         else:
@@ -558,6 +391,7 @@ def mergePoints():
                 for parent in set(point.parents):
                     parent.replacejwithi(pointsatloc[0], point)
 
+
 def mergeWayPoints():
     l.debug("Merging duplicate points in ways")
     ways = [geom for geom in Geometry.geometries if type(geom) == Way]
@@ -565,16 +399,17 @@ def mergeWayPoints():
     # Remove duplicate points from ways,
     # a duplicate has the same id as its predecessor
     for way in ways:
-        previous = options.id
+        previous = OPTIONS.id
         merged_points = []
 
         for node in way.points:
-            if previous == options.id or previous != node.id:
+            if previous == OPTIONS.id or previous != node.id:
                 merged_points.append(node)
                 previous = node.id
 
         if len(merged_points) > 0:
             way.points = merged_points
+
 
 def splitLongWays(max_points_in_way, waysToCreateRelationFor):
     l.debug("Splitting long ways")
@@ -593,6 +428,7 @@ def splitLongWays(max_points_in_way, waysToCreateRelationFor):
             else:
                 for rel in way.parents:
                     splitWayInRelation(rel, way_parts)
+
 
 def splitWay(way, max_points_in_way, features_map, is_way_in_relation):
     new_points = [way.points[i:i + max_points_in_way] for i in range(0, len(way.points), max_points_in_way - 1)]
@@ -616,6 +452,7 @@ def splitWay(way, max_points_in_way, features_map, is_way_in_relation):
 
     return new_ways
 
+
 def mergeIntoNewRelation(way_parts):
     new_relation = Relation()
     feat = Feature()
@@ -624,11 +461,13 @@ def mergeIntoNewRelation(way_parts):
     for way in way_parts:
         way.addparent(new_relation)
 
+
 def splitWayInRelation(rel, way_parts):
     way_roles = [m[1] for m in rel.members if m[0] == way_parts[0]]
     way_role = "" if len(way_roles) == 0 else way_roles[0]
     for way in way_parts[1:]:
         rel.members.append((way, way_role))
+
 
 def output():
     l.debug("Outputting XML")
@@ -639,23 +478,23 @@ def output():
     featuresmap = {feature.geometry : feature for feature in Feature.features}
 
     # Open up the output file with the system default buffering
-    with open(options.outputFile, 'w', buffering=-1) as f:
+    with open(OPTIONS.outputFile, 'w', buffering=-1) as f:
 
-        if options.noUploadFalse:
+        if OPTIONS.noUploadFalse:
             f.write('<?xml version="1.0"?>\n<osm version="0.6" generator="uvmogr2osm">\n')
         else:
             f.write('<?xml version="1.0"?>\n<osm version="0.6" upload="false" generator="uvmogr2osm">\n')
 
         # Build up a dict for optional settings
         attributes = {}
-        if options.addVersion:
+        if OPTIONS.addVersion:
             attributes.update({'version':'1'})
 
-        if options.addTimestamp:
+        if OPTIONS.addTimestamp:
             attributes.update({'timestamp':datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')})
 
         for node in nodes:
-            xmlattrs = {'visible':'true','id':str(node.id), 'lat':str(node.y*10**-options.significantDigits), 'lon':str(node.x*10**-options.significantDigits)}
+            xmlattrs = {'visible':'true','id':str(node.id), 'lat':str(node.y*10**-OPTIONS.significantDigits), 'lon':str(node.x*10**-OPTIONS.significantDigits)}
             xmlattrs.update(attributes)
 
             xmlobject = etree.Element('node', xmlattrs)
@@ -716,18 +555,211 @@ def output():
         f.write('</osm>')
 
 
-# Main flow
-data = openData(source)
-longWaysFromPolygons = set()
-parseData(data)
-mergePoints()
-mergeWayPoints()
-if options.maxNodesPerWay >= 2:
-    splitLongWays(options.maxNodesPerWay, longWaysFromPolygons)
-translations.preOutputTransform(Geometry.geometries, Feature.features)
-output()
-if options.saveid:
-    with open(options.saveid, 'wb') as ff:
-        ff.write(str(Geometry.elementIdCounter))
-    l.info("Wrote elementIdCounter '%d' to file '%s'"
-        % (Geometry.elementIdCounter, options.saveid))
+def main():
+    global TRANSLATIONS
+    global OPTIONS
+    global LINESTRING_POINTS
+    global LONG_WAYS_FROM_POLYGONS
+
+    # Setup program usage
+    usage = """%prog SRCFILE
+
+    SRCFILE can be a file path or a org PostgreSQL connection string such as:
+    "PG:dbname=pdx_bldgs user=emma host=localhost" (including the quotes)"""
+    parser = optparse.OptionParser(usage=usage)
+    parser.add_option("-t", "--translation", dest="translationMethod",
+                      metavar="TRANSLATION",
+                      help="Select the attribute-tags translation method. See " +
+                      "the translations/ directory for valid values.")
+    parser.add_option("-o", "--output", dest="outputFile", metavar="OUTPUT",
+                      help="Set destination .osm file name and location.")
+    parser.add_option("-e", "--epsg", dest="sourceEPSG", metavar="EPSG_CODE",
+                      help="EPSG code of source file. Do not include the " +
+                           "'EPSG:' prefix. If specified, overrides projection " +
+                           "from source metadata if it exists.")
+    parser.add_option("-p", "--proj4", dest="sourcePROJ4", metavar="PROJ4_STRING",
+                      help="PROJ.4 string. If specified, overrides projection " +
+                           "from source metadata if it exists.")
+    parser.add_option("-v", "--verbose", dest="verbose", action="store_true")
+    parser.add_option("-d", "--debug-tags", dest="debugTags", action="store_true",
+                      help="Output the tags for every feature parsed.")
+    parser.add_option("-f", "--force", dest="forceOverwrite", action="store_true",
+                      help="Force overwrite of output file.")
+
+    parser.add_option("--encoding", dest="encoding",
+                      help="Encoding of the source file. If specified, overrides " +
+                      "the default of utf-8", default="utf-8")
+
+    parser.add_option("--significant-digits",  dest="significantDigits", type=int,
+                      help="Number of decimal places for coordinates", default=9)
+
+    parser.add_option("--rounding-digits",  dest="roundingDigits", type=int,
+                      help="Number of decimal places for rounding", default=7)
+
+    parser.add_option("--no-memory-copy", dest="noMemoryCopy", action="store_true",
+                        help="Do not make an in-memory working copy")
+
+    parser.add_option("--no-upload-false", dest="noUploadFalse", action="store_true",
+                        help="Omit upload=false from the completed file to surpress JOSM warnings when uploading.")
+
+    parser.add_option("--id", dest="id", type=int, default=0,
+                        help="ID to start counting from for the output file. Defaults to 0.")
+
+    parser.add_option("--idfile", dest="idfile", type=str, default=None,
+                        help="Read ID to start counting from from a file.")
+
+    parser.add_option("--split-ways", dest="maxNodesPerWay", type=int, default=1800,
+                        help="Split ways with more than the specified number of nodes. Defaults to 1800. " +
+                        "Any value below 2 - do not split.")
+
+    parser.add_option("--saveid", dest="saveid", type=str, default=None,
+                        help="Save last ID after execution to a file.")
+
+    # Positive IDs can cause big problems if used inappropriately so hide the help for this
+    parser.add_option("--positive-id", dest="positiveID", action="store_true",
+                        help=optparse.SUPPRESS_HELP)
+
+    # Add version attributes. Again, this can cause big problems so surpress the help
+    parser.add_option("--add-version", dest="addVersion", action="store_true",
+                        help=optparse.SUPPRESS_HELP)
+
+    # Add timestamp attributes. Again, this can cause big problems so surpress the help
+    parser.add_option("--add-timestamp", dest="addTimestamp", action="store_true",
+                        help=optparse.SUPPRESS_HELP)
+
+    parser.add_option("--sql", dest="sqlQuery", type=str, default=None,
+                         help="SQL query to execute on a PostgreSQL source")
+
+    parser.set_defaults(sourceEPSG=None, sourcePROJ4=None, verbose=False,
+                        debugTags=False,
+                        translationMethod=None, outputFile=None,
+                        forceOverwrite=False, noUploadFalse=False)
+
+    # Parse and process arguments
+    (OPTIONS, args) = parser.parse_args()
+
+    try:
+        if OPTIONS.sourceEPSG:
+            OPTIONS.sourceEPSG = int(OPTIONS.sourceEPSG)
+    except:
+        parser.error("EPSG code must be numeric (e.g. '4326', not 'epsg:4326')")
+
+    if len(args) < 1:
+        parser.print_help()
+        parser.error("you must specify a source filename")
+    elif len(args) > 1:
+        parser.error("you have specified too many arguments, " +
+                     "only supply the source filename")
+
+    if OPTIONS.addTimestamp:
+        from datetime import datetime
+
+    # Input and output file
+    # if no output file given, use the basename of the source but with .osm
+    source = args[0]
+    sourceIsDatabase = bool(re.match('^PG:', source))
+
+    if OPTIONS.outputFile is not None:
+        OPTIONS.outputFile = os.path.realpath(OPTIONS.outputFile)
+    elif sourceIsDatabase:
+        parser.error("ERROR: An output file must be explicitly specified when using a database source")
+    else:
+        (base, ext) = os.path.splitext(os.path.basename(source))
+        OPTIONS.outputFile = os.path.join(os.getcwd(), base + ".osm")
+
+    if OPTIONS.sqlQuery and not sourceIsDatabase:
+        parser.error("ERROR: You must use a database source when specifying a query with --sql")
+
+    if not OPTIONS.forceOverwrite and os.path.exists(OPTIONS.outputFile):
+        parser.error("ERROR: output file '%s' exists" % (OPTIONS.outputFile))
+    l.info("Preparing to convert '%s' to '%s'." % (source, OPTIONS.outputFile))
+
+    # Projection
+    if not OPTIONS.sourcePROJ4 and not OPTIONS.sourceEPSG:
+        l.info("Will try to detect projection from source metadata, or fall back to EPSG:4326")
+    elif OPTIONS.sourcePROJ4:
+        l.info("Will use the PROJ.4 string: " + OPTIONS.sourcePROJ4)
+    elif OPTIONS.sourceEPSG:
+        l.info("Will use EPSG:" + str(OPTIONS.sourceEPSG))
+
+    # Stuff needed for locating translation methods
+    if OPTIONS.translationMethod:
+        # add dirs to path if necessary
+        (root, ext) = os.path.splitext(OPTIONS.translationMethod)
+        if os.path.exists(OPTIONS.translationMethod) and ext == '.py':
+            # user supplied translation file directly
+            sys.path.insert(0, os.path.dirname(root))
+        else:
+            # first check translations in the subdir translations of cwd
+            sys.path.insert(0, os.path.join(os.getcwd(), "translations"))
+            # then check subdir of script dir
+            sys.path.insert(1, os.path.join(os.path.dirname(__file__), "translations"))
+            # (the cwd will also be checked implicityly)
+
+        # strip .py if present, as import wants just the module name
+        if ext == '.py':
+            OPTIONS.translationMethod = os.path.basename(root)
+
+        try:
+            TRANSLATIONS = __import__(OPTIONS.translationMethod, fromlist = [''])
+        except ImportError as e:
+            parser.error("Could not load translation method '%s'. Translation "
+                   "script must be in your current directory, or in the "
+                   "translations/ subdirectory of your current or ogr2osm.py "
+                   "directory. The following directories have been considered: %s"
+                   % (OPTIONS.translationMethod, str(sys.path)))
+        except SyntaxError as e:
+            parser.error("Syntax error in '%s'. Translation script is malformed:\n%s"
+                   % (OPTIONS.translationMethod, e))
+
+        l.info("Successfully loaded '%s' translation method ('%s')."
+               % (OPTIONS.translationMethod, os.path.realpath(TRANSLATIONS.__file__)))
+    else:
+        import types
+        TRANSLATIONS = types.ModuleType("translationmodule")
+        l.info("Using default translations")
+
+    default_translations = [
+        ('filterLayer', lambda layer: layer),
+        ('filterFeature', lambda feature, fieldNames, reproject: feature),
+        ('filterTags', lambda tags: tags),
+        ('filterFeaturePost', lambda feature, fieldNames, reproject: feature),
+        ('preOutputTransform', lambda geometries, features: None),
+        ]
+
+    for (k, v) in default_translations:
+        if hasattr(TRANSLATIONS, k) and getattr(TRANSLATIONS, k):
+            l.debug("Using user " + k)
+        else:
+            l.debug("Using default " + k)
+            setattr(TRANSLATIONS, k, v)
+
+    Geometry.elementIdCounter = OPTIONS.id
+    if OPTIONS.idfile:
+        with open(OPTIONS.idfile, 'r') as ff:
+            Geometry.elementIdCounter = int(ff.readline(20))
+        l.info("Starting counter value '%d' read from file '%s'." \
+            % (Geometry.elementIdCounter, OPTIONS.idfile))
+
+    if OPTIONS.positiveID:
+        Geometry.elementIdCounterIncr = 1 # default is -1
+
+    # Main flow
+    data = openData(source)
+    LONG_WAYS_FROM_POLYGONS = set()
+    parseData(data)
+    mergePoints()
+    mergeWayPoints()
+    if OPTIONS.maxNodesPerWay >= 2:
+        splitLongWays(OPTIONS.maxNodesPerWay, LONG_WAYS_FROM_POLYGONS)
+    TRANSLATIONS.preOutputTransform(Geometry.geometries, Feature.features)
+    output()
+    if OPTIONS.saveid:
+        with open(OPTIONS.saveid, 'wb') as ff:
+            ff.write(str(Geometry.elementIdCounter))
+        l.info("Wrote elementIdCounter '%d' to file '%s'"
+            % (Geometry.elementIdCounter, OPTIONS.saveid))
+
+
+if __name__ == '__main__':
+    main()
