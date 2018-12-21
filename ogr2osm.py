@@ -483,7 +483,7 @@ def output():
         if OPTIONS.noUploadFalse:
             f.write('<?xml version="1.0"?>\n<osm version="0.6" generator="uvmogr2osm">\n')
         else:
-            f.write('<?xml version="1.0"?>\n<osm version="0.6" upload="false" generator="uvmogr2osm">\n')
+            f.write('<?xml version="1.0"?>\n<osm version="0.6" upload="never" download="never" generator="uvmogr2osm">\n')
 
         # Build up a dict for optional settings
         attributes = {}
