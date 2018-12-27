@@ -77,5 +77,12 @@ Usage
 	  --no-memory-copy      Do not make an in-memory working copy
 	  --no-upload-false     Omit upload=false from the completed file to surpress
 							JOSM warnings when uploading.
+  	  --no-download         Prevent JOSM from downloading more data to this file.
+      --never-upload        Completely disables all upload commands for this file
+                            in JOSM, rather than merely showing a warning before
+                            uploading.
+      --locked              Prevent any changes to this file in JOSM, such as
+                            editing or downloading, and also prevents uploads.
+                            Implies upload="never" and download="never".
 	  --id=ID               ID to start counting from for the output file.
 							Defaults to 0.
