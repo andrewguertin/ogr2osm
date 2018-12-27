@@ -480,10 +480,19 @@ def output():
     # Open up the output file with the system default buffering
     with open(OPTIONS.outputFile, 'w', buffering=-1) as f:
 
-        if OPTIONS.noUploadFalse:
-            f.write('<?xml version="1.0"?>\n<osm version="0.6" generator="uvmogr2osm">\n')
-        else:
-            f.write('<?xml version="1.0"?>\n<osm version="0.6" upload="never" download="never" generator="uvmogr2osm">\n')
+        dec_string = '<?xml version="1.0"?>\n<osm version="0.6" generator="uvmogr2osm"'
+        if OPTIONS.neverUpload:
+            dec_string += ' upload="never"'
+        elif not OPTIONS.noUploadFalse:
+            dec_string += ' upload="false'
+            # f.write('<?xml version="1.0"?>\n<osm version="0.6" generator="uvmogr2osm">\n')
+        if OPTIONS.noDownload:
+            dec_string += ' download="never"'
+            # f.write('<?xml version="1.0"?>\n<osm version="0.6" upload="never" download="never" generator="uvmogr2osm">\n')
+        if OPTIONS.locked:
+            dec_string += ' locked="true"'
+        dec_string += '>\n'
+        f.write(dec_string)
 
         # Build up a dict for optional settings
         attributes = {}
@@ -602,6 +611,18 @@ def main():
     parser.add_option("--no-upload-false", dest="noUploadFalse", action="store_true",
                         help="Omit upload=false from the completed file to surpress JOSM warnings when uploading.")
 
+    parser.add_option("--no-download", dest="noDownload", action="store_true",
+                      help="Prevent JOSM from downloading more data to this file.")
+
+    parser.add_option("--never-upload", dest="neverUpload", action="store_true",
+                      help="Completely disables all upload commands for this file in JOSM, " +
+                      "rather than merely showing a warning before uploading.")
+
+    parser.add_option("--locked", dest="locked", action="store_true",
+                      help="Prevent any changes to this file in JOSM, " +
+                      "such as editing or downloading, and also prevents uploads. " +
+                      "Implies upload=\"never\" and download=\"never\".")
+
     parser.add_option("--id", dest="id", type=int, default=0,
                         help="ID to start counting from for the output file. Defaults to 0.")
 
@@ -633,7 +654,9 @@ def main():
     parser.set_defaults(sourceEPSG=None, sourcePROJ4=None, verbose=False,
                         debugTags=False,
                         translationMethod=None, outputFile=None,
-                        forceOverwrite=False, noUploadFalse=False)
+                        forceOverwrite=False, noUploadFalse=False,
+                        noDownload=False, neverUpload=False,
+                        locked=False)
 
     # Parse and process arguments
     (OPTIONS, args) = parser.parse_args()
