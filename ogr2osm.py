@@ -484,11 +484,9 @@ def output():
         if OPTIONS.neverUpload:
             dec_string += ' upload="never"'
         elif not OPTIONS.noUploadFalse:
-            dec_string += ' upload="false'
-            # f.write('<?xml version="1.0"?>\n<osm version="0.6" generator="uvmogr2osm">\n')
+            dec_string += ' upload="false"'
         if OPTIONS.neverDownload:
             dec_string += ' download="never"'
-            # f.write('<?xml version="1.0"?>\n<osm version="0.6" upload="never" download="never" generator="uvmogr2osm">\n')
         if OPTIONS.locked:
             dec_string += ' locked="true"'
         dec_string += '>\n'
