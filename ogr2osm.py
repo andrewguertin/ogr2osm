@@ -486,7 +486,7 @@ def output():
         elif not OPTIONS.noUploadFalse:
             dec_string += ' upload="false'
             # f.write('<?xml version="1.0"?>\n<osm version="0.6" generator="uvmogr2osm">\n')
-        if OPTIONS.noDownload:
+        if OPTIONS.neverDownload:
             dec_string += ' download="never"'
             # f.write('<?xml version="1.0"?>\n<osm version="0.6" upload="never" download="never" generator="uvmogr2osm">\n')
         if OPTIONS.locked:
@@ -611,7 +611,7 @@ def main():
     parser.add_option("--no-upload-false", dest="noUploadFalse", action="store_true",
                         help="Omit upload=false from the completed file to surpress JOSM warnings when uploading.")
 
-    parser.add_option("--no-download", dest="noDownload", action="store_true",
+    parser.add_option("--never-download", dest="neverDownload", action="store_true",
                       help="Prevent JOSM from downloading more data to this file.")
 
     parser.add_option("--never-upload", dest="neverUpload", action="store_true",
@@ -655,7 +655,7 @@ def main():
                         debugTags=False,
                         translationMethod=None, outputFile=None,
                         forceOverwrite=False, noUploadFalse=False,
-                        noDownload=False, neverUpload=False,
+                        neverDownload=False, neverUpload=False,
                         locked=False)
 
     # Parse and process arguments
