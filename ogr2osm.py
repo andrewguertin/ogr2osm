@@ -185,6 +185,10 @@ def getTransform(layer):
         reproject = lambda geometry: None
     else:
         destSpatialRef = osr.SpatialReference()
+        try:
+            destSpatialRef.SetAxisMappingStrategy(osr.OAMS_TRADITIONAL_GIS_ORDER)
+        except AttributeError:
+            pass
         # Destionation projection will *always* be EPSG:4326, WGS84 lat-lon
         destSpatialRef.ImportFromEPSG(4326)
         coordTrans = osr.CoordinateTransformation(spatialRef, destSpatialRef)
