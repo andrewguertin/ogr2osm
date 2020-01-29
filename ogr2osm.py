@@ -52,6 +52,8 @@ from osgeo import ogr
 from osgeo import osr
 from geom import *
 
+from datetime import datetime
+
 # Determine major Python version is 2 or 3
 IS_PYTHON2 = sys.version_info < (3, 0)
 
