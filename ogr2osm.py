@@ -782,7 +782,7 @@ def main():
     TRANSLATIONS.preOutputTransform(Geometry.geometries, Feature.features)
     output()
     if OPTIONS.saveid:
-        with open(OPTIONS.saveid, 'wb') as ff:
+        with open(OPTIONS.saveid, 'w') as ff:
             ff.write(str(Geometry.elementIdCounter))
         l.info("Wrote elementIdCounter '%d' to file '%s'"
             % (Geometry.elementIdCounter, OPTIONS.saveid))
