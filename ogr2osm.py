@@ -52,6 +52,8 @@ from osgeo import ogr
 from osgeo import osr
 from geom import *
 
+from datetime import datetime
+
 # Determine major Python version is 2 or 3
 IS_PYTHON2 = sys.version_info < (3, 0)
 
@@ -780,7 +782,7 @@ def main():
     TRANSLATIONS.preOutputTransform(Geometry.geometries, Feature.features)
     output()
     if OPTIONS.saveid:
-        with open(OPTIONS.saveid, 'wb') as ff:
+        with open(OPTIONS.saveid, 'w') as ff:
             ff.write(str(Geometry.elementIdCounter))
         l.info("Wrote elementIdCounter '%d' to file '%s'"
             % (Geometry.elementIdCounter, OPTIONS.saveid))
