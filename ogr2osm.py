@@ -90,7 +90,7 @@ except ImportError:
 
 # Initialize
 l.basicConfig(level=l.DEBUG, format="%(message)s")
-LINESTRING_POINTS = {}
+UNIQUE_NODE_INDEX = {}
 
 
 def openData(source):
@@ -287,27 +287,29 @@ def parseGeometry(ogrgeometries):
     return returngeometries
 
 
+def addPoint(x, y):
+    global UNIQUE_NODE_INDEX
+    rx = int(round(x * 10**OPTIONS.roundingDigits))
+    ry = int(round(y * 10**OPTIONS.roundingDigits))
+    if (rx, ry) in UNIQUE_NODE_INDEX:
+        return Geometry.geometries[UNIQUE_NODE_INDEX[(rx, ry)]]
+    else:
+        UNIQUE_NODE_INDEX[(rx, ry)] = len(Geometry.geometries)
+        point = Point(int(round(x*10**OPTIONS.significantDigits)), int(round(y*10**OPTIONS.significantDigits)))
+        return point
+
+
 def parsePoint(ogrgeometry):
-    x = int(round(ogrgeometry.GetX() * 10**OPTIONS.significantDigits))
-    y = int(round(ogrgeometry.GetY() * 10**OPTIONS.significantDigits))
-    geometry = Point(x, y)
-    return geometry
+    return addPoint(ogrgeometry.GetX(), ogrgeometry.GetY())
 
 
 def parseLineString(ogrgeometry):
     geometry = Way()
     # LineString.GetPoint() returns a tuple, so we can't call parsePoint on it
     # and instead have to create the point ourself
-    global LINESTRING_POINTS
     for i in range(ogrgeometry.GetPointCount()):
         (x, y, unused) = ogrgeometry.GetPoint(i)
-        (rx, ry) = (int(round(x*10**OPTIONS.roundingDigits)), int(round(y*10**OPTIONS.roundingDigits)))
-        (x, y) = (int(round(x*10**OPTIONS.significantDigits)), int(round(y*10**OPTIONS.significantDigits)))
-        if (rx,ry) in LINESTRING_POINTS:
-            mypoint = LINESTRING_POINTS[(rx,ry)]
-        else:
-            mypoint = Point(x, y)
-            LINESTRING_POINTS[(rx,ry)] = mypoint
+        mypoint = addPoint(x, y)
         geometry.points.append(mypoint)
         mypoint.addparent(geometry)
     return geometry
@@ -372,30 +374,6 @@ def parseCollection(ogrgeometry):
             member.addparent(geometry)
             geometry.members.append((member, "member"))
         return [geometry]
-
-
-def mergePoints():
-    l.debug("Merging points")
-    points = [geom for geom in Geometry.geometries if type(geom) == Point]
-
-    # Make list of Points at each location
-    l.debug("Making list")
-    pointcoords = {}
-    for i in points:
-        rx = int(round(i.x * 10**(OPTIONS.significantDigits-OPTIONS.roundingDigits)))
-        ry = int(round(i.y * 10**(OPTIONS.significantDigits-OPTIONS.roundingDigits)))
-        if (rx, ry) in pointcoords:
-            pointcoords[(rx, ry)].append(i)
-        else:
-            pointcoords[(rx, ry)] = [i]
-
-    # Use list to get rid of extras
-    l.debug("Checking list")
-    for (location, pointsatloc) in pointcoords.items():
-        if len(pointsatloc) > 1:
-            for point in pointsatloc[1:]:
-                for parent in set(point.parents):
-                    parent.replacejwithi(pointsatloc[0], point)
 
 
 def mergeWayPoints():
@@ -571,7 +549,7 @@ def output():
 def main():
     global TRANSLATIONS
     global OPTIONS
-    global LINESTRING_POINTS
+    global UNIQUE_NODE_INDEX
     global LONG_WAYS_FROM_POLYGONS
 
     # Setup program usage
@@ -775,7 +753,6 @@ def main():
     data = openData(source)
     LONG_WAYS_FROM_POLYGONS = set()
     parseData(data)
-    mergePoints()
     mergeWayPoints()
     if OPTIONS.maxNodesPerWay >= 2:
         splitLongWays(OPTIONS.maxNodesPerWay, LONG_WAYS_FROM_POLYGONS)
