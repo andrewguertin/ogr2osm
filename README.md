@@ -1,3 +1,6 @@
+!!! [ogr2osm is looking for a new maintainer](https://github.com/pnorman/ogr2osm/issues/58) !!!
+======================
+
 ogr2osm.py
 ==========
 
