@@ -90,9 +90,6 @@ test1:
       AXIS["Easting",EAST],
       AXIS["Northing",NORTH],
       AUTHORITY["EPSG","26910"]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
@@ -145,9 +142,6 @@ force:
       AXIS["Easting",EAST],
       AXIS["Northing",NORTH],
       AUTHORITY["EPSG","26910"]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
@@ -188,9 +182,6 @@ nomemorycopy:
       AXIS["Easting",EAST],
       AXIS["Northing",NORTH],
       AUTHORITY["EPSG","26910"]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
@@ -231,9 +222,6 @@ positiveid:
       AXIS["Easting",EAST],
       AXIS["Northing",NORTH],
       AUTHORITY["EPSG","26910"]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
@@ -274,9 +262,6 @@ version:
       AXIS["Easting",EAST],
       AXIS["Northing",NORTH],
       AUTHORITY["EPSG","26910"]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
@@ -317,9 +302,6 @@ timestamp:
       AXIS["Easting",EAST],
       AXIS["Northing",NORTH],
       AUTHORITY["EPSG","26910"]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
@@ -349,9 +331,6 @@ utf8:
       AXIS["Latitude",NORTH],
       AXIS["Longitude",EAST],
       AUTHORITY["EPSG","4618"]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
@@ -417,9 +396,6 @@ duplicatewaynodes:
       AXIS["Easting",EAST],
       AXIS["Northing",NORTH],
       AUTHORITY["EPSG","28992"]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML

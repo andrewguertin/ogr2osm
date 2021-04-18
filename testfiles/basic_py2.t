@@ -83,9 +83,6 @@ test1:
       PARAMETER["Latitude_Of_Origin",0.0],
       UNIT["Meter",1.0],
       AUTHORITY["EPSG","26910"]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
@@ -131,9 +128,6 @@ force:
       PARAMETER["Latitude_Of_Origin",0.0],
       UNIT["Meter",1.0],
       AUTHORITY["EPSG","26910"]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
@@ -167,9 +161,6 @@ nomemorycopy:
       PARAMETER["Latitude_Of_Origin",0.0],
       UNIT["Meter",1.0],
       AUTHORITY["EPSG","26910"]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
@@ -203,9 +194,6 @@ positiveid:
       PARAMETER["Latitude_Of_Origin",0.0],
       UNIT["Meter",1.0],
       AUTHORITY["EPSG","26910"]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
@@ -239,9 +227,6 @@ version:
       PARAMETER["Latitude_Of_Origin",0.0],
       UNIT["Meter",1.0],
       AUTHORITY["EPSG","26910"]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
@@ -275,9 +260,6 @@ timestamp:
       PARAMETER["Latitude_Of_Origin",0.0],
       UNIT["Meter",1.0],
       AUTHORITY["EPSG","26910"]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
@@ -300,9 +282,6 @@ utf8:
           SPHEROID["GRS_1967_Modified",6378160.0,298.25]],
       PRIMEM["Greenwich",0.0],
       UNIT["Degree",0.0174532925199433]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
@@ -321,9 +300,6 @@ japanese:
   Using default preOutputTransform
   Parsing data
   No projection metadata, falling back to EPSG:4326
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
@@ -395,9 +371,6 @@ duplicatewaynodes:
       AXIS["X",EAST],
       AXIS["Y",NORTH],
       AUTHORITY["EPSG","28992"]]
-  Merging points
-  Making list
-  Checking list
   Merging duplicate points in ways
   Splitting long ways
   Outputting XML
