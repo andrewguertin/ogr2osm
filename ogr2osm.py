@@ -92,6 +92,7 @@ except ImportError:
 
 
 # Initialize
+LINESTRING_POINTS = {}
 UNIQUE_NODE_INDEX = {}
 
 
