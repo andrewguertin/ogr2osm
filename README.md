@@ -4,6 +4,8 @@
 ogr2osm.py
 ==========
 
+[![test-py2](https://github.com/pnorman/ogr2osm/actions/workflows/test_py2.yml/badge.svg)](https://github.com/pnorman/ogr2osm/actions/workflows/test_py2.yml) [![test-py3](https://github.com/pnorman/ogr2osm/actions/workflows/test_py3.yml/badge.svg)](https://github.com/pnorman/ogr2osm/actions/workflows/test_py3.yml)
+
 A tool for converting ogr-readable files like shapefiles into .osm data
 
 
