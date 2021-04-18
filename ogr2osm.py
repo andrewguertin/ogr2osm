@@ -45,7 +45,6 @@ Based very heavily on code released under the following terms:
 import sys
 import os
 import optparse
-import logging as l
 import re
 
 from osgeo import ogr
@@ -53,6 +52,10 @@ from osgeo import osr
 from geom import *
 
 from datetime import datetime
+
+# import logging and set logging level to DEBUG
+import logging as l
+l.basicConfig(level=l.DEBUG, format="%(message)s")
 
 # Determine major Python version is 2 or 3
 IS_PYTHON2 = sys.version_info < (3, 0)
@@ -89,7 +92,6 @@ except ImportError:
 
 
 # Initialize
-l.basicConfig(level=l.DEBUG, format="%(message)s")
 UNIQUE_NODE_INDEX = {}
 
 
