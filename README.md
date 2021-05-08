@@ -1,6 +1,3 @@
-!!! [ogr2osm is looking for a new maintainer](https://github.com/pnorman/ogr2osm/issues/58) !!!
-======================
-
 ogr2osm.py
 ==========
 
@@ -8,6 +5,10 @@ ogr2osm.py
 
 A tool for converting ogr-readable files like shapefiles into .osm data
 
+!!! Notice !!!
+--------------
+
+This version is no longer maintained, do not file new issues or pull requests here. Development will continue [here](https://github.com/roelderickx/ogr2osm).
 
 Installation
 ------------
